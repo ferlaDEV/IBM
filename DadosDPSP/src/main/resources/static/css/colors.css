@@ -1,0 +1,95 @@
+.pi-background-form{
+    background: white;
+
+}
+
+.container-color{
+    
+    /* background: -webkit-linear-gradient(to bottom,  #670d10, #092756);  
+    background: linear-gradient(to bottom, #670d10, #092756); */
+    background: rgb(243, 240, 240);
+
+} 
+
+.pi-background-primary{
+    background-color: #FF4500;
+ 
+}
+
+.pi-primary{
+    color:#FF4500;
+
+}
+
+
+.pi-primary{
+    color: #cc3700;
+   
+}
+
+ .pi-bg-primary{
+    background:#f96c39;
+    color: #fff;
+}
+
+  .pi-emAndamento{
+    background: #f0ad4e;
+    color:#fff;
+  }
+  
+  .pi-naoIniciado{
+ 
+    background: #d9534f;
+      color:#fff;
+  }
+  
+  .pi-finalizado {
+      background: #5cb85c;
+      color:#fff;
+  }
+
+  .pi-hr-color{
+    background: #aaaaaa;
+}
+
+.pi-btnIniciar{
+    background-color: limegreen;
+    border-radius: 5px;
+  }
+  
+  .pi-btnParar{
+    background-color: firebrick;
+    border-radius: 5px;
+    padding-right: 10px;
+  }
+  
+  .pi-btnOpcoes{
+    background-color: chocolate;
+    border-radius: 5px;
+  }
+
+  .pi-text-black{
+    color:black;
+}
+.pi-color4{
+    background:#2f7aef;
+    
+}
+.pi-color3{
+    background:#3839BF;
+    /*background: linear-gradient(to bottom, #3839BF, #ADA1EB);*/
+}
+
+.pi-color2{
+	background: #26267F;
+	 /* background: linear-gradient(to bottom, #26267F, #ADA1EB);*/
+}
+.pi-color1{
+	 background: #4444E5;
+	 /*background: linear-gradient(to bottom, #4444E5, #ADA1EB);*/
+}
+
+.bg-gradient3 {
+	  background: linear-gradient(to bottom right, #B9AEF0, #ADA1EB); 
+}
+

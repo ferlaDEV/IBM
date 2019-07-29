@@ -1,0 +1,114 @@
+
+
+.pi-btnAtualizar	{
+    background: #2f7aef;
+    border: none;
+    color:white;
+
+}
+
+
+
+.pi-btnIniciar{
+    background: #3ec4e6;
+    color: #fff;
+    border:none;
+    width: 55px;
+    
+  } 
+  .pi-btnParar {
+    background: #bb2a3d;
+    color: #fff;
+    border:none;
+    width: 55px;
+  } 
+
+  .pi-btnOpcoes{
+    background: #cc3700;
+    color: #fff;
+    border:none;
+    /* width: 100px; */
+
+  }
+
+  .pi-btn{
+    
+    /* border-radius: 30px; */
+    border-color:#1E90FF;
+    color:#1E90FF;
+    background-color: transparent;
+    
+}
+
+.pi-btn:hover{
+    border-color:#1E90FF;
+    color:white;
+    background-color: #1E90FF;
+
+}
+
+.pi-btnCancelar {
+    background: transparent;
+    color: #44007F;
+    border-color:#44007F;
+}
+.pi-btnCancelar:hover{
+border-color:#44007F;
+    color:white;
+    background-color: #44007F;
+
+}
+  
+.pi-btnVoltar{
+    background:transparent;
+    color: #999;
+    
+}
+
+.pi-btnEnviar{
+    background-color:#747a77;
+    color: #fff;
+}
+
+.pi-btnComentario{
+    background-color:#fff;
+    color: #747a77;
+    border-color:transparent;
+    
+}
+
+.btn-cancelar{
+	  background:#bb2a3d;
+    color: #999;
+}
+
+.button {
+color: #aaa;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-top: -4px;
+  border:0;
+  background: transparent;
+  }
+  .delete:hover {
+  color: #dc2a2a;
+}
+
+  .edit:hover {
+  color: #fbec5d;
+}
+.view:hover {
+  color: #191970;
+	
+}
+
+.calendar:hover{
+	color:#44007F;
+}
+
+.hover-color1:hover{
+border-color:#44007F;
+    color:white;
+    background-color: #44007F;
+
+}

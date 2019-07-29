@@ -1,0 +1,606 @@
+#dadosLoja{
+  background-color: #FFFFFF;
+  width:100%;
+  height:100%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+}
+#calculoIp{
+  background-color: #FFFFFF;
+  width:1130px;
+  height:100%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+}
+#contatos{
+  background-color: #FFFFFF;
+  width:100%;
+  height:40%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+}
+#ggl{
+  background-color: #FFFFFF;
+  width:100%;
+  height:40%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+  padding-bottom: 15px;
+}
+#prestadores{
+  background-color: #FFFFFF;
+  width:100%;
+  height:30%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+}
+#atendimento{
+  background-color: #FFFFFF;
+  width:100%;
+  height:30%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+  padding-bottom: 10px;
+}
+body{
+  background-color: #ADD8E6;
+}
+li {
+  background-color: #FFFFFF;
+}
+#vdLoja {
+  text-align: center;
+  width: 70px;
+  height: 25px;
+}
+#bandeira {
+  text-align: center;
+  width: 70px;
+  height: 25px;
+}
+#loja {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 280px;
+  height: 52px;
+  resize: none;
+}
+#inscEstadual {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 135px;
+  height: 25px;
+}
+#cnpj {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 192px;
+  height: 25px;
+}
+#inauguracao {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 162px;
+  height: 25px;
+}
+#endereco {
+  text-align: center;
+  background-color: #DCDCDC;
+  color: #000000;
+  width: 270px;
+  height: 145px;
+  resize: none;
+}
+#telefone1 {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#telefone2 {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#emailLoja {
+  text-align: center;
+  background-color: #DCDCDC;
+  color: #000000;
+  width: 260px;
+  height: 50px;
+  resize: none;
+}
+#nomeGGL {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#telefoneGGL {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 170px;
+  height: 25px;
+}
+#emailGGL {
+  text-align: center;
+  background-color: #DCDCDC;
+  color: #000000;
+  width: 260px;
+  height: 50px;
+  resize: none;
+}
+#fieldLocal {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#fieldMultifuncional {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 105px;
+  height: 25px;
+}
+#segASex {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#sab {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#dom {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#obs {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 220px;
+  height: 25px;
+}
+#popular{
+  background-color: #FFFFFF;
+  width:50%;
+  height:100%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+}
+#usuarioPopular {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;	
+  width: 100px;
+  height: 25px;
+}
+#senhaPopular {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 100px;
+  height: 25px;
+}
+#terminal {
+  text-align: center;
+  width: 90px;
+  height: 25px;
+}
+#digito {
+  text-align: center;
+  width: 20px;
+  height: 25px;
+}
+#gerenteHardware {
+  width: 152px;
+  height: 25px;
+}
+#telAlternativo {
+  width: 152px;
+  height: 25px;
+}
+#gerentePinpad {
+  width: 152px;
+  height: 25px;
+}
+#problemaHardware {
+  background-color: #FFFFFF;
+  color: #000000;
+  width: 550px;
+  height: 100px;
+  resize: none;
+}
+#problemaPinpad {
+  background-color: #FFFFFF;
+  color: #000000;
+  width: 550px;
+  height: 100px;
+  resize: none;
+}
+#testesHardware {	
+  background-color: #FFFFFF;
+  color: #000000;
+  width: 550px;
+  height: 150px;
+  resize: none;
+}
+#testesPinpad {
+  background-color: #FFFFFF;
+  color: #000000;
+  width: 550px;
+  height: 150px;
+  resize: none;
+}
+#numeroMicro {
+  width: 60px;
+  height: 25px;
+}
+#serieHardware {
+  width: 280px;
+  height: 25px;
+}
+#seriePinpad {
+  width: 280px;
+  height: 25px;
+}
+#modelo {
+  width: 280px;
+  height: 25px;
+}
+#numeroLogico {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;	
+  width: 195px;
+  height: 25px;
+}
+#estabelecimentoCielo {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 240px;
+  height: 25px;
+}
+#erro {
+  height: 65px;
+}
+#ipGerencia {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#ipImpressoraCupom {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#ipLink {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#ipRoteador {
+  background-color: #DCDCDC;
+  color: #000000;
+  text-align: center;
+  width: 140px;
+  height: 25px;
+}
+#ipBalcao {
+	background-color: #DCDCDC;
+	color: #000000;
+	text-align: center;
+	width: 295px;
+	height: 25px;
+}
+#ipCaixa {
+	background-color: #DCDCDC;
+	color: #000000;
+	text-align: center;
+	width: 295px;
+	height: 25px;
+}
+#ipVoip {
+	background-color: #DCDCDC;
+	color: #000000;
+	text-align: center;
+	width: 285px;
+	height: 25px;
+}
+#ipTiraTeima {
+	background-color: #DCDCDC;
+	color: #000000;
+	text-align: center;
+	width: 285px;
+	height: 25px;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#propComp {
+	width: 30px;
+}
+
+.img-fundo{
+    position: absolute;
+    height:49.8rem;
+    width:100%;
+    background: url(../img/fundo.jpg) no-repeat;
+}
+
+/* Estrutura` */
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+    left: 50%;
+}
+
+/* Formulario - Bloco  */
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    margin-top: 160px ;
+    margin-left: 10% ;
+}
+
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Titulos */
+h2.inactive {
+    color: #cccccc;
+}
+
+h2.active{
+    padding: 10px 5px 10px 5px;
+    background: #5085a0;
+    border-bottom: 2px solid #5085a0;
+}
+
+/* Botao de Log in */
+input[type=button], input[type=submit], input[type=reset]  {
+    background-color: #1e6486;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color: #39ace7;
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+#senha, #usuario {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:placeholder, input[type=password]:placeholder {
+    color: #cccccc;
+}
+
+/* Anima��es */
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+}
+
+  /* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+    opacity:0.0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+.fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+  /* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+  }
+  
+  .underlineHover:hover {
+    color: #0d0d0d;
+  }
+  
+  .underlineHover:hover:after{
+    width: 100%;
+  }
+  
+  
+  
+  /* OTHERS */
+  
+  *:focus {
+      outline: none;
+  } 
+  
+  #icon {
+    width:60%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  
