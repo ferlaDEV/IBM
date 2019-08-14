@@ -57,164 +57,32 @@
 body{
   background-color: #ADD8E6;
 }
-li {
-  background-color: #FFFFFF;
-}
-#vdLoja {
+#emailLoja {
   text-align: center;
-  width: 70px;
-  height: 25px;
-}
-#bandeira {
-  text-align: center;
-  width: 70px;
-  height: 25px;
-}
-#loja {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 280px;
-  height: 52px;
+  background-color: white;
+  color: black;
+  width: 245px;
+  height: 50px;
   resize: none;
-}
-#inscEstadual {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 135px;
-  height: 25px;
-}
-#cnpj {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 192px;
-  height: 25px;
-}
-#inauguracao {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 162px;
-  height: 25px;
+  border-radius: 0 5px 5px 0;
 }
 #endereco {
   text-align: center;
   background-color: #DCDCDC;
-  color: #000000;
-  width: 270px;
+  color: black;
+  width: 280px;
   height: 145px;
   resize: none;
-}
-#telefone1 {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#telefone2 {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#emailLoja {
-  text-align: center;
-  background-color: #DCDCDC;
-  color: #000000;
-  width: 260px;
-  height: 50px;
-  resize: none;
-}
-#nomeGGL {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#telefoneGGL {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 170px;
-  height: 25px;
-}
-#emailGGL {
-  text-align: center;
-  background-color: #DCDCDC;
-  color: #000000;
-  width: 260px;
-  height: 50px;
-  resize: none;
-}
-#fieldLocal {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#fieldMultifuncional {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 105px;
-  height: 25px;
-}
-#segASex {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#sab {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#dom {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 140px;
-  height: 25px;
-}
-#obs {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 220px;
-  height: 25px;
+  border-radius: 0 0 5px 5px;
 }
 #popular{
   background-color: #FFFFFF;
-  width:50%;
+  width:40%;
   height:100%;
   border:solid 1px;
   border-radius:20px;
   box-shadow: 10px 10px 10px 5px #000000;
   padding-left: 30px;
-}
-#usuarioPopular {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;	
-  width: 100px;
-  height: 25px;
-}
-#senhaPopular {
-  background-color: #DCDCDC;
-  color: #000000;
-  text-align: center;
-  width: 100px;
-  height: 25px;
 }
 #terminal {
   text-align: center;
@@ -240,28 +108,28 @@ li {
 }
 #problemaHardware {
   background-color: #FFFFFF;
-  color: #000000;
+  color: black;
   width: 550px;
   height: 100px;
   resize: none;
 }
 #problemaPinpad {
   background-color: #FFFFFF;
-  color: #000000;
+  color: black;
   width: 550px;
   height: 100px;
   resize: none;
 }
 #testesHardware {	
   background-color: #FFFFFF;
-  color: #000000;
+  color: black;
   width: 550px;
   height: 150px;
   resize: none;
 }
 #testesPinpad {
   background-color: #FFFFFF;
-  color: #000000;
+  color: black;
   width: 550px;
   height: 150px;
   resize: none;
@@ -284,14 +152,14 @@ li {
 }
 #numeroLogico {
   background-color: #DCDCDC;
-  color: #000000;
+  color: black;
   text-align: center;	
   width: 195px;
   height: 25px;
 }
 #estabelecimentoCielo {
   background-color: #DCDCDC;
-  color: #000000;
+  color: black;
   text-align: center;
   width: 240px;
   height: 25px;
@@ -301,56 +169,56 @@ li {
 }
 #ipGerencia {
   background-color: #DCDCDC;
-  color: #000000;
+  color: black;
   text-align: center;
   width: 140px;
   height: 25px;
 }
 #ipImpressoraCupom {
   background-color: #DCDCDC;
-  color: #000000;
+  color: black;
   text-align: center;
   width: 140px;
   height: 25px;
 }
 #ipLink {
   background-color: #DCDCDC;
-  color: #000000;
+  color: black;
   text-align: center;
   width: 140px;
   height: 25px;
 }
 #ipRoteador {
   background-color: #DCDCDC;
-  color: #000000;
+  color: black;
   text-align: center;
   width: 140px;
   height: 25px;
 }
 #ipBalcao {
 	background-color: #DCDCDC;
-	color: #000000;
+	color: black;
 	text-align: center;
 	width: 295px;
 	height: 25px;
 }
 #ipCaixa {
 	background-color: #DCDCDC;
-	color: #000000;
+	color: black;
 	text-align: center;
 	width: 295px;
 	height: 25px;
 }
 #ipVoip {
 	background-color: #DCDCDC;
-	color: #000000;
+	color: black;
 	text-align: center;
 	width: 285px;
 	height: 25px;
 }
 #ipTiraTeima {
 	background-color: #DCDCDC;
-	color: #000000;
+	color: black;
 	text-align: center;
 	width: 285px;
 	height: 25px;

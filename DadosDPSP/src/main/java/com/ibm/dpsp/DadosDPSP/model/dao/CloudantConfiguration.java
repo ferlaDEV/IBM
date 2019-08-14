@@ -45,4 +45,5 @@ public class CloudantConfiguration {
 		Database db = client.database(config.getDb(), true);
 		return db;
 	}
+
 }

@@ -1,35 +1,47 @@
 package com.ibm.dpsp.DadosDPSP.security;
 
+import javax.ws.rs.HttpMethod;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.ibm.dpsp.DadosDPSP.repository.UserDAO;
 
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
+	@Autowired
+    private UserDAO userDAO;
+	
+
 	@Override
 	public void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
+		.antMatchers(HttpMethod.GET, "/LoginW3").permitAll()
+		.antMatchers(HttpMethod.GET, "/AuthW3").permitAll()
+		.antMatchers(HttpMethod.POST, "/Post").permitAll()
 		.antMatchers(HttpMethod.GET, "/Login").permitAll()
-		.antMatchers(HttpMethod.GET, "/Entrar").permitAll()
-//		.ANTMATCHERS(HTTPMETHOD.GET, "/DADOS").PERMITALL()
-//		.ANTMATCHERS(HTTPMETHOD.GET, "/BUSCAR").PERMITALL()
-		.anyRequest().authenticated()
-		.and().formLogin().loginPage("/Login").permitAll()
-		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+//		.antMatchers(HttpMethod.GET, "/CadastroAnalista").permitAll()
+//		.antMatchers(HttpMethod.GET, "/CadastroLoja").permitAll()
+//		.antMatchers(HttpMethod.POST, "/CadastrarAnalista").permitAll()
+//		.antMatchers(HttpMethod.POST, "/BuscarId").permitAll()
+		.anyRequest().authenticated().and().formLogin().
+		loginPage("/LoginW3").loginProcessingUrl("/Post").failureUrl("/access_denied").isCustomLoginPage();
 	}
+
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.inMemoryAuthentication()
-		.withUser("ferlapx@br.ibm.com").password("9720").roles("ADMIN");
+		auth.userDetailsService(userDAO)
+		.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	@Override
