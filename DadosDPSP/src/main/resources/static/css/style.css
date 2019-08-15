@@ -1,7 +1,16 @@
 #dadosLoja{
   background-color: #FFFFFF;
   width:100%;
-  height:100%;
+  height: 95%;
+  border:solid 1px;
+  border-radius:20px;
+  box-shadow: 10px 10px 10px 5px #000000;
+  padding-left: 30px;
+}
+#dadosLojaCadastro{
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 98%;
   border:solid 1px;
   border-radius:20px;
   box-shadow: 10px 10px 10px 5px #000000;
@@ -9,7 +18,7 @@
 }
 #calculoIp{
   background-color: #FFFFFF;
-  width:1130px;
+  width:100%;
   height:100%;
   border:solid 1px;
   border-radius:20px;
@@ -24,16 +33,16 @@
   border-radius:20px;
   box-shadow: 10px 10px 10px 5px #000000;
   padding-left: 30px;
+  padding-bottom: 30px;
 }
 #ggl{
   background-color: #FFFFFF;
   width:100%;
-  height:40%;
+  height:70%;
   border:solid 1px;
   border-radius:20px;
   box-shadow: 10px 10px 10px 5px #000000;
   padding-left: 30px;
-  padding-bottom: 15px;
 }
 #prestadores{
   background-color: #FFFFFF;
@@ -60,8 +69,8 @@ body{
 #emailLoja {
   text-align: center;
   background-color: white;
-  color: black;
-  width: 245px;
+  color: #7D7A79;
+  width: 134%;
   height: 50px;
   resize: none;
   border-radius: 0 5px 5px 0;
@@ -69,11 +78,20 @@ body{
 #endereco {
   text-align: center;
   background-color: #DCDCDC;
-  color: black;
+  color: #7D7A79;
   width: 280px;
   height: 145px;
   resize: none;
   border-radius: 0 0 5px 5px;
+}
+#enderecoCompleto {
+	text-align: center;
+  	background-color: #DCDCDC;
+  	color: #7D7A79;
+  	width: 92%;
+  	height: 145px;
+  	resize: none;
+  	border-radius: 0 0 5px 5px;
 }
 #popular{
   background-color: #FFFFFF;
@@ -92,18 +110,6 @@ body{
 #digito {
   text-align: center;
   width: 20px;
-  height: 25px;
-}
-#gerenteHardware {
-  width: 152px;
-  height: 25px;
-}
-#telAlternativo {
-  width: 152px;
-  height: 25px;
-}
-#gerentePinpad {
-  width: 152px;
   height: 25px;
 }
 #problemaHardware {
@@ -133,36 +139,6 @@ body{
   width: 550px;
   height: 150px;
   resize: none;
-}
-#numeroMicro {
-  width: 60px;
-  height: 25px;
-}
-#serieHardware {
-  width: 280px;
-  height: 25px;
-}
-#seriePinpad {
-  width: 280px;
-  height: 25px;
-}
-#modelo {
-  width: 280px;
-  height: 25px;
-}
-#numeroLogico {
-  background-color: #DCDCDC;
-  color: black;
-  text-align: center;	
-  width: 195px;
-  height: 25px;
-}
-#estabelecimentoCielo {
-  background-color: #DCDCDC;
-  color: black;
-  text-align: center;
-  width: 240px;
-  height: 25px;
 }
 #erro {
   height: 65px;

@@ -43,9 +43,14 @@ public class RouteController {
 	@RequestMapping("/")
 	public String index(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		Data data = new Data();
 		if(user.getAccess().equals("ADM")) {
+			data.setImg("/img/dpsp.jpg");
+			model.addAttribute("data", data);
 			return "DataADM";
 		}else {
+			data.setImg("/img/dpsp.jpg");
+			model.addAttribute("data", data);
 			return "Data";
 		}
 	}
@@ -53,9 +58,14 @@ public class RouteController {
 	@RequestMapping("/Data")
 	public String data(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		Data data = new Data();
 		if(user.getAccess().equals("ADM")) {
+			data.setImg("/img/dpsp.jpg");
+			model.addAttribute("data", data);
 			return "DataADM";
 		}else {
+			data.setImg("/img/dpsp.jpg");
+			model.addAttribute("data", data);
 			return "Data";
 		}
 	}
@@ -63,9 +73,14 @@ public class RouteController {
 	@RequestMapping("/DataADM")
 	public String dataADM(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		Data data = new Data();
 		if(user.getAccess().equals("ADM")) {
+			data.setImg("/img/dpsp.jpg");
+			model.addAttribute("data", data);
 			return "DataADM";
 		}else {
+			data.setImg("/img/dpsp.jpg");
+			model.addAttribute("data", data);
 			return "Data";
 		}
 	}

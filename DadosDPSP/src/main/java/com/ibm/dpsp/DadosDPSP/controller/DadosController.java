@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cloudant.client.api.Database;
-import com.cloudant.client.api.views.Key;
-import com.cloudant.client.api.views.ViewRequestBuilder;
 import com.ibm.dpsp.DadosDPSP.model.entity.Data;
 import com.ibm.dpsp.DadosDPSP.model.entity.Usuario;
 
@@ -36,15 +34,15 @@ public class DadosController {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
  
 		
-		if(id.charAt(0) <= '0') {
-				StringBuilder sb = new StringBuilder();
-				char num1 = id.charAt(1);
-				char num2 = id.charAt(2);
-				sb.append(num1);
-				sb.append(num2);
-				id = sb.toString();
-				System.out.println(id);	
-			}
+//		if(id.charAt(0) <= '0') {
+//				StringBuilder sb = new StringBuilder();
+//				char num1 = id.charAt(1);
+//				char num2 = id.charAt(2);
+//				sb.append(num1);
+//				sb.append(num2);
+//				id = sb.toString();
+//				System.out.println(id);	
+//			}
 		
 		if(db.contains(id)) {
 			
@@ -61,12 +59,12 @@ public class DadosController {
 //			
 //				System.out.println(t);
 			
-			  List<Data> list = db.getViewRequestBuilder("loja", "lojaView")
-				 	  .startKey("start-key")
-				 	  .endKey("end-key")
-				 	  .limit(10)
-				 	  .includeDocs(true)
-				 	  .query(Foo.class);
+//			  List<Data> list =  db.getViewRequestBuilder("loja", "lojaView"))
+//				 	  .startKey("start-key")
+//				 	  .endKey("end-key")
+//				 	  .limit(10)
+//				 	  .includeDocs(true)
+//				 	  .query(Foo.class);
 	          
 	           
 	            
@@ -125,14 +123,14 @@ public class DadosController {
                     int b=vdLoja /100 % 10;
                     int c=vdLoja / 10 % 10;
                     int d=vdLoja % 10;
-					data.setIpGerencia("10."+a+b+"."+c+d+".100");
-					data.setIpBalcao("Entre 10."+a+b+"."+c+d+".101" + " " + "até" + " " + "10."+a+b+"."+c+d+".109");
-					data.setIpCaixa("Entre 10."+a+b+"."+c+d+".50" + " " + "até" + " " + "10."+a+b+"."+c+d+".59");
-					data.setIpImpCupom("10."+a+b+"."+c+d+".118");
-					data.setIpLink("10."+a+b+"."+c+d+".125");
-					data.setIpRoteador("10."+a+b+"."+c+d+".254");
-					data.setIpTiraTeima("10."+a+b+"."+c+d+".110");
-					data.setIpVoip("10."+a+b+"."+c+d+".99");
+					data.setIpGerencia("10."+a+"."+b+c+d+".100");
+					data.setIpBalcao("Entre 10."+a+"."+b+c+d+".101" + " " + "até" + " " + "10."+a+b+"."+c+d+".109");
+					data.setIpCaixa("Entre 10."+a+"."+b+c+d+".50" + " " + "até" + " " + "10."+a+b+"."+c+d+".59");
+					data.setIpImpCupom("10."+a+"."+b+c+d+".118");
+					data.setIpLink("10."+a+"."+b+c+d+".125");
+					data.setIpRoteador("10."+a+"."+b+c+d+".254");
+					data.setIpTiraTeima("10."+a+"."+b+c+d+".110");
+					data.setIpVoip("10."+a+"."+b+c+d+".99");
 				}
 				newData.setImg("/img/dsp.jpg");
 			}else{
@@ -141,7 +139,7 @@ public class DadosController {
 					data.setIpGerencia("10.226."+vdLoja+".1");
 					data.setIpBalcao("Entre 10.226."+vdLoja+".50" + " " + "até" + " " + "10.226."+vdLoja+".59");
 					data.setIpCaixa("Entre 10.226."+vdLoja+".2" + " " + "até" + " " + "10.226."+vdLoja+".9");
-					data.setIpImpCupom("10.226."+vdLoja+"."+vdLoja+".118");
+					data.setIpImpCupom("10.226."+vdLoja+".118");
 					data.setIpLink("10.226."+vdLoja+".125");
 					data.setIpRoteador("10.226."+vdLoja+".254");
 					data.setIpTiraTeima("10.226."+vdLoja+".110");
@@ -151,7 +149,7 @@ public class DadosController {
 					data.setIpGerencia("10.228."+vdLoja+".1");
 					data.setIpBalcao("Entre 10.228."+vdLoja+".50" + " " + "até" + " " + "10.228."+vdLoja+".59");
 					data.setIpCaixa("Entre 10.228."+vdLoja+".2" + " " + "até" + " " + "10.228."+vdLoja+".9");
-					data.setIpImpCupom("10.228."+vdLoja+"."+vdLoja+".118");
+					data.setIpImpCupom("10.228."+vdLoja+".118");
 					data.setIpLink("10.228."+vdLoja+".125");
 					data.setIpRoteador("10.228."+vdLoja+".254");
 					data.setIpTiraTeima("10.228."+vdLoja+".110");
@@ -161,7 +159,7 @@ public class DadosController {
 					data.setIpGerencia("10.229."+vdLoja+".1");
 					data.setIpBalcao("Entre 10.229."+vdLoja+".50" + " " + "até" + " " + "10.229."+vdLoja+".59");
 					data.setIpCaixa("Entre 10.229."+vdLoja+".2" + " " + "até" + " " + "10.229."+vdLoja+".9");
-					data.setIpImpCupom("10.229."+vdLoja+"."+vdLoja+".118");
+					data.setIpImpCupom("10.229."+vdLoja+".118");
 					data.setIpLink("10.226."+vdLoja+".125");
 					data.setIpRoteador("10.229."+vdLoja+".254");
 					data.setIpTiraTeima("10.229."+vdLoja+".110");

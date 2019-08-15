@@ -1,10 +1,10 @@
-function logPinpad() {
+function logPinpadADM() {
 	   var loja = document.getElementById('loja').value;
 		 var cnpj = document.getElementById('cnpj').value;
 		 var seriePinpad = document.getElementById('seriePinpad').value;
 		 var numeroLogico = document.getElementById('cieloLogico').value;
 		 var estabelecimentoCielo = document.getElementById('estabelecimentoCielo').value;
-		 var endereco = document.getElementById('enderecoCompleto').value;
+		 var endereco = document.getElementById('endereco').value;
 		 var telefone1 = document.getElementById('telefone1').value;
 		 var telefone2 = document.getElementById('telefone2').value;
 		 var gerente = document.getElementById('gerentePinpad').value;

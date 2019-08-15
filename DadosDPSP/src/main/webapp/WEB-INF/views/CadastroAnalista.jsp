@@ -48,6 +48,12 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+            <li class="nav-item">
+      	<a class="nav-link" href="/DataADM">
+        	<i class="fas fa-database"></i>
+          	<span>Sistema de Dados</span>
+          </a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -67,7 +73,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="AtualizaAnalista"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
           </div>
         </div>
       </li>

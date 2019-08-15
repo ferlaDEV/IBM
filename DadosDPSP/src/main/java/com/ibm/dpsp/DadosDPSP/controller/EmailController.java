@@ -13,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,12 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class EmailController {
 
 	@RequestMapping("/EnviarEmail")
-	public void email(@RequestParam("id") String a, @RequestParam("bandeira") String b, @RequestParam("loja") String c, @RequestParam("inscEstadual") String d, 
+	public String email(@RequestParam("id") String a, @RequestParam("bandeira") String b, @RequestParam("loja") String c, @RequestParam("inscEstadual") String d, 
 			@RequestParam("cnpj") String e, @RequestParam("inauguracao")String f, @RequestParam("telefone1") String g, @RequestParam("telefone2") String h,
 			@RequestParam("emailLoja") String i, @RequestParam("nomeGGL") String j, @RequestParam("telefoneGGL") String k, @RequestParam("fieldLocal") String l,
 			@RequestParam("fieldMultifuncional") String m, @RequestParam("segASex") String n, @RequestParam("sab") String o, @RequestParam("dom") String p, 
-			@RequestParam("obs") String q, HttpServletRequest request) {
+			@RequestParam("obs") String q, HttpServletRequest request, Model model) {
 		Properties props = new Properties();
+		String mensagemSuccess = null;
 	    /** Parâmetros de conexão com servidor Gmail */
 	    props.put ("mail.smtp.host", "smtp.gmail.com");
 	    props.put("mail.smtp.auth", "true");
@@ -87,6 +89,10 @@ public class EmailController {
 	      Transport.send(message);
 	 
 	      System.out.println("Feito!!!");
+	      mensagemSuccess = "Email para cadastro da loja "+ a +  " encaminhado com sucesso!!";
+	      model.addAttribute("mensagemSuccess", mensagemSuccess);
+	      
+	      return "EncaminharEmail";
 	 
 	     } catch (MessagingException e1) {
 	        throw new RuntimeException(e1);

@@ -50,6 +50,12 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+            <li class="nav-item">
+      	<a class="nav-link" href="/DataADM">
+        	<i class="fas fa-database"></i>
+          	<span>Sistema de Dados</span>
+          </a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -69,7 +75,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="AtualizaAnalista"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
           </div>
         </div>
       </li>
@@ -109,7 +115,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -119,31 +125,11 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
             	<div class="btn-group">
- 	 				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Analista Logado: <%= request.getUserPrincipal().getName() %>
   					</button>
   					<div class="dropdown-menu dropdown-menu-right">
@@ -161,15 +147,15 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-5">
+                <div class="col-4">
                 	<form class="" action="/BuscarAtualizar" method="GET">
                   		<div class="row">
                   			<div class="col-8">
                   				<div class="input-group mb-3">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-default">Digite o VD da loja</span>
+    									<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Digite o VD da loja</strong></span>
   									</div>
-  									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="id" aria-describedby="inputGroup-sizing-default" placeholder="${data._id }" value="" maxlength="4" onkeypress='return SomenteNumero(event)' required>
+  									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="id" aria-describedby="inputGroup-sizing-default" placeholder="${data._id }" value="" maxlength="4" onkeypress='return SomenteNumero(event)' required style="text-align: center">
 								</div>
                   			</div>
                   			<div class="col-2">
@@ -178,104 +164,122 @@
                   		</div>
                   	</form>
                  </div>
+                 <div class="col-5">
+                 	                                  <form class="" action="/ExcluirLoja" method="GET">
+                                    <div class="row">
+                                      <input type="hidden" name="id" value="${data._id }">
+                                         <button type="submit" class="btn btn-danger" >Excluir Loja</button>
+                                     </div>
+                               </form>
+                 </div>
             </div>
             <form class="" action="/AtualizarLoja" method="GET">
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-dados" role="tabpanel" aria-labelledby="pills-dados-tab" >
                   <div class="row">
                     <div class="col-sm">
-                      <div id="dadosLoja">
+                      <div id="dadosLojaCadastro">
                       	<div class="row">
             				Dados Loja
             			</div>
                         <br>
                         <div class="row">
-                          <div class="col-3">
-                            <label for="bandeira">Bandeira</label>
-                          </div>
-                          <div class="col-3">
-                            <input type="text" class="form-control" id="bandeira" name="bandeira"  value="${data.bandeira }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-1">
-                            <label for="loja">Loja</label>
+                          <div class="col-11">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Bandeira</strong></span>
+                                  </div>
+                                  <input type="text" class="form-control" name="bandeira"  value="${data.bandeira }" style="text-align: center" maxlength="3">
+                                </div>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-3" style="padding-bottom: 4px;">
-                            <textarea class="loja" id="loja" name="loja" class="form-control" >${data.loja }</textarea>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Loja</strong></span>
+                                  </div>
+                                  <input type="text" class="form-control" value="${data.loja }" id="loja" name="loja" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm"  style="color: black;"><strong>Insc. Estadual</strong></span>
+                                  </div>
+                                  <input type="text" class="form-control"  value="${data.inscEstadual }" id="inscEstadual" name="inscEstadual" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CNPJ</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.cnpj }" id="cnpj" name="cnpj" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Inauguração</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.inauguracao }" id="inauguracao" name="inauguracao" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Endereço</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.endereco }" name="endereco" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Bairro</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.bairro }"  name="bairro" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Cidade</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.bairro }" name="cidade" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" style="color: black;"><strong>UF</strong></label>
+                                    </div>
+                                    <input type="text" class="form-control" name="uf" class="form-control" value="${data.uf }" style="text-align: center;">
+                                  </div>
                             </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-5">
-                            <label for="inscEstadual">Insc. Estadual</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="inscEstadual" name="inscEstadual"  value="${data.inscEstadual }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-3">
-                            <label for="cnpj">CNPJ</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="cnpj" name="cnpj"  value="${data.cnpj }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="inauguracao">Inauguração</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="inauguracao" name="inauguracao"  value="${data.inauguracao }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <label for="endereco">Endereço</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <input type="text" id="obs" name="endereco" class="form-control" value="${data.endereco }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <label for="endereco">Bairro</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <input type="text" id="obs" name="bairro" class="form-control" value="${data.bairro }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <label for="endereco">Cidade</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <input type="text" id="obs" name="cidade" class="form-control" value="${data.cidade }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-6">
-                            <label for="endereco">UF</label>
-                          </div>
-                          <div class="col-6">
-                            <label for="endereco">CEP</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-6">
-                            <input type="text" name="uf" class="form-control" value="${data.uf }" style="height: 28px; width: 50px; backgroud-color: black;">
-                          </div>
-                          <div class="col-6">
-                            <input type="text" name="cep" id="fieldLocal" class="form-control" value="${data.cep }">
-                          </div>
+                            <div class="col-6">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CEP</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="cep" class="form-control" value="${data.cep }" style="text-align: center;">
+                                  </div>
+                            </div>
                         </div>
                       </div>
                       <br>
@@ -287,33 +291,39 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="col-4">
-                            <label for="telefone1">Telefone 1</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="telefone1" name="telefone1"   value="${data.telefone1 }">
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 1</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.telefone1 }" id="telefone1" name="telefone1" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
-                          <div class="col-4">
-                            <label for="telefone2">Telefone 2</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="telefone2" name="telefone2"  value="${data.telefone2 }">
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 2</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.telefone2 }" id="telefone2" name="telefone2" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
-                          <div class="col-4">
-                            <label for="emailLoja">Email Loja</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-4">
-                           <textarea class="emailLoja" id="emailLoja" name="emailLoja" class="form-control" >${data.email }</textarea>
-                          </div>
+                            <div class="col-2">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 70px"><strong>Email</strong></span>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-7">
+                              <textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" readonly>${data.email }</textarea>
+                                        </div>
                         </div>
                       </div>
-                      <div id="erro" style="padding-top: 80px;" >
+                      <div id="erro" style="padding-top: 40px;" >
                           <c:if test="${mensagemSuccess != null }">
                               <div class="alert alert-success alert-dismissible fade show" role="alert">
                                   <div class="row" style="text-align: center;">
@@ -335,27 +345,31 @@
                               </div>
                           </c:if>
                       </div>
-                      <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 110px;">
+                      <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 63px;">
                         <div id="ggl">
                           <div class="row">
                             GGL
                           </div>
                           <br>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="nomeGGL">Nome</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="nomeGGL" name="nomeGGL"  value="${data.ggl }">
-                            </div>
+                                <div class="col-11">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Nome do GGL</strong></span>
+                                        </div>
+                                        <input type="text" class="form-control" value="${data.ggl }" id="nomeGGL" name="nomeGGL" style="text-align: center;">
+                                    </div>
+                                  </div>
                           </div>
                           <div class="row">
-                            <div class="col-3">
-                              <label for="telefoneGGL">Telefone</label>
-                            </div>
-                            <div class="col-5">
-                              <input type="text" class="form-control" id="telefoneGGL" name="telefoneGGL"  value="${data.telefoneGgl }">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. do GGL</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="${data.telefoneGgl }" id="telefoneGGL" name="telefoneGGL" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -367,24 +381,24 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="row">
-                            <div class="col-6">
-                              <label for="fieldLocal">Field Local</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="fieldLocal" name="fieldLocal"  value="${data.fieldLocal }">
-                            </div>
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Field Local</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.fieldLocal }" id="fieldLocal" name="fieldLocal" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
-                          <div class="row">
-                            <div class="col-7">
-                              <label for="fieldMultifuncional">Field Multifuncional</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="fieldMultifuncional" name="fieldMultifuncional"  value="${data.fieldMultifuncional }">
-                            </div>
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Field Multifuncional</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="${data.fieldMultifuncional }" id="fieldMultifuncional" name="fieldMultifuncional" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                       </div>
                       <br>
@@ -395,56 +409,80 @@
                           </div>
                           <br>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="segASex">Seg. a Sex.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="segASex" name="segASex" value="${data.segASex }">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Seg. a Sex.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="${data.segASex }" id="segASex" name="segASex" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="sab">Sab.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="sab" name="sab"  value="${data.sab }">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Sab.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="${data.sab }" id="sab" name="sab" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="dom">Dom.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="dom" name="dom"  value="${data.dom }">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Dom.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="${data.dom }" id="dom" name="dom" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-2">
-                              <label for="obs">Obs.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="obs" name="obs"  value="${data.obs }">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>OBS.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="${data.obs }" name="obs" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                         </div>
                       </div>
-                      <div class="row" style="padding-left: 13px; padding-right: 12px;">
-                      	<input type="hidden" name="id" value="${data._id }">
-                      	<div class="row" style="padding-left: 150px; padding-top: 70px">
-                        	<button type="submit" class="btn btn-success">Atualizar Loja</button>
+                      <br>
+                      <div class="row">
+                      	<div class="col-11">
+                      		<div class="row">
+                      			<div class="col-2"></div>
+                              	<div class="col-10">
+                              		<input type="hidden" name="id" value="${data._id }">
+                                  	<div class="row">
+                                    	<button type="submit" class="btn btn-success" style="width: 100%">Atualizar Loja</button>
+                                  </div>
+                              	</div>
+                      		</div>
                       	</div>
+                      	</div>
+                      	</div>
+                      	</div>
+                      	</div>
+                      	</form>
+                      	<br>
+                      	<div class="row">
+                      	
+                      	</div>
+
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <div class="row">
+                              <div class="col-9">
+
+                              </div>
+                              <div class="col-3"></div>
+                            </div>
+                        </div>
                       </div>
-                      </form>
-              			<form class="" action="/ExcluirLoja" method="GET">
-               				<div class="row" style="padding-left: 150px; padding-top: 20px">
-               					<input type="hidden" name="id" value="${data._id }">
-                    				<button type="submit" class="btn btn-danger">Excluir Loja</button>
-                    		</div>
-          				</form>
-                    </div>
-                  </div>
-                </div>
-            </div>
 
   
 

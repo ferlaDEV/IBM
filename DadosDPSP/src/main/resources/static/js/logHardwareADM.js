@@ -1,11 +1,11 @@
-function logHardware() {
+function logHardwareADM() {
   var loja = document.getElementById('loja').value;
   var cnpj = document.getElementById('cnpj').value;
   var serieHardware = document.getElementById('serieHardware').value;
   var tipoMicroHardware = document.getElementById('tipoMicroHardware').value;
   var micro = document.getElementById('numeroMicro').value;
   var modelo = document.getElementById('modelo').value;
-  var endereco = document.getElementById('enderecoCompleto').value;
+  var endereco = document.getElementById('endereco').value;
   var telefone1 = document.getElementById('telefone1').value;
   var telefone2 = document.getElementById('telefone2').value;
   var gerenteHardware = document.getElementById('gerenteHardware').value;

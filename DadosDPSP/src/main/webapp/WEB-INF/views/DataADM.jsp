@@ -50,10 +50,17 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      <li class="nav-item">
+      	<a class="nav-link" href="/DataADM">
+        	<i class="fas fa-database"></i>
+          	<span>Sistema de Dados</span>
+          </a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+     
       <!-- Heading -->
       <div class="sidebar-heading">
         Interface
@@ -69,7 +76,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="AtualizaAnalista"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
           </div>
         </div>
       </li>
@@ -109,7 +116,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -143,7 +150,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
             
             	<div class="btn-group">
- 	 				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Analista Logado: <%= request.getUserPrincipal().getName() %>
   					</button>
   					<div class="dropdown-menu dropdown-menu-right">
@@ -162,7 +169,7 @@
           <div class="row">
             <div class="col-4"></div>
             <div class="col-5">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="background-color: white;">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="pills-dados-tab" data-toggle="pill" href="#pills-dados" role="tab" aria-controls="pills-dados" aria-selected="true">Dados</a>
                     </li>
@@ -191,9 +198,9 @@
                     <form class="" action="Buscar" method="GET">
                     <div class="row">
 							<div class="col-6">
-								<div class="input-group mb-3">
+								<div class="input-group input-group-sm mb-3">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>VD Loja</strong></span>
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>VD Loja</strong></span>
   									</div>
   									<input type="text" class="form-control" style="text-align: center; background-color: white;" id="id"  name="id" placeholder="${data._id }" maxlength="4" onkeypress='return SomenteNumero(event)' required value="">
 								</div>
@@ -221,9 +228,9 @@
 <!--                         </div> -->
                     <div class="row">
 						<div class="col-8">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Bandeira</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Bandeira</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.bandeira }" id="bandeira" name="bandeira" style="text-align: center; background-color: white;">
 							</div>
@@ -241,9 +248,9 @@
 <!--                     </div> -->
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Loja</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Loja</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.loja }" id="loja" name="loja" style="text-align: center; background-color: white;">
 							</div>
@@ -259,9 +266,9 @@
 <!--                     </div> -->
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default"  style="color: black;"><strong>Insc. Estadual</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm"  style="color: black;"><strong>Insc. Estadual</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.inscEstadual }" id="inscEstadual" name="inscEstadual" style="text-align: center; background-color: white;">
 							</div>
@@ -277,9 +284,9 @@
 <!--                     </div> -->
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>CNPJ</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CNPJ</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.cnpj }" id="cnpj" name="cnpj" style="text-align: center; background-color: white;">
 							</div>
@@ -287,9 +294,9 @@
                     </div>
                                         <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Inauguração</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Inauguração</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.inauguracao }" id="inauguracao" name="inauguracao" style="text-align: center; background-color: white;">
 							</div>
@@ -315,9 +322,9 @@
 <!--                     </div> -->
                         <div class="row">
 							<div class="col-12">
-								<div class="input-group mb-3">
+								<div class="input-group input-group-sm mb-3">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-default" style="color: black; width: 280px;"><strong>Endereço Completo</strong></span>
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; width: 280px;"><strong>Endereço Completo</strong></span>
   									</div>
   									<textarea class="endereco" id="endereco" class="form-control" id="enderecoCompleto" name="enderecoCompleto" style="background-color: white;" readonly>${data.enderecoCompleto }</textarea>
 								</div>
@@ -342,9 +349,9 @@
 <!--                     </div> -->
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Telefone 1</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 1</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.telefone1 }" id="telefone1" name="telefone1" style="text-align: center; background-color: white;">
 							</div>
@@ -360,9 +367,9 @@
 <!--                     </div> -->
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Telefone 2</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 2</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.telefone2 }" id="telefone2" name="telefone2" style="text-align: center; background-color: white;">
 							</div>
@@ -379,9 +386,9 @@
 <!--                       </div> -->
                     <div class="row">
 						<div class="col-2">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black; height: 50px;"><strong>Email</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 70px"><strong>Email</strong></span>
   								</div>
 							</div>
 						</div>
@@ -391,23 +398,47 @@
                     </div>
                   </div>
                   <div id="erro" style="padding-top: 30px;" >
-                    <c:if test="${erro != null }">
-              <div class="alert alert-danger" role="alert">
-                <div class="row" style="text-align: center;">
-                  ${erro}
-                  Caso possua os dados da loja para cadastro clique aqui!!
-                </div>
-                <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-7">
-                    <button type="button" class="btn btn-warning">Solicitar Cadastro</button>
+                  <c:choose>
+    				<c:when test="${erro != null}">
+                    	<div class="alert alert-danger" role="alert">
+                			<div class="row" style="text-align: center;">
+                  				${erro}
+                  				Caso possua os dados da loja para cadastro clique aqui!!
+                			</div>
+                			<div class="row">
+                  				<div class="col-3"></div>
+                  				<div class="col-7">
+                  					<form action="/EncaminharEmail" method="POST">
+                  						<button type="submit" class="btn btn-warning">Solicitar Cadastro</button>
+                  					</form>
+                  				</div>
+                  				<div class="col-2"></div>
+                			</div>
+              			</div>
+    				</c:when>
+    				<c:when test="${erro == null}">
+						<img src="${data.img }">
+    				</c:when>
+				</c:choose>
+<%--                     <c:if test="${erro == null }"> --%>
+<!--               			<div class="alert alert-danger" role="alert"> -->
+<!--                 			<div class="row" style="text-align: center;"> -->
+<%--                   				${erro} --%>
+<!--                   				Caso possua os dados da loja para cadastro clique aqui!! -->
+<!--                 			</div> -->
+<!--                 	<div class="row"> -->
+<!--                   <div class="col-3"></div> -->
+<!--                   <div class="col-7"> -->
+<!--                   	<form action="/EncaminharEmail" method="POST"> -->
+<!--                   		<button type="submit" class="btn btn-warning">Solicitar Cadastro</button> -->
+<!--                   	</form> -->
+<!--                   </div> -->
+<!--                   <div class="col-2"></div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<%--              </c:if> --%>
                   </div>
-                  <div class="col-2"></div>
-                </div>
-              </div>
-             </c:if>
-                  </div>
-                  <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 120px;">
+                  <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 90px;">
                     <div id="ggl">
                       <div class="row">
                         GGL
@@ -421,9 +452,9 @@
 <%--                           <input type="text" class="form-control" id="nomeGGL" readonly value="${data.ggl }"> --%>
 <!--                         </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Nome do GGL</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Nome do GGL</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.ggl }" id="ggl2" name="ggl" style="text-align: center; background-color: white;">
 							</div>
@@ -437,9 +468,9 @@
 <%--                           <input type="text" class="form-control" id="telefoneGGL" readonly value="${data.telefoneGgl }"> --%>
 <!--                         </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Tel. do GGL</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. do GGL</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.telefoneGgl }" id="telefoneGGL" name="telefoneGGL" style="text-align: center; background-color: white;">
 							</div>
@@ -464,9 +495,9 @@
 <!--                         </div> -->
 <!--                       </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Field Local</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Field Local</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.fieldLocal }" id="fieldLocal" name="fieldLocal" style="text-align: center; background-color: white;">
 							</div>
@@ -482,9 +513,9 @@
 <!--                         </div> -->
 <!--                       </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default"  style="color: black;"><strong>Field Multifuncional</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm"  style="color: black;"><strong>Field Multifuncional</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.fieldMultifuncional }" id="fieldMultifuncional" name="fieldMultifuncional" style="text-align: center; background-color: white;">
 							</div>
@@ -492,7 +523,7 @@
                     </div>
                   </div>
                   <br>
-                  <div class="row" style="padding-left: 13px; padding-right: 12px;">
+                  <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 80px;">
                     <div id="atendimento">
                       <div class="row">
                         Atendimento
@@ -506,9 +537,9 @@
 <%--                           <input type="text" class="form-control" id="segASex" readonly value="${data.segASex }"> --%>
 <!--                         </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Seg. a Sex.</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Seg. a Sex.</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.segASex }" id="segASex" name="segASex" style="text-align: center; background-color: white;">
 							</div>
@@ -523,9 +554,9 @@
 <%--                           <input type="text" class="form-control" id="sab" readonly value="${data.sab }"> --%>
 <!--                         </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Sab.</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Sab.</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.sab }" id="sab" name="sab" style="text-align: center; background-color: white;">
 							</div>
@@ -540,9 +571,9 @@
 <%--                           <input type="text" class="form-control" id="dom" readonly value="${data.dom }"> --%>
 <!--                         </div> -->
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Dom.</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Dom.</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.dom }" id="dom" name="dom" style="text-align: center; background-color: white;">
 							</div>
@@ -550,9 +581,9 @@
                       </div>
                       <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>OBS.</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>OBS.</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.obs }" name="id" name="obs" style="text-align: center; background-color: white;">
 							</div>
@@ -560,15 +591,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row" style="padding-left: 40px; padding-right: 12px; padding-top: 15px;">
-                    <div class="row">
-                      <img src="${data.img }">
-                    </div>
-                  </div>
                 </div>
               </div>
-              <br>
-              <br>
             </div>
             <div class="tab-pane fade" id="pills-fp" role="tabpanel" aria-labelledby="pills-fp-tab">
               <div class="row">
@@ -580,9 +604,9 @@
                     <br>
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Usuario</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Usuario</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.usuarioPopular }" id="usuarioPopular" name="usuarioPopular" style="text-align: center; background-color: white;">
 							</div>
@@ -590,9 +614,9 @@
                     </div>
                     <div class="row">
 						<div class="col-11">
-							<div class="input-group mb-3">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Senha</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Senha</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.senhaPopular }" id="senhaPopular" name="senhaPopular" style="text-align: center; background-color: white;">
 							</div>
@@ -650,23 +674,37 @@
                   <div class="row">
                     <div class="col-sm">
                       <div class="row">
-                        <div class="col-2">
-                          <strong><label for="gerenteHardware">Gerente</label></strong>
-                        </div>
-                        <div class="col-2">
-                          <input type="text" class="form-control" id="gerenteHardware" maxlength="20">
-                        </div>
+<!--                         <div class="col-2"> -->
+<!--                           <strong><label for="gerenteHardware">Gerente</label></strong> -->
+<!--                         </div> -->
+<!--                         <div class="col-2"> -->
+<!--                           <input type="text" class="form-control" id="gerenteHardware" maxlength="20"> -->
+<!--                         </div> -->
+						<div class="col-8">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Gerente</strong></span>
+  								</div>
+  								<input type="text" class="form-control" value="" id="gerenteHardware" maxlength="20" style="text-align: center; background-color: white;">
+							</div>
+						</div>
                       </div>
-                      <br>
                       <div class="row">
-                          <div class="col-5">
-                            <strong><label for="telAlternativo">Telefone Alternativo</label></strong>
-                          </div>
-                          <div class="col-2">
-                            <input type="text" class="form-control" id="telAlternativo" maxlength="20">
-                          </div>
+<!--                           <div class="col-5"> -->
+<!--                             <strong><label for="telAlternativo">Telefone Alternativo</label></strong> -->
+<!--                           </div> -->
+<!--                           <div class="col-2"> -->
+<!--                             <input type="text" class="form-control" id="telAlternativo" maxlength="20"> -->
+<!--                           </div> -->
+						<div class="col-8">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. Alternativo</strong></span>
+  								</div>
+  								<input type="text" class="form-control" value="" id="telAlternativo" maxlength="20" style="text-align: center; background-color: white;">
+							</div>
+						</div>
                         </div>
-                        <br>
                       <div class="row">
                         <div class="col-4">
                           <strong><label for="problemaHardware">Problema relatado</label></strong>
@@ -688,50 +726,78 @@
                       </div>
                       </div>
                       <div class="col-sm">
-                          <br>
-                          <br>
-                          <br>
-                          <br>
-                        <div class="row" style="padding-left: 40px">
-                          <div class="col-2">
-                            <strong><label for="micro">Micro</label></strong>
-                          </div>
-                          <div class="col-5">
-                            <select id="tipoMicroHardware">
-                              <option>Selecione a opção</option>
-                              <option value="Balcao">Balcão</option>
-                              <option value="Caixa">Caixa</option>
-                              <option value="Gerente">Gerente</option>
-                              <option value="Impressora">Impressora</option>
-                            </select>
-                          </div>
+                        <div class="row" style="padding-left: 40px; padding-top: 70px" >
+                        	<div class="col-7">
+                        		<div class="input-group input-group-sm mb-3">
+  									<div class="input-group-prepend">
+    									<label class="input-group-text" for="inputGroupSelect01" style="color: black;"><strong>Micro</strong></label>
+  									</div>
+  									<select class="custom-select" id="tipoMicroHardware">
+    									<option selected>Escolher...</option>
+										<option value="Balcao">Balcão</option>
+                              			<option value="Caixa">Caixa</option>
+                              			<option value="Gerente">Gerente</option>
+                             			<option value="Impressora">Impressora</option>
+  									</select>
+								</div>
+                        	</div>
+<!--                           <div class="col-2"> -->
+<!--                             <strong><label for="micro">Micro</label></strong> -->
+<!--                           </div> -->
+<!--                           <div class="col-5"> -->
+<!--                             <select id="tipoMicroHardware"> -->
+<!--                               <option>Selecione a opção</option> -->
+<!--                               <option value="Balcao">Balcão</option> -->
+<!--                               <option value="Caixa">Caixa</option> -->
+<!--                               <option value="Gerente">Gerente</option> -->
+<!--                               <option value="Impressora">Impressora</option> -->
+<!--                             </select> -->
+<!--                           </div> -->
+						
                           <div class="col-3">
-                            <input type="text" class="form-control" id="numeroMicro" maxlength="3" onkeypress='return SomenteNumero(event)'>
+                          	<div class="input-group input-group-sm mb-3">
+  								<input type="text" class="form-control" id="numeroMicro" style="text-align: center;" maxlength="3" onkeypress='return SomenteNumero(event)' value="">
+							</div>
+<!--                             <input type="text" class="form-control" id="numeroMicro" maxlength="3" onkeypress='return SomenteNumero(event)'> -->
                           </div>
                         </div>
-                        <br>
                         <div class="row" style="padding-left: 40px">
-                          <div class="col-2">
-                            <strong><label for="serieHardware">Serie</label></strong>
-                          </div>
-                          <div class="col-5">
-                            <input type="text" class="form-control" id="serieHardware">
-                          </div>
+                        	<div class="col-7">
+                        		<div class="input-group input-group-sm mb-3">
+  									<div class="input-group-prepend">
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Série</strong></span>
+  									</div>
+  									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" aria-describedby="inputGroup-sizing-sm" id="serieHardware" value="">
+								</div>
+                        	</div>
+<!--                           <div class="col-2"> -->
+<!--                             <strong><label for="serieHardware">Serie</label></strong> -->
+<!--                           </div> -->
+<!--                           <div class="col-5"> -->
+<!--                             <input type="text" class="form-control" id="serieHardware"> -->
+<!--                           </div> -->
                         </div>
-                        <br>
                         <div class="row" style="padding-left: 40px">
-                          <div class="col-2">
-                            <strong><label for="modelo">Modelo</label></strong>
-                          </div>
-                          <div class="col-5">
-                            <input type="text" class="form-control" id="modelo">
-                          </div>
+<!--                           <div class="col-2"> -->
+<!--                             <strong><label for="modelo">Modelo</label></strong> -->
+<!--                           </div> -->
+<!--                           <div class="col-5"> -->
+<!--                             <input type="text" class="form-control" id="modelo"> -->
+<!--                           </div> -->
+                        	<div class="col-7">
+                        		<div class="input-group input-group-sm mb-3">
+  									<div class="input-group-prepend">
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Modelo</strong></span>
+  									</div>
+  									<input type="text" class="form-control" id="modelo" aria-label="Exemplo do tamanho do input" aria-describedby="inputGroup-sizing-sm"  value="">
+								</div>
+                        	</div>
                         </div>
                           <br>
                           <br>
                         <div class="row" style="padding-left: 40px">
                           <div class="col-6">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#encerramentoHardware" onclick="logHardware()">Gerar log de encerramento</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#encerramentoHardware" onclick="logHardwareADM()">Gerar log de encerramento</button>
                           </div>
                           <div class="col-6">
                             <div class="row" style="padding-left: 40px">
@@ -741,13 +807,13 @@
                         </div>
                         <br>
                         <div class="row" style="padding-left: 180px">
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hardware" onclick="logHardware()">Gerar log de direcionamento</button>
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hardware" onclick="logHardwareADM()">Gerar log de direcionamento</button>
                         </div>
                         <br>
                         <div class="row" style="padding-left: 180px">
                           <div class="col-2"></div>
                           <div class="col-4">
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cobranca" onclick="logHardware()">Cobrança</button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cobranca" onclick="logHardwareADM()">Cobrança</button>
                           </div>
                           <div class="col-4"></div>
                         </div>
@@ -758,12 +824,14 @@
                     <div class="row">
                       <div class="col-sm">
                         <div class="row">
-                          <div class="col-2">
-                            <strong><label for="gerentePinpad">Gerente</label></strong>
-                          </div>
-                          <div class="col-2">
-                            <input type="text" class="form-control" id="gerentePinpad" maxlength="20">
-                          </div>
+						<div class="col-8">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Gerente</strong></span>
+  								</div>
+  								<input type="text" class="form-control" value="" id="gerentePinpad" maxlength="20" style="text-align: center; background-color: white;">
+							</div>
+						</div>
                         </div>
                         <br>
                         <div class="row">
@@ -787,41 +855,47 @@
                         </div>
                         </div>
                         <div class="col-sm">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                          <div class="row" style="padding-left: 40px">
-                            <div class="col-2">
-                              <strong><label for="seriePinpad">Serie</label></strong>
-                            </div>
-                            <div class="col-5">
-                              <input type="text" class="form-control" id="seriePinpad">
-                            </div>
+                          <div class="row" style="padding-left: 40px; padding-top: 40px">
+						<div class="col-8">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Serie</strong></span>
+  								</div>
+  								<input type="text" class="form-control" value="" id="seriePinpad" style="text-align: center; background-color: white;">
+							</div>
+						</div>
                           </div>
-                          <br>
                           <div class="row" style="padding-left: 40px">
-                            <div class="col-4">
-                              <strong><label for="numeroLogico">Numero Lógico</label></strong>
-                            </div>
-                            <div class="col-5">
-                    <input type="text" class="form-control" id="cieloLogico" readonly value="${data.cieloLogico }">
-                            </div>
+                          						<div class="col-8">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Numero Logico</strong></span>
+  								</div>
+  								<input type="text" class="form-control" id="cieloLogico" readonly id="gerenteHardware" style="text-align: center;" readonly value="${data.cieloLogico }">
+							</div>
+						</div>
                           </div>
-                          <br>
                           <div class="row" style="padding-left: 40px">
-                            <div class="col-3">
-                              <strong><label for="estabelecimentoCielo">Est. Cielo</label></strong>
-                            </div>
-                            <div class="col-5">
-                              <input type="text" class="form-control" id="estabelecimentoCielo" readonly value="${data.estabelecimentoCielo }">
-                            </div>
+                                                    						<div class="col-8">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Est. Cielo</strong></span>
+  								</div>
+  								<input type="text" class="form-control" id="estabelecimentoCielo" readonly style="text-align: center;" readonly value="${data.estabelecimentoCielo }">
+							</div>
+						</div>
+<!--                             <div class="col-3"> -->
+<!--                               <strong><label for="estabelecimentoCielo">Est. Cielo</label></strong> -->
+<!--                             </div> -->
+<!--                             <div class="col-5"> -->
+<%--                               <input type="text" class="form-control" id="estabelecimentoCielo" readonly value="${data.estabelecimentoCielo }"> --%>
+<!--                             </div> -->
                           </div>
                             <br>
                             <br>
                           <div class="row" style="padding-left: 40px">
                             <div class="col-6">
-                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#encerramentoPinpad" onclick="logPinpad()">Gerar log de encerramento</button>
+                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#encerramentoPinpad" onclick="logPinpadADM()">Gerar log de encerramento</button>
                             </div>
                             <div class="col-6">
                               <div class="row" style="padding-left: 40px">
@@ -831,7 +905,7 @@
                           </div>
                           <br>
                           <div class="row" style="padding-left: 180px">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pinpad" onclick="logPinpad()">Gerar log de direcionamento</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pinpad" onclick="logPinpadADM()">Gerar log de direcionamento</button>
                           </div>
                         </div>
                       </div>
@@ -1033,7 +1107,6 @@
 
     <!-- Modal direcionamento pinpad-->
     <div id="pinpad" class="modal fade" role="dialog">
-      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Log para direcionamento</h4>
@@ -1139,8 +1212,8 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="/js/somenteNumero.js"></script>
-  <script src="/js/logHardware.js"></script>
-  <script src="/js/logPinpad.js"></script>
+  <script src="/js/logHardwareADM.js"></script>
+  <script src="/js/logPinpadADM.js"></script>
   <script src="/js/logNotificacao.js"></script>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>

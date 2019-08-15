@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +48,12 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+            <li class="nav-item">
+      	<a class="nav-link" href="/DataADM">
+        	<i class="fas fa-database"></i>
+          	<span>Sistema de Dados</span>
+          </a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -67,7 +73,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="AtualizaAnalista"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
           </div>
         </div>
       </li>
@@ -107,7 +113,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -120,7 +126,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             	<div class="btn-group">
- 	 				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Analista Logado: <%= request.getUserPrincipal().getName() %>
   					</button>
   					<div class="dropdown-menu dropdown-menu-right">
@@ -137,123 +143,140 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding-top: 40px">
             <form class="" action="CadastrarLoja" method="POST">
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-dados" role="tabpanel" aria-labelledby="pills-dados-tab" >
                   <div class="row">
                     <div class="col-sm">
-                      <div id="dadosLoja">
+                      <div id="dadosLojaCadastro">
                         <div class="row">
                           Dados Loja
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">
-                               <label for="VD Loja">VD Loja</label>
+                          <div class="col-4">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>VD</strong></span>
+                              </div>
+                              <input type="text" class="form-control" name="id" placeholder="" id="id" maxlength="4" onkeypress='return SomenteNumero(event)' required value=""style="text-align: center;">
                             </div>
-                            <div class="col-5">
-                                <div class="row">
-                                  <div class="col-8">
-                                    <input type="text" class="form-control" name="id" placeholder="" id="id" maxlength="4" onkeypress='return SomenteNumero(event)' required value="">
+                          </div>
+                          <div class="col-7">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text" style="color: black;"><strong>Bandeira</strong></label>
                                   </div>
-                                  <div class="col-2">
-                                    
+                                  <select class="custom-select" name="bandeira">
+                                    <option selected>Escolha</option>
+                                    <option value="DSP">Drogaria SÃ£o Paulo</option>
+                                    <option value="DP">Drogaria Pacheco</option>
+                                  </select>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-11">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Loja</strong></span>
+                              </div>
+                              <input type="text" class="form-control" value="" id="loja" name="loja" style="text-align: center;">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-11">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm"  style="color: black;"><strong>Insc. Estadual</strong></span>
+                              </div>
+                              <input type="text" class="form-control"  value="" id="inscEstadual" name="inscEstadual" style="text-align: center;">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CNPJ</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="" id="cnpj" name="cnpj" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>InauguraÃ§Ã£o</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="" id="inauguracao" name="inauguracao" style="text-align: center;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>EndereÃ§o</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" name="endereco" style="text-align: center;">
                                   </div>
                                 </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                          <div class="col-3">
-                            <label for="bandeira">Bandeira</label>
-                          </div>
-                          <div class="col-3">
-                            <input type="text" class="form-control" id="bandeira" name="bandeira"  value="">
-                          </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
-                            <label for="loja">Loja</label>
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Bairro</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value=""  name="bairro" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
-                          <div class="col-3" style="padding-bottom: 4px;">
-                            <textarea class="loja" id="loja" name="loja" class="form-control" ></textarea>
-                            </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Cidade</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="" name="cidade" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
                           <div class="col-5">
-                            <label for="inscEstadual">Insc. Estadual</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="inscEstadual" name="inscEstadual"  value="">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-3">
-                            <label for="cnpj">CNPJ</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="cnpj" name="cnpj"  value="">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="inauguracao">Inauguração</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="inauguracao" name="inauguracao"  value="">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <label for="endereco">Endereço</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <input type="text" id="obs" name="endereco" class="form-control" value="${data.endereco }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <label for="endereco">Bairro</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <input type="text" id="obs" name="bairro" class="form-control" value="${data.bairro }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <label for="endereco">Cidade</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-8">
-                            <input type="text" id="obs" name="cidade" class="form-control" value="${data.cidade }">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-6">
-                            <label for="endereco">UF</label>
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text" style="color: black;"><strong>UF</strong></label>
+                                  </div>
+                                  <select class="custom-select" name="uf">
+                                    <option selected>Escolha</option>
+                                    <option value="AL">AL</option>
+                                    <option value="BA">BA</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PR">PR</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="SP">SP</option>
+                                  </select>
+                                </div>
                           </div>
                           <div class="col-6">
-                            <label for="endereco">CEP</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-6">
-                            <input type="text" name="uf" class="form-control" value="${data.uf }" style="height: 28px; width: 50px; backgroud-color: black;">
-                          </div>
-                          <div class="col-6">
-                            <input type="text" name="cep" id="fieldLocal" class="form-control" value="${data.cep }">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CEP</strong></span>
+                                  </div>
+                                  <input type="text" class="form-control" name="cep" class="form-control" value="" style="text-align: center;">
+                                </div>
                           </div>
                         </div>
                       </div>
-                      <br>
                     </div>
                     <div class="col-sm">
                       <div id="contatos">
@@ -262,33 +285,47 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="col-4">
-                            <label for="telefone1">Telefone 1</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="telefone1" name="telefone1"   value="">
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 1</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="" id="telefone1" name="telefone1" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
-                          <div class="col-4">
-                            <label for="telefone2">Telefone 2</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="telefone2" name="telefone2"  value="">
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 2</strong></span>
+                                    </div>
+                                    <input type="text" class="form-control" value="" id="telefone2" name="telefone2" style="text-align: center;">
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
-                          <div class="col-4">
+                            <div class="col-2">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 70px"><strong>Email</strong></span>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-7">
+                              <textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" value="" style="text-align: center;"></textarea>
+                                        </div>
+                          <!-- <div class="col-4">
                             <label for="emailLoja">Email Loja</label>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-4">
                            <textarea class="emailLoja" id="emailLoja" name="emailLoja" class="form-control" ></textarea>
-                          </div>
-                        </div>
+                          </div>-->
+                        </div> 
                       </div>
-                      <div id="erro" style="padding-top: 80px;" >
+                      <div id="erro" style="padding-top: 40px;" >
                           <c:if test="${mensagemSuccess != null }">
                               <div class="alert alert-success alert-dismissible fade show" role="alert">
                                   <div class="row" style="text-align: center;">
@@ -310,27 +347,31 @@
                               </div>
                           </c:if>
                       </div>
-                      <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 140px;">
+                      <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 90px;">
                         <div id="ggl">
                           <div class="row">
                             GGL
                           </div>
                           <br>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="nomeGGL">Nome</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="nomeGGL" name="nomeGGL"  value="">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Nome do GGL</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" id="nomeGGL" name="nomeGGL" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-3">
-                              <label for="telefoneGGL">Telefone</label>
-                            </div>
-                            <div class="col-5">
-                              <input type="text" class="form-control" id="telefoneGGL" name="telefoneGGL"  value="">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. do GGL</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" id="telefoneGGL" name="telefoneGGL" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -342,24 +383,32 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="row">
-                            <div class="col-6">
-                              <label for="fieldLocal">Field Local</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="fieldLocal" name="fieldLocal"  value="">
-                            </div>
-                          </div>
+                          <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <label class="input-group-text" style="color: black;"><strong>Field Local</strong></label>
+                                      </div>
+                                      <select class="custom-select" name="fieldLocal">
+                                        <option selected>Escolha</option>
+                                        <option value="UNISYS">Unisys</option>
+                                        <option value="VERHAW">Verhaw</option>
+                                      </select>
+                                    </div>
+                        </div>
                         </div>
                         <div class="row">
-                          <div class="row">
-                            <div class="col-7">
-                              <label for="fieldMultifuncional">Field Multifuncional</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="fieldMultifuncional" name="fieldMultifuncional"  value="">
-                            </div>
-                          </div>
+                            <div class="col-11">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" style="color: black;"><strong>Field Multifuncional</strong></label>
+                                    </div>
+                                    <select class="custom-select" name="fieldMultifuncional">
+                                      <option selected>Escolha</option>
+                                      <option value="OTG">OTG</option>
+                                      <option value="LEXMARK">Lexmark</option>
+                                    </select>
+                                  </div>
+                      </div>
                         </div>
                       </div>
                       <br>
@@ -370,51 +419,71 @@
                           </div>
                           <br>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="segASex">Seg. a Sex.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="segASex" name="segASex" value="">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Seg. a Sex.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" id="segASex" name="segASex" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="sab">Sab.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="sab" name="sab"  value="">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Sab.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" id="sab" name="sab" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-4">
-                              <label for="dom">Dom.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="dom" name="dom"  value="">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Dom.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" id="dom" name="dom" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                           <div class="row">
-                            <div class="col-2">
-                              <label for="obs">Obs.</label>
-                            </div>
-                            <div class="col-4">
-                              <input type="text" class="form-control" id="obs" name="obs"  value="">
-                            </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>OBS.</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" name="obs" style="text-align: center;">
+                                  </div>
+                                </div>
                           </div>
                         </div>
                       </div>
-                      <br>
-                       <div class="row" style="padding-left: 150px; padding-top: 100px">
-                        <button type="submit" class="btn btn-success">Cadastrar Loja</button>
+                       <div class="row" style="padding-top: 25px">
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success" style="width: 100%">Cadastrar Loja</button>
+                        </div>
+                        <div class="col-3"></div>
                       </div>
                     </div>
                   </div>
-                  <br>
-                  <br>
                 </div>
           </div>
           </form>
   </div>
+      </div>
+      <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Ferlapx 2019</span>
+            </div>
+          </div>
+        </footer>
+    </div>
+  </div>
+  
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
