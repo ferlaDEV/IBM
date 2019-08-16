@@ -42,10 +42,10 @@
 			<div class="col-4">
 				<div class="login" style="visibility: hidden">
  					<form class="form-signin" id="logform" action="/Post" method="post">
-<%--  						<input type="hidden" id="username" name="username" value="${user._id }"> --%>
-<%--  						<input type="hidden" id="password" name="password" value="${user.pass }"> --%>
- 						<input type="hidden" id="username" name="username" value="ferlapx">
- 						<input type="hidden" id="password" name="password" value="teamDPSP">
+<%--   						<input type="hidden" id="username" name="username" value="${user._id }">  --%>
+<%--   						<input type="hidden" id="password" name="password" value="${user.pass }"> --%>
+  						<input type="hidden" id="username" name="username" value="ferlapx"> 
+  						<input type="hidden" id="password" name="password" value="teamDPSP">
  						<button type="submit" style="visibility: hidden" class="btn btn-outline-primary btn-lg btn-block">Logar com w3</button>
 					</form> 
 				</div>

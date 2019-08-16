@@ -179,10 +179,43 @@
 
         </nav>
         <!-- End of Topbar -->
-
+		<input type="hidden" id="lojasDSP" value="${lojasDSP }">
+		<input type="hidden" id="lojasDP" value="${lojasDP }">
         <!-- Begin Page Content -->
 		<div class="container-fluid">
-			<div class="teste"></div>
+			<div class="row">
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Total de Lojas</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8 col-lg-7">
+            		<input type="hidden" id="es" value="${es }">
+					<input type="hidden" id="mgDP" value="${mgDP }">
+					<input type="hidden" id="pr" value="${pr }">
+					<input type="hidden" id="rjDP" value="${rjDP }">
+            	<!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Lojas Pacheco</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+			</div>
        </div>
         <!-- /.container-fluid -->
 
@@ -205,216 +238,24 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-      <!-- Modal direcionamento hardware-->
-    <div id="hardware" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Log para direcionamento</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-          	<p>#Direcionamento</p>
-          	Loja: <label id="lojaModal"></label>
-          	<br>
-          	CNPJ: <label id="cnpjModal"></label>
-          	<br>
-          	Serie: <label id="serieHardwareModal"></label>
-          	<br>
-          	Micro: <label id="tipoMicroHardwareModal"></label> <label id="microModal"></label>
-          	<br>
-          	Modelo: <label id="modeloModal"></label>
-          	<br>
-          	Endereço: <label id="enderecoModal"></label>
-          	<br>
-          	Contatos: <label id="telefone1Modal"></label> e <label id="telefone2Modal"></label>
-          	<br>
-          	Gerente: <label id="gerenteHardwareModal"></label>
-            <br>
-            Problema relatado:
-              	<p class="problemaHardwareModal" id="problemaHardwareModal" style="word-break: break-all;"></p>
-            Procedimentos feitos:
-            	<p class="testesHardwareModal" id="testesHardwareModal" style="word-break: break-all;"></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fim modal direcionamento hardware-->
-
-    <!-- Modal encerramento hardware-->
-    <div id="encerramentoHardware" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Log para Encerramento</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-          	Problema Relatado: <label id="problemaEncHardModal"></label>
-          	<br>
-          	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncHardModal"></label>
-          	<br>
-          	Gerente: <label id="gerenteEncHardModal"></label>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fim modal encerramento hardware-->
-
-    <!-- Modal direcionamento pinpad-->
-    <div id="pinpad" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Log para direcionamento</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div><p>#Direcionamento</p></div>
-          <div class="modal-body">
-          	Loja: <label id="lojaPinpadModal"></label>
-          	<br>
-          	CNPJ: <label id="cnpjPinpadModal"></label>
-          	<br>
-          	Serie: <label id="seriePinpadModal"></label>
-          	<br>
-          	Numero Lógico: <label id="numeroLogicoModal"></label>
-          	<br>
-          	Estabelecimento Cielo: <label id="estabelecimentoCieloModal"></label>
-          	<br>
-          	Endereço: <label id="enderecoPinpadModal"></label>
-          	<br>
-          	Contatos: <label id="telefone1PinpadModal"></label> e <label id="telefone2PinpadModal"></label>
-          	<br>
-          	Gerente: <label id="gerentePinpadModal"></label>
-            <br>
-            Seg. a Sex.: <label id="segASexPinpadModal"></label> || Sab.: <label id="sabPinpadModal"></label> || Dom.: <label id="domPinpadModal"></label>
-            <br>
-            Problema relatado:
-            	<p class="problemaPinpadModal" id="problemaPinpadModal" style="word-break: break-all;"></p>
-            Procedimentos feitos:
-            	<p class="testesPinpadModal" id="testesPinpadModal" style="word-break: break-all;"></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fim modal direcionamento pinpad-->
-
-    <!-- Modal encerramento pinpad-->
-    <div id="encerramentoPinpad" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Log para Encerramento</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-          	Problema Relatado: <label id="problemaEncPinModal"></label>
-          	<br>
-          	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncPinModal"></label>
-          	<br>
-          	Gerente: <label id="gerenteEncPinModal"></label>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fim modal encerramento pinpad-->
-
-    <!-- Modal notificação-->
-    <div id="notificacao" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Log para notificação</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-          	Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito contato nos seguintes
-          	telefones da filial:  "<label id="telefone1NotModal"></label> e <label id="telefone2NotModal"></label> e VOIP".
-          	Por gentileza entrar em contato para que seja verificado o caso, se possível, informar um número celular.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fim modal notificação-->
-    
-    <!-- Modal Cobrança-->
-    <div id="cobranca" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Log para Cobrança</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-          	#Cobrança
-          	<br><br>
-          	O gerente <label id="gerenteCobModal"></label> solicita urgência no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fim modal Cobrança-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/js/somenteNumero.js"></script>
-  <script src="/js/logHardware.js"></script>
-  <script src="/js/logPinpad.js"></script>
-  <script src="/js/logNotificacao.js"></script>
   <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  
 
   <!-- Core plugin JavaScript-->
   <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
-  
+
+  <!-- Page level plugins -->
+  <script src="/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/js/demo/chart-area-demo.js"></script>
+  <script src="/js/demo/chart-pie-demo.js"></script>
+  <script src="/js/demo/chart-bar-demo.js"></script>
 
 </body>
 
