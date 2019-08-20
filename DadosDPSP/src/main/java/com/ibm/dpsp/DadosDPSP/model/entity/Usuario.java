@@ -28,12 +28,14 @@ public class Usuario implements UserDetails, Serializable {
 	
 	private String access;
 	
+	private String _rev;
+	
 	private transient List<GrantedAuthority> grantedAuthorities;
 	
 	public String get_id() {
 		return _id;
 	}
-
+	
 	public void set_id(String _id) {
 		this._id = _id;
 	}
@@ -60,6 +62,14 @@ public class Usuario implements UserDetails, Serializable {
 	
 	public void setAccess(String access) {
 		this.access = access;
+	}
+	
+	public String get_rev() {
+		return _rev;
+	}
+	
+	public void set_rev(String _rev) {
+		this._rev = _rev;
 	}
 
 	@Override

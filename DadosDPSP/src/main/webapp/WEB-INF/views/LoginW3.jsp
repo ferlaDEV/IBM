@@ -34,7 +34,8 @@
 			<div class="col-4">
 				<div class="login">
  					<form class="form-signin" action="/AuthW3" method="POST">
-						<a href="https://us-south.appid.cloud.ibm.com/oauth/v4/9dd7f7b2-dfd9-4d56-b3a7-e8e27a594a68/authorization?client_id=5f79b33f-41aa-4c0b-8638-054c46439673&tenantId=9dd7f7b2-dfd9-4d56-b3a7-e8e27a594a68&scope=openid&redirect_uri=https://dpspteam.mybluemix.net/AuthW3&response_type=code"><button type="button" class="btn btn-outline-primary btn-lg btn-block">Logar com w3</button></a>
+<!-- 						<a href="https://us-south.appid.cloud.ibm.com/oauth/v4/9dd7f7b2-dfd9-4d56-b3a7-e8e27a594a68/authorization?client_id=5f79b33f-41aa-4c0b-8638-054c46439673&tenantId=9dd7f7b2-dfd9-4d56-b3a7-e8e27a594a68&scope=openid&redirect_uri=https://dpspteam.mybluemix.net/AuthW3&response_type=code"><button type="button" class="btn btn-outline-primary btn-lg btn-block">Logar com w3</button></a> -->
+						<a href="https://us-south.appid.cloud.ibm.com/oauth/v4/afd561bf-ab79-4867-a98b-511e2e5ad41d/authorization?client_id=9582ffdf-1331-4e2b-907f-c381883d8e35&tenantId=afd561bf-ab79-4867-a98b-511e2e5ad41d&scope=openid&redirect_uri=https://dpspteam.mybluemix.net/AuthW3&response_type=code"><button type="button" class="btn btn-outline-primary btn-lg btn-block">Logar com w3</button></a>
 					</form> 
 				</div>
 			</div>

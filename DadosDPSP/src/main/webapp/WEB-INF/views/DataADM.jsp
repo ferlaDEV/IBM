@@ -76,7 +76,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
           </div>
         </div>
       </li>
@@ -417,26 +417,9 @@
               			</div>
     				</c:when>
     				<c:when test="${erro == null}">
-						<img src="${data.img }">
+						<img src="${data.img }" style="width: 100%">
     				</c:when>
 				</c:choose>
-<%--                     <c:if test="${erro == null }"> --%>
-<!--               			<div class="alert alert-danger" role="alert"> -->
-<!--                 			<div class="row" style="text-align: center;"> -->
-<%--                   				${erro} --%>
-<!--                   				Caso possua os dados da loja para cadastro clique aqui!! -->
-<!--                 			</div> -->
-<!--                 	<div class="row"> -->
-<!--                   <div class="col-3"></div> -->
-<!--                   <div class="col-7"> -->
-<!--                   	<form action="/EncaminharEmail" method="POST"> -->
-<!--                   		<button type="submit" class="btn btn-warning">Solicitar Cadastro</button> -->
-<!--                   	</form> -->
-<!--                   </div> -->
-<!--                   <div class="col-2"></div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<%--              </c:if> --%>
                   </div>
                   <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 90px;">
                     <div id="ggl">
@@ -661,6 +644,9 @@
                     <li class="nav-item">
                       <a class="nav-link" id="pills-pinpad-tab" data-toggle="pill" href="#pills-pinpad" role="tab" aria-controls="pills-pinpad" aria-selected="false">Pinpad</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-autoin-tab" data-toggle="pill" href="#pills-autoin" role="tab" aria-controls="pills-autoin" aria-selected="true">AutoIn</a>
+                    </li>
                     <!-- <li class="nav-item">
                       <a class="nav-link" id="pills-sistema-tab" data-toggle="pill" href="#pills-sistema" role="tab" aria-controls="pills-sistema" aria-selected="false">Sistema</a>
                     </li> -->
@@ -690,20 +676,30 @@
 						</div>
                       </div>
                       <div class="row">
-<!--                           <div class="col-5"> -->
-<!--                             <strong><label for="telAlternativo">Telefone Alternativo</label></strong> -->
-<!--                           </div> -->
-<!--                           <div class="col-2"> -->
-<!--                             <input type="text" class="form-control" id="telAlternativo" maxlength="20"> -->
-<!--                           </div> -->
-						<div class="col-8">
+						<div class="col-10">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. Alternativo</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Doc. Pandora Utilizado</strong></span>
   								</div>
-  								<input type="text" class="form-control" value="" id="telAlternativo" maxlength="20" style="text-align: center; background-color: white;">
+  								<input type="text" class="form-control" value="" id="docPandora" style="text-align: center; background-color: white;" required>
 							</div>
 						</div>
+						<div class="col-2">
+							<a href="#" id="manual"><i class="fas fa-plus-circle"></i></a>
+						</div>
+                        </div>
+                        <div class="row">
+                       		<div id="corpo" style="width: 100%; max-height: 80px; overflow-y: scroll"></div>
+        					<template>
+								<div class="col-12">
+									<div class="input-group input-group-sm mb-3">
+  										<div class="input-group-prepend">
+    										<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Doc. Pandora Utilizado</strong></span>
+  										</div>
+  										<input type="text" class="form-control" value="" id="docPandora" name="log" style="text-align: center; background-color: white;" required>
+									</div>
+                        		</div>
+        					</template>
                         </div>
                       <div class="row">
                         <div class="col-4">
@@ -797,7 +793,7 @@
                           <br>
                         <div class="row" style="padding-left: 40px">
                           <div class="col-6">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#encerramentoHardware" onclick="logHardwareADM()">Gerar log de encerramento</button>
+                            <button type="button" class="btn btn-success" id="encerraHardware" data-toggle="modal" data-target="#encerramentoHardware" onclick="logHardwareADM()">Gerar log de encerramento</button>
                           </div>
                           <div class="col-6">
                             <div class="row" style="padding-left: 40px">
@@ -807,16 +803,9 @@
                         </div>
                         <br>
                         <div class="row" style="padding-left: 180px">
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hardware" onclick="logHardwareADM()">Gerar log de direcionamento</button>
+                          <button type="button" class="btn btn-danger" id="direcionamentoHardware" data-toggle="modal" data-target="#hardware" onclick="logHardwareADM()">Gerar log de direcionamento</button>
                         </div>
                         <br>
-                        <div class="row" style="padding-left: 180px">
-                          <div class="col-2"></div>
-                          <div class="col-4">
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cobranca" onclick="logHardwareADM()">Cobrança</button>
-                          </div>
-                          <div class="col-4"></div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -833,7 +822,32 @@
 							</div>
 						</div>
                         </div>
-                        <br>
+                      <div class="row">
+						<div class="col-10">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Doc. Pandora Utilizado</strong></span>
+  								</div>
+  								<input type="text" class="form-control" value="" id="docPandoraPinpad" style="text-align: center; background-color: white;" required>
+							</div>
+						</div>
+						<div class="col-2">
+							<a href="#" id="manualPinpad"><i class="fas fa-plus-circle"></i></a>
+						</div>
+                        </div>
+                        <div class="row">
+                       		<div id="corpoPinpad" style="width: 100%; max-height: 80px; overflow-y: scroll"></div>
+        					<template>
+								<div class="col-12">
+									<div class="input-group input-group-sm mb-3">
+  										<div class="input-group-prepend">
+    										<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Doc. Pandora Utilizado</strong></span>
+  										</div>
+  										<input type="text" class="form-control" value="" id="docPandoraPinpad" name="logPinpad" style="text-align: center; background-color: white;" required>
+									</div>
+                        		</div>
+        					</template>
+                        </div>
                         <div class="row">
                           <div class="col-4">
                             <strong><label for="problemaPinpad">Problema relatado</label></strong>
@@ -866,7 +880,7 @@
 						</div>
                           </div>
                           <div class="row" style="padding-left: 40px">
-                          						<div class="col-8">
+                          <div class="col-8">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
     								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Numero Logico</strong></span>
@@ -895,7 +909,7 @@
                             <br>
                           <div class="row" style="padding-left: 40px">
                             <div class="col-6">
-                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#encerramentoPinpad" onclick="logPinpadADM()">Gerar log de encerramento</button>
+                              <button type="button" class="btn btn-success" data-toggle="modal" id="encerraPinpad" data-target="#encerramentoPinpad" onclick="logPinpadADM()">Gerar log de encerramento</button>
                             </div>
                             <div class="col-6">
                               <div class="row" style="padding-left: 40px">
@@ -905,11 +919,56 @@
                           </div>
                           <br>
                           <div class="row" style="padding-left: 180px">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pinpad" onclick="logPinpadADM()">Gerar log de direcionamento</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" id="direcionamentoPinpad" data-target="#pinpad" onclick="logPinpadADM()">Gerar log de direcionamento</button>
                           </div>
                         </div>
                       </div>
                   </div>
+                              <div class="tab-pane fade show" id="pills-autoin" role="tabpanel" aria-labelledby="pills-autoin-tab" >
+        		<div class="row">
+        		<div class="col-4"></div>
+        			<div class="col-4">
+        				<div class="input-group input-group-sm mb-3">
+  							<div class="input-group-prepend">
+    							<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Gerente</strong></span>
+  							</div>
+  							<input type="text" class="form-control" value="" id="gerenteCobranca" maxlength="20" style="text-align: center; background-color: white;">
+						</div>
+        			</div>
+        			<div class="col-4"></div>
+        		</div>
+        		<div class="row">
+        			<div class="col-4"></div>
+        			<div class="col-4">
+						<div class="input-group input-group-sm mb-3">
+  							<div class="input-group-prepend">
+    							<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. Alternativo</strong></span>
+  							</div>
+  							<input type="text" class="form-control" id="telAlternativo" maxlength="20" style="text-align: center; background-color: white;" value="">
+						</div>
+        			</div>
+        			<div class="col-4"></div>
+        		</div>
+        		<div class="row">
+        			<div class="col-4"></div>
+        			<div class="col-4">
+        				<div class="row">
+                          <strong><label for="problemaHardware">Mais informações</label></strong>
+                      	</div>
+                      	<div class="row">
+                          <textarea name="maisInfo" id="maisInfo"></textarea>
+                      </div>
+        			</div>
+        			<div class="col-4"></div>
+        		</div>
+        		<div class="row" style="padding-top: 20px">
+        			<div class="col-4"></div>
+        			<div class="col-4">
+        				<button type="button" class="btn btn-warning" style="width: 100%" data-toggle="modal" data-target="#cobranca" onclick="logHardwareADM()">Cobrança</button>
+        			</div>
+        			<div class="col-4"></div>
+        		</div>
+        	</div>
                   <!-- <div class="tab-pane fade" id="pills-sistema" role="tabpanel" aria-labelledby="pills-sistema-tab">
                   </div> -->
                 </div>
@@ -1073,6 +1132,8 @@
               	<p class="problemaHardwareModal" id="problemaHardwareModal" style="word-break: break-all;"></p>
             Procedimentos feitos:
             	<p class="testesHardwareModal" id="testesHardwareModal" style="word-break: break-all;"></p>
+            <br>
+            	Doc. Pandora Utilizado: <div id="docPandoraModalDir"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1096,6 +1157,8 @@
           	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncHardModal"></label>
           	<br>
           	Gerente: <label id="gerenteEncHardModal"></label>
+          	<br>
+          	Doc. Pandora Utilizado: <div id="docPandoraModalHardEnc"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1106,40 +1169,43 @@
     <!-- Fim modal encerramento hardware-->
 
     <!-- Modal direcionamento pinpad-->
-    <div id="pinpad" class="modal fade" role="dialog">
+        <div id="pinpad" class="modal fade" role="dialog">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Log para direcionamento</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div><p>#Direcionamento</p></div>
           <div class="modal-body">
-          	Loja: <label id="lojaPinpadModal"></label>
+          	<p>#Direcionamento</p>
+           	Loja: <label id="lojaPinpadModal"></label>
+           	<br>
+           	CNPJ: <label id="cnpjPinpadModal"></label>
           	<br>
-          	CNPJ: <label id="cnpjPinpadModal"></label>
+         	Serie: <label id="seriePinpadModal"></label>
           	<br>
-          	Serie: <label id="seriePinpadModal"></label>
-          	<br>
-          	Numero Lógico: <label id="numeroLogicoModal"></label>
-          	<br>
-          	Estabelecimento Cielo: <label id="estabelecimentoCieloModal"></label>
-          	<br>
-          	Endereço: <label id="enderecoPinpadModal"></label>
+           	Numero Lógico: <label id="numeroLogicoModal"></label>
+           	<br>
+           	Estabelecimento Cielo: <label id="estabelecimentoCieloModal"></label>
+           	<br>
+           	Endereço: <label id="enderecoPinpadModal"></label>
           	<br>
           	Contatos: <label id="telefone1PinpadModal"></label> e <label id="telefone2PinpadModal"></label>
-          	<br>
-          	Gerente: <label id="gerentePinpadModal"></label>
-            <br>
-            Seg. a Sex.: <label id="segASexPinpadModal"></label> || Sab.: <label id="sabPinpadModal"></label> || Dom.: <label id="domPinpadModal"></label>
-            <br>
-            Problema relatado:
-            	<p class="problemaPinpadModal" id="problemaPinpadModal" style="word-break: break-all;"></p>
-            Procedimentos feitos:
-            	<p class="testesPinpadModal" id="testesPinpadModal" style="word-break: break-all;"></p>
+           	<br>
+           	Gerente: <label id="gerentePinpadModal"></label>
+             <br>
+             Seg. a Sex.: <label id="segASexPinpadModal"></label> || Sab.: <label id="sabPinpadModal"></label> || Dom.: <label id="domPinpadModal"></label>
+             <br>
+             Problema relatado:
+             	<p class="problemaPinpadModal" id="problemaPinpadModal" style="word-break: break-all;"></p>
+             Procedimentos feitos:
+             	<p class="testesPinpadModal" id="testesPinpadModal" style="word-break: break-all;"></p>
+           	<br>
+          		Doc. Pandora Utilizado: <div id="docPandoraModalDirPin"></div>
           </div>
-          <div class="modal-footer">
+           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+           </div>
         </div>
       </div>
     </div>
@@ -1159,6 +1225,8 @@
           	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncPinModal"></label>
           	<br>
           	Gerente: <label id="gerenteEncPinModal"></label>
+          	<br>
+          	Doc. Pandora Utilizado: <div id="docPandoraModalPin"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1201,6 +1269,9 @@
           	#Cobrança
           	<br><br>
           	O gerente <label id="gerenteCobModal"></label> solicita urgência no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
+          	<br>
+          	Mais informações:
+          	<label id="maisInfoModal"></label>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1211,6 +1282,7 @@
     <!-- Fim modal Cobrança-->
 
   <!-- Bootstrap core JavaScript-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="/js/somenteNumero.js"></script>
   <script src="/js/logHardwareADM.js"></script>
   <script src="/js/logPinpadADM.js"></script>
@@ -1218,8 +1290,12 @@
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  
+  <script>
+
+  
+  </script>
   
 
   <!-- Core plugin JavaScript-->

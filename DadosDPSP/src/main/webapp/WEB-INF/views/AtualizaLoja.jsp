@@ -22,6 +22,9 @@
   <!-- Custom styles for this template-->
   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
+  
+  <!--Icone do navegador-->
+	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
 
 </head>
 
@@ -75,7 +78,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
           </div>
         </div>
       </li>

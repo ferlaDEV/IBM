@@ -1,6 +1,7 @@
 package com.ibm.dpsp.DadosDPSP.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cloudant.client.api.Database;
 import com.ibm.dpsp.DadosDPSP.model.entity.Data;
@@ -63,12 +65,16 @@ public class RouteController {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		Data data = new Data();
 		if(user.getAccess().equals("ADM")) {
+			String erro = null;
 			data.setImg("/img/dpsp.jpg");
 			model.addAttribute("data", data);
+			model.addAttribute("erro", erro);
 			return "DataADM";
 		}else {
+			String erro = null;
 			data.setImg("/img/dpsp.jpg");
 			model.addAttribute("data", data);
+			model.addAttribute("erro", erro);
 			return "Data";
 		}
 	}
@@ -78,12 +84,16 @@ public class RouteController {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		Data data = new Data();
 		if(user.getAccess().equals("ADM")) {
+			String erro = null;
 			data.setImg("/img/dpsp.jpg");
 			model.addAttribute("data", data);
+			model.addAttribute("erro", erro);
 			return "DataADM";
 		}else {
+			String erro = null;
 			data.setImg("/img/dpsp.jpg");
 			model.addAttribute("data", data);
+			model.addAttribute("erro", erro);
 			return "Data";
 		}
 	}
@@ -112,7 +122,7 @@ public class RouteController {
 			int ES = 0;
 			int PR = 0;
 			int RJ = 0;
-			int MG = 0;
+			int MGRJ = 0;
 			int analista = 0;
 			Data as;
 
@@ -153,7 +163,7 @@ public class RouteController {
 	                			if(as.getUf().equals("ES")) {
 	                				ES ++;
 	                			}else if(as.getUf().equals("MG")) {
-	                				MG ++;
+	                				MGRJ ++;
 	                			}else if(as.getUf().equals("PR")) {
 	                				PR ++ ;
 	                			}
@@ -164,34 +174,63 @@ public class RouteController {
 	        		analista ++;
 	        	}
 	        }
-	        
-	        
-	        System.out.println("Lojas DSP: " + DSP);
-	        System.out.println("Lojas DP: " + DP);
-	        System.out.println("Analistas: " + analista);
-	        System.out.println("Lojas DSP em SP: " + SP);
-	        System.out.println("Lojas DSP em AL: " + AL);
-	        System.out.println("Lojas DSP em BA: " + BA);
-	        System.out.println("Lojas DSP em DF: " + DF);
-	        System.out.println("Lojas DSP em GO: " + GO);
-	        System.out.println("Lojas DSP em MG: " + MGSP);
-	        System.out.println("Lojas DSP em PE: " + PE);
-	        System.out.println("Lojas DSP em RJ: " + RJSP);
-	        System.out.println("Lojas DP em RJ: " + RJ);
-	        System.out.println("Lojas DP em ES: " + ES);
-	        System.out.println("Lojas DP em MG: " + MG);
-	        System.out.println("Lojas DP em PR: " + PR);
+	       
 	        model.addAttribute("lojasDSP", DSP);
 	        model.addAttribute("lojasDP", DP);
+	        model.addAttribute("sp", SP);
+	        model.addAttribute("al", AL);
+	        model.addAttribute("ba", BA);
+	        model.addAttribute("df", DF);
+	        model.addAttribute("df", DF);
+	        model.addAttribute("go", GO);
+	        model.addAttribute("mgsp", MGSP);
+	        model.addAttribute("pe", PE);
+	        model.addAttribute("rjsp", RJSP);
+	        model.addAttribute("rj", RJ);
 	        model.addAttribute("es", ES);
-	        model.addAttribute("mgDP", MG);
+	        model.addAttribute("mgrj", MGRJ);
 	        model.addAttribute("pr", PR);
-	        model.addAttribute("rjDP", RJ);
 			return "Dashboard";
 		}else {
 			return "Data";
 		}
 	}	
+	
+	@RequestMapping("/ListarAnalista")
+	public String listarAnalista(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) throws IOException {
+		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		if(user.getAccess().equals("ADM")) {
+			
+			Usuario u;
+			List<Usuario> allAnalistas = null;
+			List<Usuario> list = new ArrayList<Usuario>();
+			allAnalistas = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
+	        .getDocsAs(Usuario.class);
+			
+			for(int i=0; i< allAnalistas.size(); i++) {
+				u = allAnalistas.get(i);
+				if(u.getFullName() != null) {
+					list.add(u);
+				}
+			}
+			model.addAttribute("list", list);
+			return "ListarAnalista";
+		}else {
+			return "Data";
+		}
+	}
+	
+	@RequestMapping("/AlteraAnalista")
+	public String alteraAnalista(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request, @RequestParam("id") String _id) throws IOException {
+		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		if(user.getAccess().equals("ADM")) {
+			Usuario usuario = db.find(Usuario.class, _id);
+			model.addAttribute("user", usuario);
+			return "AlterarAnalista";
+		}else {
+			return "Data";
+		}
+	}
 	
 	@RequestMapping("/AtualizaLoja")
 	public String atualizaLoja(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {

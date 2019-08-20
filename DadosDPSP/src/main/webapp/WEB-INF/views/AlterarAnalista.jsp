@@ -176,7 +176,7 @@
                 </div>
                 <div class="col-2"></div>
             </div>
-            <form action="/CadastrarAnalista" method="POST">
+            <form action="/AlterarAnalista" method="GET">
                 <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
                     <div class="col-2"></div>
                     <div class="col-8">
@@ -186,7 +186,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
                                     </div>
-                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required value="">
+                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.fullName}">
                                 </div>
                             </div>
                         </div>
@@ -196,26 +196,22 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-default">Login W3</span>
                                     </div>
-                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="" required>
+                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${user._id}">
                                 </div> 
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Tipo de Acesso</label>
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Acesso</span>
                                     </div>
-                                    <select class="custom-select" id="access" name="access">
-                                        <option selected>Selecionar</option>
-                                        <option required value="ADM">Administrador</option>
-                                        <option required value="Analisty">Analista</option>
-                                    </select>
-                                </div>
+                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.access}">
+                                </div> 
                             </div>
                         </div>
               <div class="row">
               	<div class="col-5"></div>
                 <div class="col-3">
-                	<button type="submit" class="btn btn-success">Cadastrar Analista</button>
+                	<button type="submit" class="btn btn-success">Alterar Analista</button>
                 </div>
                 <div class="col-4"></div>
               </div>

@@ -21,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class EmailController {
 
 	@RequestMapping("/EnviarEmail")
-	public String email(@RequestParam("id") String a, @RequestParam("bandeira") String b, @RequestParam("loja") String c, @RequestParam("inscEstadual") String d, 
-			@RequestParam("cnpj") String e, @RequestParam("inauguracao")String f, @RequestParam("telefone1") String g, @RequestParam("telefone2") String h,
-			@RequestParam("emailLoja") String i, @RequestParam("nomeGGL") String j, @RequestParam("telefoneGGL") String k, @RequestParam("fieldLocal") String l,
-			@RequestParam("fieldMultifuncional") String m, @RequestParam("segASex") String n, @RequestParam("sab") String o, @RequestParam("dom") String p, 
-			@RequestParam("obs") String q, HttpServletRequest request, Model model) {
+	public String email(@RequestParam("id") String vdLoja, @RequestParam("bandeira") String bandeira, @RequestParam("loja") String loja, 
+			@RequestParam("inscEstadual") String inscEstadual,  @RequestParam("cnpj") String cnpj, @RequestParam("inauguracao")String inauguracao, 
+			@RequestParam("telefone1") String telefone1, @RequestParam("telefone2") String telefone2, @RequestParam("emailLoja") String emailLoja, 
+			@RequestParam("nomeGGL") String nomeGGL, @RequestParam("telefoneGGL") String telefoneGGL, @RequestParam("fieldLocal") String fieldLocal,
+			@RequestParam("fieldMultifuncional") String fieldMultifuncional, @RequestParam("segASex") String segASex, @RequestParam("sab") String sab, 
+			@RequestParam("dom") String dom, @RequestParam("obs") String obs, @RequestParam("endereco") String endereco, @RequestParam("bairro") String bairro, 
+			@RequestParam("cidade") String cidade, @RequestParam("uf") String uf, @RequestParam("cep") String cep, HttpServletRequest request, Model model) {
 		Properties props = new Properties();
 		String mensagemSuccess = null;
 	    /** Parâmetros de conexão com servidor Gmail */
@@ -67,29 +69,34 @@ public class EmailController {
 	      message.setRecipients(Message.RecipientType.TO, toUser);
 	      message.setSubject("Dados para cadastro de loja");//Assunto
 	      message.setText("Senhores favor cadastrar a loja abaixo:"
-	      		+ "\nVDLoja: " + a + 
-	      		"\nBandeira: " + b + 
-	      		"\nNome da Loja: " + c +
-	      		"\nInscrição Estadual: " + d +
-	      		"\nCNPJ: " + e +
-	      		"\nInauguração: " + f +
-	      		"\nTelefone 1: " + g +
-	      		"\nTelefone 2: " + h +
-	      		"\nEmail da Loja: " + i +
-	      		"\nNome do GGL: " + j +
-	      		"\nTelefone do GGL: " + k +
-	      		"\nField Local: " + l +
-	      		"\nField Impressora: " + m +
-	      		"\nAtedimento de Seg a Sex: " + n + 
-	      		"\nAtedimento de Sabado: " + o +
-	    		"\nAtedimento de Domingo: " + p +
-	    		"\nObservações: " + q + 
+	      		+ "\nVDLoja: " + vdLoja + 
+	      		"\nBandeira: " + bandeira + 
+	      		"\nNome da Loja: " + loja +
+	      		"\nInscrição Estadual: " + inscEstadual +
+	      		"\nCNPJ: " + cnpj +
+	      		"\nInauguração: " + inauguracao +
+	      		"\nEndereco: " + endereco +
+	    		"\nBairro: " + bairro +
+	    		"\nCidade: " + cidade +
+	    		"\nUF: " + uf +
+	    		"\nCEP: " + cep +
+	      		"\nTelefone 1: " + telefone1 +
+	      		"\nTelefone 2: " + telefone2 +
+	      		"\nEmail da Loja: " + loja +
+	      		"\nNome do GGL: " + nomeGGL +
+	      		"\nTelefone do GGL: " + telefoneGGL +
+	      		"\nField Local: " + fieldLocal +
+	      		"\nField Impressora: " + fieldMultifuncional +
+	      		"\nAtedimento de Seg a Sex: " + segASex + 
+	      		"\nAtedimento de Sabado: " + sab +
+	    		"\nAtedimento de Domingo: " + dom +
+	    		"\nObservações: " + obs +
 	    		"\nRequisição feita pelo analista: " + request.getUserPrincipal().getName());
 	      /**Método para enviar a mensagem criada*/
 	      Transport.send(message);
 	 
 	      System.out.println("Feito!!!");
-	      mensagemSuccess = "Email para cadastro da loja "+ a +  " encaminhado com sucesso!!";
+	      mensagemSuccess = "Email para cadastro da loja "+ vdLoja +  " encaminhado com sucesso!!";
 	      model.addAttribute("mensagemSuccess", mensagemSuccess);
 	      
 	      return "EncaminharEmail";

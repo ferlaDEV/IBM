@@ -21,24 +21,8 @@
   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
   
-  <style>
-  	.teste{
-    background-image: url(/img/manutencao.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    bottom: 0;
-    color: black;
-    left: 0;
-    overflow: auto;
-    padding: 3em;
-    position: relative;
-    right: 0;
-    text-align: center;
-    top: 0;
-	width: 100%; 
-	height: 580px; 
-  }
-  </style>
+  <!--Icone do navegador-->
+	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
  
 </head>
 
@@ -92,7 +76,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="Dashboard"><i class="fas fa-fw fa-user-edit"></i> Alterar Analista</a>
+            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
           </div>
         </div>
       </li>
@@ -179,42 +163,66 @@
 
         </nav>
         <!-- End of Topbar -->
-		<input type="hidden" id="lojasDSP" value="${lojasDSP }">
-		<input type="hidden" id="lojasDP" value="${lojasDP }">
+        
         <!-- Begin Page Content -->
 		<div class="container-fluid">
 			<div class="row">
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Total de Lojas</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-8 col-lg-7">
-            		<input type="hidden" id="es" value="${es }">
-					<input type="hidden" id="mgDP" value="${mgDP }">
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="lojasDSP" value="${lojasDSP }">
+					<input type="hidden" id="lojasDP" value="${lojasDP }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Total de Lojas</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="lojas"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="sp" value="${sp }">
+					<input type="hidden" id="al" value="${al }">
+					<input type="hidden" id="ba" value="${ba }">
+					<input type="hidden" id="df" value="${df }">
+					<input type="hidden" id="go" value="${go }">
+					<input type="hidden" id="mgsp" value="${mgsp }">
+					<input type="hidden" id="pe" value="${pe }">
+					<input type="hidden" id="rjsp" value="${rjsp }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Lojas DSP</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="dsp"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="rj" value="${rj }">
+					<input type="hidden" id="es" value="${es }">
+					<input type="hidden" id="mgrj" value="${mgrj }">
 					<input type="hidden" id="pr" value="${pr }">
-					<input type="hidden" id="rjDP" value="${rjDP }">
-            	<!-- Bar Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Lojas Pacheco</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-bar">
-                    <canvas id="myBarChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Lojas DP</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="dp"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
 			</div>
        </div>
         <!-- /.container-fluid -->

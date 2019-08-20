@@ -13,7 +13,8 @@ function logPinpadADM() {
 		 var dom = document.getElementById('dom').value;
 		 var problema = document.getElementById('problemaPinpad').value;
 		 var testesPinpad = document.getElementById('testesPinpad').value;
-	   document.getElementById('lojaPinpadModal').innerHTML = loja;
+		 var docPandoraPinpad = document.getElementById('docPandoraPinpad').value;
+		 document.getElementById('lojaPinpadModal').innerHTML = loja;
 		 document.getElementById('cnpjPinpadModal').innerHTML = cnpj
 		 document.getElementById('seriePinpadModal').innerHTML = seriePinpad;
 		 document.getElementById('numeroLogicoModal').innerHTML = numeroLogico;
@@ -30,4 +31,29 @@ function logPinpadADM() {
 		 document.getElementById('gerenteEncPinModal').innerHTML = gerente;
 		 document.getElementById('problemaEncPinModal').innerHTML = problema;
 		 document.getElementById('testesEncPinModal').innerHTML = testesPinpad;
+		  document.getElementById('docPandoraModalPin').innerHTML = docPandoraPinpad;
+		  document.getElementById('docPandoraModalDirPin').innerHTML = docPandoraPinpad;
 	}
+
+$('#manualPinpad').click(function(){
+    let body = document.getElementById("corpoPinpad");
+    let temp = document.getElementsByTagName("template")[1];
+    let clon = temp.content.cloneNode(true);
+    body.appendChild(clon);
+});
+
+$('#encerraPinpad').click(function(){
+    logsPinpad = document.getElementsByName('logPinpad');
+    for(var i = 0; i < logsPinpad.length; i++){
+        valorPinpad = logsPinpad[i].value;
+        document.getElementById('docPandoraModalPin').insertAdjacentHTML('beforeend','<div id="idChildPinpad">'+valorPinpad+'</div>')
+    }
+});
+
+$('#direcionamentoPinpad').click(function(){
+	logsPinpad = document.getElementsByName('logPinpad');
+    for(var i = 0; i < logsPinpad.length; i++){
+    	valorPinpad = logsPinpad[i].value;
+        document.getElementById('docPandoraModalDirPin').insertAdjacentHTML('beforeend','<div id="idChildPinpad">'+valorPinpad+'</div>')
+    }
+});
