@@ -126,37 +126,16 @@ public class DadosController {
 
  
 		
-//		if(id.charAt(0) <= '0') {
-//				StringBuilder sb = new StringBuilder();
-//				char num1 = id.charAt(1);
-//				char num2 = id.charAt(2);
-//				sb.append(num1);
-//				sb.append(num2);
-//				id = sb.toString();
-//				System.out.println(id);	
-//			}
+		if(id.charAt(0) <= '0') {
+				StringBuilder sb = new StringBuilder();
+				char num1 = id.charAt(1);
+				char num2 = id.charAt(2);
+				sb.append(num1);
+				sb.append(num2);
+				id = sb.toString();
+			}
 		
 		if(db.contains(id)) {
-			
-            
-            
-			
-//	            allDocs = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
-//	                        .getDocsAs(Data.class);
-//	            
-//			  ViewRequestBuilder t = db.getViewRequestBuilder("loja", "lojaView").;
-//			
-//				System.out.println(t);
-			
-//			  List<Data> list =  db.getViewRequestBuilder("loja", "lojaView"))
-//				 	  .startKey("start-key")
-//				 	  .endKey("end-key")
-//				 	  .limit(10)
-//				 	  .includeDocs(true)
-//				 	  .query(Foo.class);
-	          
-	           
-	            
 	            data = db.find(Data.class, id);
 
 			String enderecoCompleto = (data.getEndereco() + " - " + data.getBairro() + " - " + data.getCidade() + " - " + data.getUf() + " - " + data.getCep());
@@ -311,6 +290,16 @@ public class DadosController {
 			HttpSession session, HttpServletRequest request, HttpServletRequest response) throws IOException {
 		String mensagemError = null;
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		
+		if(id.charAt(0) <= '0') {
+			StringBuilder sb = new StringBuilder();
+			char num1 = id.charAt(1);
+			char num2 = id.charAt(2);
+			sb.append(num1);
+			sb.append(num2);
+			id = sb.toString();
+			System.out.println(id);	
+		}
 		
 		if(db.contains(id)) {
 			data = db.find(Data.class, id);

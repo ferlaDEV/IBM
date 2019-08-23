@@ -417,7 +417,7 @@
               			</div>
     				</c:when>
     				<c:when test="${erro == null}">
-						<img src="${data.img }" style="width: 100%">
+						<img src="${data.img }" style="width: 100%; height: 500px%">
     				</c:when>
 				</c:choose>
                   </div>
@@ -1110,7 +1110,7 @@
             <h4 class="modal-title">Log para direcionamento</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="copiarLogDirHardware">
           	<p>#Direcionamento</p>
           	Loja: <label id="lojaModal"></label>
           	<br>
@@ -1129,14 +1129,14 @@
           	Gerente: <label id="gerenteHardwareModal"></label>
             <br>
             Problema relatado:
-              	<p class="problemaHardwareModal" id="problemaHardwareModal" style="word-break: break-all;"></p>
+              	<textarea class="problemaHardwareModal" id="problemaHardwareModal" readonly style="width: 90%; height: 60px; resize: none; overflow-y: scroll"></textarea>
             Procedimentos feitos:
-            	<p class="testesHardwareModal" id="testesHardwareModal" style="word-break: break-all;"></p>
+            	<textarea class="testesHardwareModal" id="testesHardwareModal" readonly style="width: 90%; height: 60px; resize: none; overflow-y: scroll"></textarea>
             <br>
-            	Doc. Pandora Utilizado: <div id="docPandoraModalDir"></div>
+            	Doc. Pandora Utilizado: <div style="width: 90%; height: 30px; overflow-y: scroll"><div id="docPandoraModalDir"></div></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#" id="btnCopiarLogDirHardware" data-clipboard-action="copy" data-clipboard-target="#copiarLogDirHardware"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
           </div>
         </div>
       </div>
@@ -1151,7 +1151,7 @@
             <h4 class="modal-title">Log para Encerramento</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="copiarLogEncHardware">
           	Problema Relatado: <label id="problemaEncHardModal"></label>
           	<br>
           	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncHardModal"></label>
@@ -1161,7 +1161,7 @@
           	Doc. Pandora Utilizado: <div id="docPandoraModalHardEnc"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#" id="btnCopiarLogEncHardware" data-clipboard-action="copy" data-clipboard-target="#copiarLogEncHardware"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
           </div>
         </div>
       </div>
@@ -1176,7 +1176,7 @@
             <h4 class="modal-title">Log para direcionamento</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="copiarLogDirPinpad">
           	<p>#Direcionamento</p>
            	Loja: <label id="lojaPinpadModal"></label>
            	<br>
@@ -1197,14 +1197,16 @@
              Seg. a Sex.: <label id="segASexPinpadModal"></label> || Sab.: <label id="sabPinpadModal"></label> || Dom.: <label id="domPinpadModal"></label>
              <br>
              Problema relatado:
-             	<p class="problemaPinpadModal" id="problemaPinpadModal" style="word-break: break-all;"></p>
+             	<textarea class="problemaPinpadModal" id="problemaPinpadModal" readonly style="width: 90%; height: 60px; resize: none; overflow-y: scroll"></textarea>
              Procedimentos feitos:
-             	<p class="testesPinpadModal" id="testesPinpadModal" style="word-break: break-all;"></p>
+             <br>
+             <textarea class="testesPinpadModal" id="testesPinpadModal" readonly style="width: 90%; height: 60px; resize: none; overflow-y: scroll"></textarea>
+<!--              	<p class="testesPinpadModal" id="testesPinpadModal" style="word-break: break-all;"></p> -->
            	<br>
-          		Doc. Pandora Utilizado: <div id="docPandoraModalDirPin"></div>
+          		Doc. Pandora Utilizado: <div style="width: 90%; height: 30px; overflow-y: scroll"><div id="docPandoraModalDirPin"></div></div>
           </div>
            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#" id="btnCopiarLogDirPinpad" data-clipboard-action="copy" data-clipboard-target="#copiarLogDirPinpad"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
            </div>
         </div>
       </div>
@@ -1219,7 +1221,7 @@
             <h4 class="modal-title">Log para Encerramento</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="copiarLogEncPinpad">
           	Problema Relatado: <label id="problemaEncPinModal"></label>
           	<br>
           	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncPinModal"></label>
@@ -1229,7 +1231,7 @@
           	Doc. Pandora Utilizado: <div id="docPandoraModalPin"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#" id="btnCopiarLogEncPinpad" data-clipboard-action="copy" data-clipboard-target="#copiarLogEncPinpad"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
           </div>
         </div>
       </div>
@@ -1244,13 +1246,13 @@
             <h4 class="modal-title">Log para notificação</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="copiarLogNotificacao">
           	Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito contato nos seguintes
           	telefones da filial:  "<label id="telefone1NotModal"></label> e <label id="telefone2NotModal"></label> e VOIP".
           	Por gentileza entrar em contato para que seja verificado o caso, se possível, informar um número celular.
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#" id="btnCopiarLogNotificacao" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
           </div>
         </div>
       </div>
@@ -1265,7 +1267,7 @@
             <h4 class="modal-title">Log para Cobrança</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="copiarLogCobranca">
           	#Cobrança
           	<br><br>
           	O gerente <label id="gerenteCobModal"></label> solicita urgência no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
@@ -1274,7 +1276,7 @@
           	<label id="maisInfoModal"></label>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#" id="btnCopiarLogCobranca" data-clipboard-action="copy" data-clipboard-target="#copiarLogCobranca"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
           </div>
         </div>
       </div>
@@ -1282,8 +1284,10 @@
     <!-- Fim modal Cobrança-->
 
   <!-- Bootstrap core JavaScript-->
+  	<script src="/js/clipboard.min.js"></script>
+  	<script src="/js/copiarLogClipboard.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="/js/somenteNumero.js"></script>
+	<script src="/js/somenteNumero.js"></script>
   <script src="/js/logHardwareADM.js"></script>
   <script src="/js/logPinpadADM.js"></script>
   <script src="/js/logNotificacao.js"></script>
@@ -1291,11 +1295,6 @@
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  
-  <script>
-
-  
-  </script>
   
 
   <!-- Core plugin JavaScript-->
