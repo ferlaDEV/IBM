@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
 import com.ibm.dpsp.DadosDPSP.model.entity.Data;
 import com.ibm.dpsp.DadosDPSP.model.entity.Usuario;
@@ -26,94 +25,6 @@ public class DadosController {
 	
 	@Autowired
 	 private Database db;
-	
-	@RequestMapping(method = RequestMethod.GET, value="/teste")
-	public void teste() throws IOException {
-		List<Data> allLojas = null;
-		
-		int DSP = 0;
-		int AL = 0;
-		int BA = 0;
-		int DF = 0;
-		int GO = 0;
-		int MGSP = 0;
-		int PE = 0;
-		int RJSP = 0;
-		int SP = 0;
-		int DP = 0;
-		int ES = 0;
-		int PR = 0;
-		int RJ = 0;
-		int MG = 0;
-		int analista = 0;
-		Data as;
-
-        allLojas = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
-        .getDocsAs(Data.class);
-        
-        
-        for(int i=0; i< allLojas.size(); i++) {
-        	as = allLojas.get(i);
-        	if(as.getBandeira() != null) {
-            	if(as.getBandeira().equals("DSP")) {
-            		DSP ++;
-            		if(as.getUf().equals("SP")) {
-            			SP ++;
-            		}else {
-            			if(as.getUf().equals("AL")) {
-            				AL ++;
-            			}else if(as.getUf().equals("BA")) {
-            				BA ++;
-            			}else if(as.getUf().equals("DF")) {
-            				DF ++;
-            			}else if(as.getUf().equals("GO")) {
-            				GO ++;
-            			}else if(as.getUf().equals("MG")) {
-            				MGSP ++;
-            			}else if(as.getUf().equals("PE")) {
-            				PE ++;
-            			}else if(as.getUf().equals("RJ")) {
-            				RJSP ++;
-            			}
-            		}
-            	}else {
-            		if(as.getBandeira().equals("DP")) {
-                		DP ++;
-                		if(as.getUf().equals("RJ")) {
-                			RJ ++;
-                		}else {
-                			if(as.getUf().equals("ES")) {
-                				ES ++;
-                			}else if(as.getUf().equals("MG")) {
-                				MG ++;
-                			}else if(as.getUf().equals("PR")) {
-                				PR ++ ;
-                			}
-                		}
-            		}
-            	}
-        	}else {
-        		analista ++;
-        	}
-        }
-        
-        
-        System.out.println("Lojas DSP: " + DSP);
-        System.out.println("Lojas DP: " + DP);
-        System.out.println("Analistas: " + analista);
-        System.out.println("Lojas DSP em SP: " + SP);
-        System.out.println("Lojas DSP em AL: " + AL);
-        System.out.println("Lojas DSP em BA: " + BA);
-        System.out.println("Lojas DSP em DF: " + DF);
-        System.out.println("Lojas DSP em GO: " + GO);
-        System.out.println("Lojas DSP em MG: " + MGSP);
-        System.out.println("Lojas DSP em PE: " + PE);
-        System.out.println("Lojas DSP em RJ: " + RJSP);
-        System.out.println("Lojas DP em RJ: " + RJ);
-        System.out.println("Lojas DP em ES: " + ES);
-        System.out.println("Lojas DP em MG: " + MG);
-        System.out.println("Lojas DP em PR: " + PR);
-	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/Buscar")
 	public String buscar(@RequestParam("id") String id, Model model, Data data, 
@@ -235,6 +146,7 @@ public class DadosController {
 				}
 				newData.setImg("/img/dp.jpg");
 			}
+
 			newData.set_id(data.get_id());
 			newData.setBandeira(data.getBandeira());
 			newData.setCnpj(data.getCnpj());
@@ -269,18 +181,26 @@ public class DadosController {
         	model.addAttribute("erro", erro);	
 			model.addAttribute("data", newData);
 			
-			if(user.getAccess().equals("ADM")) {
-			return "DataADM";
+			if(user.getAccess().equals("Lider")) {
+				return "DataLideranca";
 			}else {
-				return "Data";
+				if(user.getAccess().equals("ADM")) {
+					return "DataADM";
+				}else {
+					return "Data";
+				}
 			}
 		}else {
 			erro = "Loja não Cadastrada!";
         	model.addAttribute("erro", erro);	
-			if(user.getAccess().equals("ADM")) {
-			return "DataADM";
+			if(user.getAccess().equals("Lider")) {
+				return "DataLideranca";
 			}else {
-				return "Data";
+				if(user.getAccess().equals("ADM")) {
+					return "DataADM";
+				}else {
+					return "Data";
+				}
 			}
 		}
 	}
@@ -328,16 +248,27 @@ public class DadosController {
 			newData.setCep(data.getCep());
 			newData.setCidade(data.getCidade());
 			
-			if(user.getAccess().equals("ADM")) {
+			if(user.getAccess().equals("Lider")) {
 				model.addAttribute("data", newData);
-				return "AtualizaLoja";
+				return "AtualizaLojaLideranca";
 			}else {
-				return "Data";
+				if(user.getAccess().equals("ADM")) {
+					model.addAttribute("data", newData);
+					return "AtualizaLojaLideranca";
+				}else {
+					return "Data";
+				}
 			}
 		}else{
-			mensagemError = "Loja " + id + " não está cadastrada!!!";
-		    model.addAttribute("mensagemError", mensagemError);	
-			return "AtualizaLoja";
+			if(user.getAccess().equals("Lider")) {
+				mensagemError = "Loja " + id + " não está cadastrada!!!";
+			    model.addAttribute("mensagemError", mensagemError);	
+				return "AtualizaLojaLideranca";
+			}else {
+				mensagemError = "Loja " + id + " não está cadastrada!!!";
+			    model.addAttribute("mensagemError", mensagemError);	
+				return "AtualizaLojaLideranca";
+			}
 		}
 	}
 	
@@ -392,7 +323,47 @@ public class DadosController {
 				return "CadastroLoja";
 			}
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				if(db.contains(vdLoja)) {
+					mensagemError = "Loja já está cadastrada!!";
+				    mensagemSuccess = null;
+				    model.addAttribute("mensagemSuccess", mensagemSuccess);	
+				    model.addAttribute("mensagemError", mensagemError);	
+					return "CadastroLojaLideranca";
+				}else {
+					mensagemSuccess = "Loja "+ vdLoja + " cadastrada com sucesso!!";
+					mensagemError = null;
+					Data newData = new Data();
+					newData.set_id(vdLoja);
+					newData.setBandeira(bandeira);
+					newData.setLoja(loja);
+					newData.setInscEstadual(inscEstadual);
+					newData.setCnpj(cnpj);
+					newData.setInauguracao(inauguracao);
+					newData.setTelefone1(telefone1);
+					newData.setTelefone2(telefone2);
+					newData.setEmail(emailLoja);
+					newData.setGgl(nomeGGL);
+					newData.setTelefoneGgl(telefoneGGL);
+					newData.setFieldLocal(fieldLocal);
+					newData.setFieldMultifuncional(fieldMultifuncional);
+					newData.setSegASex(segASex);
+					newData.setSab(sab);
+					newData.setDom(dom);
+					newData.setObs(obs);
+					newData.setUf(uf);
+					newData.setEndereco(endereco);
+					newData.setBairro(bairro);
+					newData.setCidade(cidade);
+					newData.setCep(cep);
+					db.post(newData);
+				    model.addAttribute("mensagemSuccess", mensagemSuccess);	
+				    model.addAttribute("mensagemError", mensagemError);	
+					return "CadastroLojaLideranca";
+				}
+			}else {
+				return "Data";
+			}
 		}
 	}
 	
@@ -416,10 +387,25 @@ public class DadosController {
 				}
 				
 			}else{
+				if(user.getAccess().equals("Lider")) {
+					if(db.contains(teste)) {
+					Data data = db.find(Data.class, teste);
+					db.remove(teste, data.get_rev());
+					mensagemSuccess = "Loja " + teste + " deletada com sucesso";
+				    model.addAttribute("mensagemSuccess", mensagemSuccess);	
+					return "AtualizaLojaLideranca";
+				}else {
+					mensagemError = "Loja " + teste + " não está cadastrada!!!";
+				    model.addAttribute("mensagemError", mensagemError);	
+					return "AtualizaLojaLideranca";
+				}
+				
+			}else {
 				return "Data";
 			}
+		}
 	}
-	
+		
 	@RequestMapping("/AtualizarLoja")
 	public String AtualizarLoja(@RequestParam("id") String vdLoja, @RequestParam("bandeira") String bandeira, @RequestParam("loja") String loja, @RequestParam("inscEstadual") String inscEstadual, 
 			@RequestParam("cnpj") String cnpj, @RequestParam("inauguracao")String inauguracao, @RequestParam("telefone1") String telefone1, @RequestParam("telefone2") String telefone2,
@@ -460,9 +446,39 @@ public class DadosController {
 			    model.addAttribute("mensagemSuccess", mensagemSuccess);	
 				return "AtualizaLoja";
 		}else {
-			return "Data";
-		}
-		
+			if(user.getAccess().equals("Lider")) {
+				Data data = db.find(Data.class, vdLoja);
+					mensagemSuccess = "Loja " + vdLoja + " atualizada com sucesso";
+					data.set_id(vdLoja);
+					data.setBandeira(bandeira);
+					data.setLoja(loja);
+					data.setInscEstadual(inscEstadual);
+					data.setCnpj(cnpj);
+					data.setInauguracao(inauguracao);
+					data.setTelefone1(telefone1);
+					data.setTelefone2(telefone2);
+					data.setEmail(emailLoja);
+					data.setGgl(nomeGGL);
+					data.setTelefoneGgl(telefoneGGL);
+					data.setFieldLocal(fieldLocal);
+					data.setFieldMultifuncional(fieldMultifuncional);
+					data.setSegASex(segASex);
+					data.setSab(sab);
+					data.setDom(dom);
+					data.setObs(obs);
+					data.setUf(uf);
+					data.setEndereco(endereco);
+					data.setCidade(cidade);
+					data.setCep(cep);
+					data.setBairro(bairro);
+					data.set_rev(data.get_rev());
+					db.update(data);
+				    model.addAttribute("mensagemSuccess", mensagemSuccess);	
+					return "AtualizaLojaLideranca";
+			}else {
+				return "Data";
+			}
+		}	
 	}
 }
 

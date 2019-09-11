@@ -49,13 +49,6 @@
       <div class="sidebar-heading">
         Ferramentas
       </div>
-      
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/Dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
             <li class="nav-item">
       	<a class="nav-link" href="/DataADM">
         	<i class="fas fa-database"></i>
@@ -80,43 +73,6 @@
           <span>Pendencia de Leitura</span></a>
       </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Controles de Dados
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Analistas</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-store"></i>
-          <span>Lojas</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="CadastroLoja"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Loja</a>
-            <a class="collapse-item" href="AtualizaLoja"><i class="fas fa-fw fa-edit"></i> Alterar Loja</a>
-          </div>
-        </div>
-      </li>
 
     
 
@@ -138,7 +94,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
+        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -172,7 +128,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
             
             	<div class="btn-group">
- 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 	 				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Analista Logado: <%= request.getUserPrincipal().getName() %>
   					</button>
   					<div class="dropdown-menu dropdown-menu-right">
@@ -193,83 +149,115 @@
                 <div class="col-6">
                     <div class="row" style="height: 30px"></div>
                     <div class="row">
-                        <h1>Cadastro de Analistas</h1>
+                        <h1>Informações do Desvio</h1>
                     </div>
                 </div>
                 <div class="col-2"></div>
             </div>
-            <form action="/AlterarAnalista" method="GET">
                 <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
                     <div class="col-2"></div>
                     <div class="col-8">
                         <div class="row">
-                            <div class="col-12">
+                        	<div class="col-1"></div>
+                            <div class="col-5">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Nº Chamado</span>
                                     </div>
-                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.fullName}">
+                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${Desvio._id}">
                                 </div>
+                            </div>
+                            <div class="col-5">
+                          	<div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Data Desvio</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="dataDesvio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${Desvio.dataDesvio}">
+                                </div> 
+                                <div class="col-1"></div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                        	<div class="col-2"></div>
+                            <div class="col-8">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Login W3</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo do Desvio</span>
                                     </div>
-                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${user._id}">
+                                    <input type="text" class="form-control" name="tipoDesvio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${Desvio.tipoDesvio}">
                                 </div> 
                             </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Acesso</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.access}">
-                                </div> 
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-              <div class="row">
-              	<div class="col-5"></div>
-                <div class="col-3">
-                	<button type="submit" class="btn btn-success">Alterar Analista</button>
-                </div>
-                <div class="col-4"></div>
-              </div>
-                                      <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-6">
-                      <div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-                  </div>
-                  <div class="col-3"></div>
-              </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-            </form>
-        </div>
+                        <div class="row">
+                        	<div class="col-12">
+                        		<div class="input-group">
+  									<div class="input-group-prepend">
+    									<span class="input-group-text">Justificativa do Desvio</span>
+  									</div>
+  									<textarea class="form-control" name="justificativa" readonly aria-label="Com textarea" style="height: 100px; resize: none" >${Desvio.justificativa }</textarea>
+								</div>
+                        	</div>
+                        </div>
+                        <div class="row" style="padding-top: 15px">
+							<div class="col-3"></div>
+							<div class="col-5">
+								<div class="input-group mb-3">
+  									<div class="input-group-prepend">
+    									<span class="input-group-text" id="inputGroup-sizing-default">Está de acordo com o desvio?</span>
+  									</div>
+  									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" readonly aria-describedby="inputGroup-sizing-default" value="${Desvio.deAcordo }">
+								</div>
+							</div>
+							<div class="col-3"></div>
+                        </div>
+                        <div class="row">
+                        	<div class="input-group">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text">Comentarios</span>
+  								</div>
+  								<textarea class="form-control" name="comentario" readonly aria-label="Com textarea" style="height: 100px; resize: none" >${Desvio.comentario }</textarea>
+							</div>
+                        </div>
+              			<div class="row" style="padding-top: 20px">
+              				<div class="col-5"></div>
+                			<div class="col-3">
+                				<a href="VoltarVisualizar"><button type="button" class="btn btn-danger">Voltar</button></a>
+                			</div>
+                			<div class="col-4"></div>
+              			</div>
+                        <div class="row">
+                  			<div class="col-3"></div>
+                  				<div class="col-6">
+                      				<div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
+                          				<c:if test="${mensagemSuccess != null }">
+                              				<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                  				<div class="row" style="text-align: center;">
+                                     				${mensagemSuccess}
+                                      				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              							<span aria-hidden="true">&times;</span>
+                            						</button>
+                                  				</div>
+                              				</div>
+                          				</c:if>
+                          				<c:if test="${mensagemError != null }">
+                              				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  				<div class="row" style="text-align: center;">
+                                      				${mensagemError}
+                                      				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              							<span aria-hidden="true">&times;</span>
+                            						</button>
+                                  				</div>
+                              				</div>
+                          				</c:if>
+                      				</div>
+                  				</div>
+                  				<div class="col-3"></div>
+              				</div>
+                    	</div>
+                    	<div class="col-2"></div>
+                	</div>
+        	</div>
         <!-- /.container-fluid -->
 
       </div>

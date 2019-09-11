@@ -1,59 +1,166 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="pt-BR">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<head>
 
-    <!-- CSS de Estilos -->
-    <link rel="stylesheet" href="/css/style.css">
-    
-    <!-- FontAwesome -->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
-    <!--Icone do navegador-->
-	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
-	
-    <title>Dados DPSP</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Administrador de dados</title>
   
-	
-  </head>
-  <body>
+  <link rel="icon" type="imagem/png" href="/img/favicon.ico" />
+
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: black">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Dashboard">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-pills"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Administrador de dados</div>
+      </a>
+
+		<!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Ferramentas
+      </div>
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+      	<a class="nav-link" href="/Data">
+        	<i class="fas fa-database"></i>
+          	<span>Sistema de Dados</span>
+          </a>
+      </li>
+            <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <div class="sidebar-heading">
+        Controles Pessoais
+      </div>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarDesvioAnalista">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios Recebidos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
+          <i class="fas fa-glasses"></i>
+          <span>Pendencia de Leitura</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+            
+            	<div class="btn-group">
+ 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Analista Logado: <%= request.getUserPrincipal().getName() %>
+  					</button>
+  					<div class="dropdown-menu dropdown-menu-right">
+  						<form action="/Logout">
+    						<a href="<c:url value="/logout" />"><button class="dropdown-item" type="button">Logout</button></a>
+    					</form>
+  					</div>
+				</div>
+            
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
 <div class="container-fluid">
 <br>
           <div class="row">
-            <div class="col-4">
-                    	<div class="row">
-        		<div class="col-9" style="text-align: center; background-color: #FFFFFF; width: 100%; height: 100%; border-radius:20px; box-shadow: 10px 10px 10px 1px #000000; border:solid 1px;">
-        			<h6>Analista logado: <%= request.getUserPrincipal().getName() %></h6>
-        		</div>
-        		<div class="col-6"></div>
-        	</div>  
-            </div>
+            <div class="col-4"></div>
             <div class="col-5">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="pills-dados-tab" data-toggle="pill" href="#pills-dados" role="tab" aria-controls="pills-dados" aria-selected="true">Dados</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-fp-tab" data-toggle="pill" href="#pills-fp" role="tab" aria-controls="pills-fp" aria-selected="false">FÃ¡rmacia Popular</a>
+                      <a class="nav-link" id="pills-fp-tab" data-toggle="pill" href="#pills-fp" role="tab" aria-controls="pills-fp" aria-selected="false">Fármacia Popular</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="pills-tratativa-tab" data-toggle="pill" href="#pills-tratativa" role="tab" aria-controls="pills-tratativa" aria-selected="false">Tratativa</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-ips-tab" data-toggle="pill" href="#pills-ips" role="tab" aria-controls="pills-ips" aria-selected="false">IP's PadrÃµes</a>
+                      <a class="nav-link" id="pills-ips-tab" data-toggle="pill" href="#pills-ips" role="tab" aria-controls="pills-ips" aria-selected="false">IP's Padrões</a>
                     </li>
                   </ul>
             </div>
             <div class="col-2">
-            	        <form action="/Logout">
-        	<a href="<c:url value="/logout" />"><button type="button" class="btn btn-primary">Logout</button></a>
-        </form>
             </div>
           </div>
           <div class="tab-content" id="pills-tabContent">
@@ -166,7 +273,7 @@
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>InauguraÃ§Ã£o</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Inauguração</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.inauguracao }" id="inauguracao" name="inauguracao" style="text-align: center; background-color: white;">
 							</div>
@@ -174,7 +281,7 @@
                     </div>
 <!--                     <div class="row"> -->
 <!--                       <div class="col-4"> -->
-<!--                         <label for="inauguracao">InauguraÃ§Ã£o</label> -->
+<!--                         <label for="inauguracao">Inauguração</label> -->
 <!--                       </div> -->
 <!--                       <div class="col-4"> -->
 <%--                         <input type="text" class="form-control" id="inauguracao" readonly value="${data.inauguracao }"> --%>
@@ -182,7 +289,7 @@
 <!--                     </div> -->
 <!--                     <div class="row"> -->
 <!--                       <div class="col-8"> -->
-<!--                         <label for="endereco">EndereÃ§o Completo</label> -->
+<!--                         <label for="endereco">Endereço Completo</label> -->
 <!--                       </div> -->
 <!--                     </div> -->
 <!--                     <div class="row"> -->
@@ -191,12 +298,12 @@
 <!--                       </div> -->
 <!--                     </div> -->
                         <div class="row">
-							<div class="col-12">
-								<div class="input-group input-group-sm mb-3">
+							<div class="col-11">
+								<div class="input-group">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; width: 330px;"><strong>EndereÃ§o Completo</strong></span>
+    									<span class="input-group-text" style="color: black;"><strong>Endereco</strong></span>
   									</div>
-  									<textarea class="endereco" class="form-control" id="enderecoCompleto" name="enderecoCompleto" style="background-color: white;" readonly>${data.enderecoCompleto }</textarea>
+  									<textarea class="form-control" id="enderecoCompleto" aria-label="Com textarea" readonly style="resize: none; height: 150px">${data.enderecoCompleto }</textarea>
 								</div>
 							</div>
                     	</div>
@@ -255,16 +362,24 @@
 <%--                        <textarea class="emailLoja" id="emailLoja" class="form-control" readonly>${data.email }</textarea> --%>
 <!--                       </div> -->
                     <div class="row">
-						<div class="col-2">
-							<div class="input-group input-group-sm mb-3">
+						<div class="col-11">
+							<div class="input-group">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 76px"><strong>Email</strong></span>
+    								<span class="input-group-text" style="color: black;"><strong>Email</strong></span>
   								</div>
+  								<textarea class="form-control" aria-label="Com textarea" readonly style="resize: none; height: 60px">${data.email }</textarea>
 							</div>
 						</div>
-						<div class="col-7">
-						<textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" readonly>${data.email }</textarea>
-                    	</div>
+<!-- 						<div class="col-2"> -->
+<!-- 							<div class="input-group input-group-sm mb-3"> -->
+<!--   								<div class="input-group-prepend"> -->
+<!--     								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 70px"><strong>Email</strong></span> -->
+<!--   								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-7"> -->
+<%-- 						<textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" readonly>${data.email }</textarea> --%>
+<!--                     	</div> -->
                     </div>
                   </div>
                   <div id="erro" style="padding-top: 30px;" >
@@ -406,7 +521,7 @@
                 <div class="col-sm">
                   <div id="popular">
                     <div class="row">
-                      Dados FÃ¡rmacia Popular
+                      Dados Fármacia Popular
                     </div>
                     <br>
                     <div class="row">
@@ -520,8 +635,8 @@
     									<label class="input-group-text" for="inputGroupSelect01" style="color: black;"><strong>Micro</strong></label>
   									</div>
   									<select class="custom-select" id="tipoMicroHardware">
-    									<option selected value="Selecione">Selecione a opÃ§Ã£o</option>
-										<option value="Balcao">BalcÃ£o</option>
+    									<option selected value="Selecione">Selecione a opção</option>
+										<option value="Balcao">Balcão</option>
                               			<option value="Caixa">Caixa</option>
                               			<option value="Gerente">Gerente</option>
                              			<option value="Impressora">Impressora</option>
@@ -538,7 +653,7 @@
                         	<div class="col-7">
                         		<div class="input-group input-group-sm mb-3">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>SÃ©rie</strong></span>
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Série</strong></span>
   									</div>
   									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" aria-describedby="inputGroup-sizing-sm" id="serieHardware" value="">
 								</div>
@@ -562,7 +677,7 @@
                           </div>
                           <div class="col-6">
                             <div class="row" style="padding-left: 40px">
-                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificaÃ§Ã£o</button>
+                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificação</button>
                             </div>
                           </div>
                         </div>
@@ -672,7 +787,7 @@
                             </div>
                             <div class="col-6">
                               <div class="row" style="padding-left: 40px">
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificaÃ§Ã£o</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificação</button>
                               </div>
                             </div>
                           </div>
@@ -712,7 +827,7 @@
         			<div class="col-4"></div>
         			<div class="col-4">
         				<div class="row">
-                          <strong><label for="problemaHardware">Mais informaÃ§Ãµes</label></strong>
+                          <strong><label for="problemaHardware">Mais informações</label></strong>
                       	</div>
                       	<div class="row">
                           <textarea name="maisInfo" id="maisInfo"></textarea>
@@ -723,7 +838,7 @@
         		<div class="row" style="padding-top: 20px">
         			<div class="col-4"></div>
         			<div class="col-4">
-        				<button type="button" class="btn btn-warning" style="width: 100%" data-toggle="modal" data-target="#cobranca" onclick="logHardware()">CobranÃ§a</button>
+        				<button type="button" class="btn btn-warning" style="width: 100%" data-toggle="modal" data-target="#cobranca" onclick="logHardware()">Cobrança</button>
         			</div>
         			<div class="col-4"></div>
         		</div>
@@ -735,7 +850,7 @@
                   <div class="row">
                     <div class="col-5"></div>
                     <div class="col-3">
-                      PadrÃ£o de IP's da loja
+                      Padrão de IP's da loja
                     </div>
                     <br><br>
                     <div class="col-4"></div>
@@ -744,7 +859,7 @@
                     <div class="col-6">
                       <div class="row">
                         <div class="col-5">
-                          <label for="ipGerencia">GerÃªncia</label>
+                          <label for="ipGerencia">Gerência</label>
                         </div>
                         <div class="col-7">
                           <input type="text" class="form-control" id="ipGerencia" readonly value="${data.ipGerencia }">
@@ -752,7 +867,7 @@
                       </div>
                       <div class="row">
                         <div class="col-5">
-                          <label for="ipBalcao">BalcÃµes</label>
+                          <label for="ipBalcao">Balcões</label>
                         </div>
                         <div class="col-7">
                           <input type="text" class="form-control" id="ipBalcao" readonly value="${data.ipBalcao }">
@@ -814,7 +929,12 @@
         	</div>
       	</div>
        </div>
-             	        	      <!-- Footer -->
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -824,8 +944,37 @@
       </footer>
       <!-- End of Footer -->
 
-      
-<!-- Modal direcionamento hardware-->
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+      <!-- Modal direcionamento hardware-->
     <div id="hardware" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -845,7 +994,7 @@
           	<br>
           	Modelo: <label id="modeloModal"></label>
           	<br>
-          	EndereÃ§o: <label id="enderecoModal"></label>
+          	Endereço: <label id="enderecoModal"></label>
           	<br>
           	Contatos: <label id="telefone1Modal"></label> e <label id="telefone2Modal"></label>
           	<br>
@@ -877,7 +1026,7 @@
           <div class="modal-body" id="copiarLogEncHardware">
           	Problema Relatado: <label id="problemaEncHardModal"></label>
           	<br>
-          	DescriÃ§Ã£o detalhada da aÃ§Ã£o efetuada ou orientaÃ§Ã£o: <label id="testesEncHardModal"></label>
+          	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncHardModal"></label>
           	<br>
           	Gerente: <label id="gerenteEncHardModal"></label>
           	<br>
@@ -907,11 +1056,11 @@
           	<br>
          	Serie: <label id="seriePinpadModal"></label>
           	<br>
-           	Numero LÃ³gico: <label id="numeroLogicoModal"></label>
+           	Numero Lógico: <label id="numeroLogicoModal"></label>
            	<br>
            	Estabelecimento Cielo: <label id="estabelecimentoCieloModal"></label>
            	<br>
-           	EndereÃ§o: <label id="enderecoPinpadModal"></label>
+           	Endereço: <label id="enderecoPinpadModal"></label>
           	<br>
           	Contatos: <label id="telefone1PinpadModal"></label> e <label id="telefone2PinpadModal"></label>
            	<br>
@@ -947,7 +1096,7 @@
           <div class="modal-body" id="copiarLogEncPinpad">
           	Problema Relatado: <label id="problemaEncPinModal"></label>
           	<br>
-          	DescriÃ§Ã£o detalhada da aÃ§Ã£o efetuada ou orientaÃ§Ã£o: <label id="testesEncPinModal"></label>
+          	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncPinModal"></label>
           	<br>
           	Gerente: <label id="gerenteEncPinModal"></label>
           	<br>
@@ -961,41 +1110,88 @@
     </div>
     <!-- Fim modal encerramento pinpad-->
 
-    <!-- Modal notificaÃ§Ã£o-->
+    <!-- Modal notificação-->
     <div id="notificacao" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Log para notificaÃ§Ã£o</h4>
+            <h4 class="modal-title">Log para notificação</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body" id="copiarLogNotificacao">
-          	Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito contato nos seguintes
-          	telefones da filial:  "<label id="telefone1NotModal"></label> e <label id="telefone2NotModal"></label> e VOIP".
-          	Por gentileza entrar em contato para que seja verificado o caso, se possÃ­vel, informar um nÃºmero celular.
-          </div>
-          <div class="modal-footer">
-            <a href="#" id="btnCopiarLogNotificacao" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
-          </div>
+			<div class="row" style="padding-top: 10px">
+				<div class="col-2"></div>
+				<div class="col-10">
+					<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    	<li class="nav-item">
+                      		<a class="nav-link active" id="pills-not1-tab" data-toggle="pill" href="#pills-not1" role="tab" aria-controls="pills-not1" aria-selected="true">1ª Tentativa</a>
+                    	</li>
+                    	<li class="nav-item">
+                     		 <a class="nav-link" id="pills-not2-tab" data-toggle="pill" href="#pills-not2" role="tab" aria-controls="pills-not2" aria-selected="false">2ª Tentativa</a>
+                    	</li>
+                    	<li class="nav-item">
+                     		 <a class="nav-link" id="pills-not3-tab" data-toggle="pill" href="#pills-not3" role="tab" aria-controls="pills-not3" aria-selected="false">3ª Tentativa</a>
+                    	</li>
+                  	</ul>
+				</div>
+			</div>
+			<div class="tab-content" id="pills-tabContent">
+				<div class="tab-pane fade show active" id="pills-not1" role="tabpanel" aria-labelledby="pills-not1-tab" >
+					<div class="modal-body" id="copiarLogNotificacao1">
+						#1 Tentativa de Contato
+						<br>
+						Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito a tentativa de ligar nos 
+						seguintes telefones da filial: <label id="telefone1NotModal"></label> e <label id="telefone2NotModal"></label> e VOIP.
+          				Por gentileza entrar em contato para que seja verificado o caso, se possível, informar um número celular.
+          			</div>
+          			<div class="modal-footer">
+            			<a href="#" id="btnCopiarLogNotificacao" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao1"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
+          			</div>
+				</div>
+				<div class="tab-pane fade" id="pills-not2" role="tabpanel" aria-labelledby="pills-not2-tab" >
+					<div class="modal-body" id="copiarLogNotificacao2">
+						#2 Tentativa de Contato
+						<br>
+						Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito a tentativa de ligar nos 
+						seguintes telefones da filial:<label id="telefone1NotModal2"></label> e <label id="telefone2NotModal2"></label> e VOIP. 
+						E tambem com o(a) GGL: <label id="nomeGGLNotModal"></label> no <label id="telGGLNotModal"></label>.
+						Por gentileza entrar em contato para que seja verificado o caso, se possível, informar um número celular.
+          			</div>
+          			<div class="modal-footer">
+            			<a href="#" id="btnCopiarLogNotificacao2" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao2"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
+          			</div>
+				</div>
+				<div class="tab-pane fade" id="pills-not3" role="tabpanel" aria-labelledby="pills-not3-tab" >
+					<div class="modal-body" id="copiarLogNotificacao3">
+						#Falta de contato
+						<br>
+						Estou finalizando o incidente por três tentativas de contato sem sucesso com os seguintes telefones da filial: 
+						<label id="telefone1NotModal3"></label> e <label id="telefone2NotModal3"></label> e VOIP. 
+						E tambem com o(a) GGL: <label id="nomeGGLNotModal2"></label> no <label id="telGGLNotModal2"></label>.
+          			</div>
+          			<div class="modal-footer">
+            			<a href="#" id="btnCopiarLogNotificacao3" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao3"><i class="fas fa-copy" style="size: 20px ">  Copiar Log</i></a>
+          			</div>
+				</div>
+			</div>
         </div>
       </div>
     </div>
-    <!-- Fim modal notificaÃ§Ã£o-->
+    <!-- Fim modal notificação-->
     
-    <!-- Modal CobranÃ§a-->
+    <!-- Modal Cobrança-->
     <div id="cobranca" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Log para CobranÃ§a</h4>
+            <h4 class="modal-title">Log para Cobrança</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body" id="copiarLogCobranca">
-          	#CobranÃ§a
+          	#Cobrança
           	<br><br>
-          	O gerente <label id="gerenteCobModal"></label> solicita urgÃªncia no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
+          	O gerente <label id="gerenteCobModal"></label> solicita urgência no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
           	<br>
-          	Mais informaÃ§Ãµes:
+          	Mais informações:
           	<label id="maisInfoModal"></label>
           </div>
           <div class="modal-footer">
@@ -1004,8 +1200,9 @@
         </div>
       </div>
     </div>
-    <!-- Fim modal CobranÃ§a-->
-   
+    <!-- Fim modal Cobrança-->
+
+  <!-- Bootstrap core JavaScript-->
     <script src="/js/clipboard.min.js"></script>
   	<script src="/js/copiarLogClipboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -1015,5 +1212,15 @@
     <script src="/js/logNotificacao.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+  
+
+  <!-- Core plugin JavaScript-->
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/js/sb-admin-2.min.js"></script>
+  
+
+</body>
+
 </html>

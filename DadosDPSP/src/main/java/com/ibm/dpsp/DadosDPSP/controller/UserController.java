@@ -28,8 +28,6 @@ public class UserController {
 	@RequestMapping("/CadastrarAnalista")
 	public String cadastrarAnalista(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request, 
 			@RequestParam("_id") String _id, @RequestParam("fullName") String fullName, @RequestParam("access") String access) {
-			
-		System.out.println("chamou");
 		
 		String mensagemSuccess = null;
 		String mensagemError = null;
@@ -56,13 +54,35 @@ public class UserController {
 				return "CadastroAnalista";
 			}	
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				if(db.contains(_id)) {
+					mensagemSuccess = "Analista já está cadastrado!!";
+				    mensagemError = null;;
+				    model.addAttribute("mensagemError", mensagemSuccess);	
+				    model.addAttribute("mensagemSuccess", mensagemError);	
+					return "CadastroAnalistaLideranca";
+				}else {
+					mensagemError = "Analista "+ _id + " cadastrado com sucesso!!";
+				    mensagemSuccess = null;
+					Usuario newUser = new Usuario();
+					newUser.set_id(_id);
+					newUser.setFullName(fullName);
+					newUser.setAccess(access);
+					newUser.setPass(new BCryptPasswordEncoder().encode("teamDPSP"));
+					db.post(newUser);
+				    model.addAttribute("mensagemSuccess", mensagemError);	
+				    model.addAttribute("mensagemError", mensagemSuccess);	
+					return "CadastroAnalistaLideranca";
+				}	
+			}else {
+				return "Data";
+			}
 		}	
 	}
 	
 	@RequestMapping("/AlterarAnalista")
 	public String alterarAnalista(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request, 
-			@RequestParam("_id") String _id, @RequestParam("fullName") String fullName, @RequestParam("access") String access) {
+			@RequestParam("id") String _id, @RequestParam("fullName") String fullName, @RequestParam("access") String access) {
 			
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		if(user.getAccess().equals("ADM")) {
@@ -78,7 +98,21 @@ public class UserController {
 			    model.addAttribute("mensagemSuccess", mensagemSuccess);	
 				return "CadastroAnalista";	
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				Usuario usuario = db.find(Usuario.class, _id);
+				
+				usuario.setFullName(fullName);
+				usuario.setAccess(access);
+				usuario.set_rev(usuario.get_rev());
+				db.update(usuario);
+				
+				
+					String mensagemSuccess = "Analista Alterado com sucesso!!";
+				    model.addAttribute("mensagemSuccess", mensagemSuccess);	
+					return "CadastroAnalistaLideranca";	
+			}else {
+				return "Data";
+			}
 		}	
 	}
 	
@@ -108,7 +142,27 @@ public class UserController {
 			    model.addAttribute("mensagemSuccess", mensagemSuccess);
 				return "ListarAnalista";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				db.remove(_id, usuario.get_rev());
+				String mensagemSuccess = "Analista deletado com sucesso";
+				Usuario u;
+				List<Usuario> allAnalistas = null;
+				List<Usuario> list = new ArrayList<Usuario>();
+				allAnalistas = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
+		        .getDocsAs(Usuario.class);
+				
+				for(int i=0; i< allAnalistas.size(); i++) {
+					u = allAnalistas.get(i);
+					if(u.getFullName() != null) {
+						list.add(u);
+					}
+				}
+				model.addAttribute("list", list);
+			    model.addAttribute("mensagemSuccess", mensagemSuccess);
+				return "ListarAnalistaLideranca";
+			}else {
+				return "Data";	
+			}	
 		}	
 	}
 	

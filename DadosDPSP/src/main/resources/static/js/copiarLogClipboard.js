@@ -53,6 +53,28 @@ var logDirPinpad = new ClipboardJS('#btnCopiarLogDirPinpad');
   alert("Navegador não suporta a cópia!!");
   });
   
+  var logNotificacao2 = new ClipboardJS('#btnCopiarLogNotificacao2');
+
+  logNotificacao2.on('success', function(e) {
+  alert("Log copiada com sucesso!!");
+  e.clearSelection();
+  });
+
+  logNotificacao2.on('error', function(e) {
+  alert("Navegador não suporta a cópia!!");
+  });
+  
+  var logNotificacao3 = new ClipboardJS('#btnCopiarLogNotificacao3');
+
+  logNotificacao3.on('success', function(e) {
+  alert("Log copiada com sucesso!!");
+  e.clearSelection();
+  });
+
+  logNotificacao3.on('error', function(e) {
+  alert("Navegador não suporta a cópia!!");
+  });
+  
   var logCobranca = new ClipboardJS('#btnCopiarLogCobranca');
 
   logCobranca.on('success', function(e) {

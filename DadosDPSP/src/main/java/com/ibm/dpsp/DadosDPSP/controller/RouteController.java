@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cloudant.client.api.Database;
 import com.ibm.dpsp.DadosDPSP.model.entity.Data;
+import com.ibm.dpsp.DadosDPSP.model.entity.Desvio;
 import com.ibm.dpsp.DadosDPSP.model.entity.Usuario;
 
 
@@ -41,24 +40,86 @@ public class RouteController {
 	public String loginW3() {
 		return "LoginW3";
 	}
-	
+		
 	@RequestMapping(value="/EncaminharEmail")
 	public String encaminharEmail() {
 		return "EncaminharEmail";
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value="/LiberacaoDeDesvio")
+	public String LiberacaoDeDesvio() {
+		return "LiberacaoDeDesvio";
+	}
+	
+	@RequestMapping(value="/CadastroDesvio")
+	public String cadastroDesvio(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {
+		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		if(user.getAccess().equals("Lider")) {
+			return "CadastroDesvio";
+		}else {
+			if(user.getAccess().equals("ADM")) {
+				return "DataADM";
+			}else {
+				return "Data";
+			}
+		}
+	}
+	
 	@RequestMapping("/")
-	public String index(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {
+	public String index(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) throws IOException {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		Data data = new Data();
+
+		Desvio d;
+		List<Desvio> allDesvios = null;
+		List<Desvio> listPendente = new ArrayList<Desvio>();
+		List<Desvio> listCompleta = new ArrayList<Desvio>();
+		allDesvios = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
+        .getDocsAs(Desvio.class);
+		
+		for(int i=0; i< allDesvios.size(); i++) {
+			d = allDesvios.get(i);
+			if(d.getLogon() != null) {
+				if(d.getLogon().equals(user.get_id())) {
+					listCompleta.add(d);
+					if(d.getDeAcordo() == null) {
+						listPendente.add(d);
+					}
+				}
+			}
+		}
+		model.addAttribute("listPendente", listPendente);
+		model.addAttribute("listCompleta", listCompleta);
+		
 		if(user.getAccess().equals("ADM")) {
 			data.setImg("/img/dpsp.jpg");
 			model.addAttribute("data", data);
 			return "DataADM";
 		}else {
+			if(user.getAccess().equals("Lider")) {
+				data.setImg("/img/dpsp.jpg");
+				model.addAttribute("data", data);
+				return "DataLideranca";
+			}else {
+				
+			}
 			data.setImg("/img/dpsp.jpg");
 			model.addAttribute("data", data);
 			return "Data";
+		}
+	}
+	
+	@RequestMapping("/VoltarEmail")
+	public String voltarEmail(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) {
+		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
+		if(user.getAccess().equals("Lider")) {
+			return data(model, session, response, request);
+		}else {
+			if(user.getAccess().equals("ADM")) {
+				return data(model, session, response, request);
+			}else {
+				return data(model, session, response, request);
+			}
 		}
 	}
 	
@@ -73,11 +134,19 @@ public class RouteController {
 			model.addAttribute("erro", erro);
 			return "DataADM";
 		}else {
-			String erro = null;
-			data.setImg("/img/dpsp.jpg");
-			model.addAttribute("data", data);
-			model.addAttribute("erro", erro);
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				String erro = null;
+				data.setImg("/img/dpsp.jpg");
+				model.addAttribute("data", data);
+				model.addAttribute("erro", erro);
+				return "DataLideranca";
+			}else {
+				String erro = null;
+				data.setImg("/img/dpsp.jpg");
+				model.addAttribute("data", data);
+				model.addAttribute("erro", erro);
+				return "Data";
+			}
 		}
 	}
 	
@@ -92,11 +161,19 @@ public class RouteController {
 			model.addAttribute("erro", erro);
 			return "DataADM";
 		}else {
-			String erro = null;
-			data.setImg("/img/dpsp.jpg");
-			model.addAttribute("data", data);
-			model.addAttribute("erro", erro);
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				String erro = null;
+				data.setImg("/img/dpsp.jpg");
+				model.addAttribute("data", data);
+				model.addAttribute("erro", erro);
+				return "DataLideranca";
+			}else {
+				String erro = null;
+				data.setImg("/img/dpsp.jpg");
+				model.addAttribute("data", data);
+				model.addAttribute("erro", erro);
+				return "Data";
+			}
 		}
 	}
 	
@@ -194,7 +271,94 @@ public class RouteController {
 	        model.addAttribute("pr", PR);
 			return "Dashboard";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				List<Data> allLojas = null;
+				
+				int DSP = 0;
+				int AL = 0;
+				int BA = 0;
+				int DF = 0;
+				int GO = 0;
+				int MGSP = 0;
+				int PE = 0;
+				int RJSP = 0;
+				int SP = 0;
+				int DP = 0;
+				int ES = 0;
+				int PR = 0;
+				int RJ = 0;
+				int MGRJ = 0;
+				int analista = 0;
+				Data as;
+
+		        allLojas = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
+		        .getDocsAs(Data.class);
+		        
+		        
+		        for(int i=0; i< allLojas.size(); i++) {
+		        	as = allLojas.get(i);
+		        	if(as.getBandeira() != null) {
+		            	if(as.getBandeira().equals("DSP")) {
+		            		DSP ++;
+		            		if(as.getUf().equals("SP")) {
+		            			SP ++;
+		            		}else {
+		            			if(as.getUf().equals("AL")) {
+		            				AL ++;
+		            			}else if(as.getUf().equals("BA")) {
+		            				BA ++;
+		            			}else if(as.getUf().equals("DF")) {
+		            				DF ++;
+		            			}else if(as.getUf().equals("GO")) {
+		            				GO ++;
+		            			}else if(as.getUf().equals("MG")) {
+		            				MGSP ++;
+		            			}else if(as.getUf().equals("PE")) {
+		            				PE ++;
+		            			}else if(as.getUf().equals("RJ")) {
+		            				RJSP ++;
+		            			}
+		            		}
+		            	}else {
+		            		if(as.getBandeira().equals("DP")) {
+		                		DP ++;
+		                		if(as.getUf().equals("RJ")) {
+		                			RJ ++;
+		                		}else {
+		                			if(as.getUf().equals("ES")) {
+		                				ES ++;
+		                			}else if(as.getUf().equals("MG")) {
+		                				MGRJ ++;
+		                			}else if(as.getUf().equals("PR")) {
+		                				PR ++ ;
+		                			}
+		                		}
+		            		}
+		            	}
+		        	}else {
+		        		analista ++;
+		        	}
+		        }
+		       
+		        model.addAttribute("lojasDSP", DSP);
+		        model.addAttribute("lojasDP", DP);
+		        model.addAttribute("sp", SP);
+		        model.addAttribute("al", AL);
+		        model.addAttribute("ba", BA);
+		        model.addAttribute("df", DF);
+		        model.addAttribute("df", DF);
+		        model.addAttribute("go", GO);
+		        model.addAttribute("mgsp", MGSP);
+		        model.addAttribute("pe", PE);
+		        model.addAttribute("rjsp", RJSP);
+		        model.addAttribute("rj", RJ);
+		        model.addAttribute("es", ES);
+		        model.addAttribute("mgrj", MGRJ);
+		        model.addAttribute("pr", PR);
+				return "DashboardLideranca";
+			}else {
+				return "Data";				
+			}
 		}
 	}	
 	
@@ -218,7 +382,25 @@ public class RouteController {
 			model.addAttribute("list", list);
 			return "ListarAnalista";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				
+				Usuario u;
+				List<Usuario> allAnalistas = null;
+				List<Usuario> list = new ArrayList<Usuario>();
+				allAnalistas = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
+		        .getDocsAs(Usuario.class);
+				
+				for(int i=0; i< allAnalistas.size(); i++) {
+					u = allAnalistas.get(i);
+					if(u.getFullName() != null) {
+						list.add(u);
+					}
+				}
+				model.addAttribute("list", list);
+				return "ListarAnalistaLideranca";
+			}else {
+				return "Data";
+			}
 		}
 	}
 	
@@ -230,7 +412,13 @@ public class RouteController {
 			model.addAttribute("user", usuario);
 			return "AlterarAnalista";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				Usuario usuario = db.find(Usuario.class, _id);
+				model.addAttribute("user", usuario);
+				return "AlterarAnalistaLideranca";
+			}else {
+				return "Data";
+			}
 		}
 	}
 	
@@ -240,7 +428,12 @@ public class RouteController {
 		if(user.getAccess().equals("ADM")) {
 			return "AtualizaLoja";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				return "AtualizaLojaLideranca";
+			}else {
+				return "Data";			
+			}
+
 		}
 	}
 	
@@ -250,7 +443,11 @@ public class RouteController {
 		if(user.getAccess().equals("ADM")) {
 			return "CadastroLoja";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				return "CadastroLojaLideranca";
+			}else {
+				return "Data";	
+			}
 		}
 	}
 	
@@ -260,7 +457,11 @@ public class RouteController {
 		if(user.getAccess().equals("ADM")) {
 			return "CadastroAnalista";
 		}else {
-			return "Data";
+			if(user.getAccess().equals("Lider")) {
+				return "CadastroAnalistaLideranca";
+			}else {
+				return "Data";
+			}
 		}
 	}
 }

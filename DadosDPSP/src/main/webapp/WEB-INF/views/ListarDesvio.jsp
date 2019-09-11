@@ -98,7 +98,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="AlterarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
+            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
           </div>
         </div>
       </li>
@@ -114,6 +114,45 @@
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="CadastroLoja"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Loja</a>
             <a class="collapse-item" href="AtualizaLoja"><i class="fas fa-fw fa-edit"></i> Alterar Loja</a>
+          </div>
+        </div>
+      </li>
+                  <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Controles Operacionais
+      </div>
+      
+                  <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDesvio"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Desvio</a>
+            <a class="collapse-item" href="ListarDesvio"><i class="fas fa-fw fa-clipboard-list"></i> Listar Desvios</a>
+            <a class="collapse-item" href="ListarDesvioNaoDeacordo"><i class="far fa-thumbs-up"></i> Feedback Analista</a>
+            <a class="collapse-item" href="LiberacaoDeDesvio"><i class="fas fa-lock-open"></i> Liberar Desvios</a>
+          </div>
+        </div>
+      </li>
+      
+            <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-archive"></i>
+          <span>Pandora</span>
+        </a>
+        <div id="Leitura" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDeAlinhamento"><i class="fas fa-fw fa-plus-square"></i> Criar Documento</a>
+            <a class="collapse-item" href="ListarAlinhamento"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>
           </div>
         </div>
       </li>
@@ -189,9 +228,9 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
               <div class="row">
-            	<div class="col-4"></div>
-            	<div class="col-4">
-            	<div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
+            	<div class="col-2"></div>
+            	<div class="col-8">
+            	<div id="erro" style="padding-top: 5px; padding-bottom: 20px;" >
             		<c:if test="${mensagemSuccess != null }">
                 		<div class="alert alert-success alert-dismissible fade show" role="alert">
                     		<div class="row" style="text-align: center;">
@@ -204,70 +243,132 @@
                       </c:if>
                    </div>
             	</div>
-            	<div class="col-4"></div>
+            	<div class="col-2"></div>
             </div>
             <div class="row">
-                <div class="col-4"></div>
+                <div class="col-2"></div>
                 <div class="col-6">
-                    <div class="row" style="height: 30px"></div>
+                    <div class="row"></div>
                     <div class="row">
-                        <h1>Lista de Analistas</h1>
+                        <h1>Lista de Desvios</h1>
                     </div>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-4">
+                	<form action="BuscarData" method="GET">
+                		<div class="input-group mb-3">
+  							<input type="text" class="form-control" name="data" placeholder="Buscar Data" aria-label="Recipient's username" aria-describedby="button-addon2">
+  							<div class="input-group-append">
+    							<button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"> Buscar</i></button>
+  							</div>
+						</div>
+                	</form>
+                </div>
             </div>
-            <form action="/CadastrarAnalista" method="POST">
-                <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
-					<table class=" table table-striped" >
+            <form action="/ExcluirDesvio" method="POST">
+					<div class="table-responsive text-nowrap" style="overflow-y: scroll; height: 300px">
+						<table class="table table-striped" id="table2excel">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nome completo</th>
-                                        <th scope="col">Login</th>
-                                        <th scope="col">Opções</th>
+                                    	<th scope="col">#</th>
+                                        <th scope="col">Nº Chamado</th>
+                                        <th scope="col">Data Analise</th>
+                                        <th scope="col">Tipo Analise</th>
+                                        <th scope="col">Dt/Hora Abertura</th>
+                                        <th scope="col">Prio</th>
+                                        <th scope="col">Dt/Hora Tratativa</th>
+                                        <th scope="col">Dt/Hora Retorno</th>
+                                        <th scope="col">Time Devolucao</th>
+                                        <th scope="col">Time Desvio</th>
+                                        <th scope="col">Dt do Desvio</th>
+                                        <th scope="col">Analista Desvio</th>
+                                        <th scope="col">Fila Analista Desvio</th>
+                                        <th scope="col">Tipo Desvio</th>
+                                        <th scope="col">Just</th>
+                                        <th scope="col">Analista Devolucao</th>
+                                        <th scope="col">Envio do Email</th>
+                                        <th scope="col">Retorno do Email</th>
+                                        <th scope="col">Analista que Aplicou o Desvio</th> 
                                     </tr>
                                 </thead>
-                                </table>
-					<div class="col-12" style="overflow-y: scroll; height: 300px">
-                            <table class=" table table-striped" >
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody >                                	
-                                 	<c:forEach var="Analista" items="${list}">
+                                <tbody >                           	
+                                 	<c:forEach var="Desvio" items="${list}">
                                  		<tr>
+                                 			<td>
+                                 				<div class="form-check">
+ 													<input class="form-check-input" type="checkbox" name="id" id="defaultCheck1" value="${Desvio._id }">
+												</div>
+                                 			</td>
                                             <td>
-                                                ${Analista.fullName }
+                                                ${Desvio._id }
                                             </td>
                                             <td>
-                                                ${Analista._id }
+                                                ${Desvio.dtAnalise }
                                             </td>
-                                             <td>
-                                                <div class="row">
-                                                	<div class="col-6">
-                                                		<form action="AlteraAnalista" method="GET">
-                                                			<input type="hidden" name="id" value="${Analista._id }">
-                                                			<button type="submit" class="btn btn-primary" style="width: 80%">Alterar</button>
-                                                		</form>
-                                                	</div>
-                                                	<div class="col-6">
-                                                		<form action="ExcluirAnalista" method="GET">
-                                                			<input type="hidden" name="id" value="${Analista._id }">
-                                                			<button type="submit" class="btn btn-danger">Excluir</button>
-                                                		</form>
-                                                	</div>
-                                                </div>
+                                            <td>
+                                                ${Desvio.tipoAnalise }
+                                            </td>
+                                            <td>
+                                                ${Desvio.dtHoraAbertura }
+                                            </td>
+                                            <td>
+                                                ${Desvio.prioridade }
+                                            </td>
+                                            <td>
+                                                ${Desvio.dtHoraTratativa }
+                                            </td>
+                                            <td>
+                                                ${Desvio.dtHoraRetorna }
+                                            </td>
+                                            <td>
+                                                ${Desvio.filaDevolucao }
+                                            </td>
+                                            <td>
+                                                ${Desvio.timeDesvio }
+                                            </td>
+                                           	<td>
+                                                ${Desvio.dataDesvio }
+                                            </td>
+                                            <td>
+                                                ${Desvio.analistaDesvio }
+                                            </td>
+                                            <td>
+                                                ${Desvio.filaAnalista }
+                                            </td>
+                                            <td>
+                                                ${Desvio.tipoDesvio }
+                                            </td>
+                                           	<td>
+                                                ${Desvio.justificativa }
+                                            </td>
+                                            <td>
+                                                ${Desvio.analistaDevolucao }
+                                            </td>
+                                            <td>
+                                                ${Desvio.dtLiberacao}
+                                            </td>
+                                            <td>
+                                                ${Desvio.deAcordo}
+                                            </td>
+                                            <td>
+                                                ${Desvio.analistaAplicouDesvio }
                                             </td>
                                         </tr>
                                  	</c:forEach>
                                 </tbody>
                             </table>
-                        </div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-4">
+							<button type="button" class="btn btn-success" id="gerarExcel">Gerar Planilha</button>
+						</div>
+						<div class="col-4"></div>
+						<div class="col-4">
+							<button type="submit" class="btn btn-danger" >Excluir Desvio</button>
+						</div>
 					</div>
             </form>
+            
         </div>
         <!-- /.container-fluid -->
 
@@ -303,6 +404,19 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="/js/jquery.table2excel.min.js"></script>
+  
+  <script>
+  $("#gerarExcel").click(function(){
+	    $("#table2excel").table2excel({
+	    // exclude CSS class
+	    exclude: ".noExl",
+	    filename: "ExportDesvios"
+	    }); 
+	});
+  </script>
 
 </body>
 

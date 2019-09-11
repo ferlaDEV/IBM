@@ -23,6 +23,7 @@
   
   <!--Icone do navegador-->
 	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
+ 
 
 </head>
 
@@ -49,7 +50,6 @@
       <div class="sidebar-heading">
         Ferramentas
       </div>
-      
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/Dashboard">
@@ -98,7 +98,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
+            <a class="collapse-item" href="AlterarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
           </div>
         </div>
       </li>
@@ -114,6 +114,45 @@
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="CadastroLoja"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Loja</a>
             <a class="collapse-item" href="AtualizaLoja"><i class="fas fa-fw fa-edit"></i> Alterar Loja</a>
+          </div>
+        </div>
+      </li>
+                  <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Controles Operacionais
+      </div>
+      
+                  <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDesvio"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Desvio</a>
+            <a class="collapse-item" href="ListarDesvio"><i class="fas fa-fw fa-clipboard-list"></i> Listar Desvios</a>
+            <a class="collapse-item" href="ListarDesvioNaoDeacordo"><i class="far fa-thumbs-up"></i> Feedback Analista</a>
+            <a class="collapse-item" href="LiberacaoDeDesvio"><i class="fas fa-lock-open"></i> Liberar Desvios</a>
+          </div>
+        </div>
+      </li>
+      
+            <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-archive"></i>
+          <span>Pandora</span>
+        </a>
+        <div id="Leitura" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDeAlinhamento"><i class="fas fa-fw fa-plus-square"></i> Criar Documento</a>
+            <a class="collapse-item" href="ListarAlinhamento"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>
           </div>
         </div>
       </li>
@@ -138,7 +177,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
+        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -188,86 +227,85 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+              <div class="row">
+            	<div class="col-4"></div>
+            	<div class="col-4">
+            	<div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
+            		<c:if test="${mensagemSuccess != null }">
+                		<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    		<div class="row" style="text-align: center;">
+                        		${mensagemSuccess}
+                            	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            		<span aria-hidden="true">&times;</span>
+                       			</button>
+                          	</div>
+                        </div>
+                      </c:if>
+                   </div>
+            	</div>
+            	<div class="col-4"></div>
+            </div>
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-6">
                     <div class="row" style="height: 30px"></div>
                     <div class="row">
-                        <h1>Cadastro de Analistas</h1>
+                        <h1>Lista de Analistas</h1>
                     </div>
                 </div>
                 <div class="col-2"></div>
             </div>
-            <form action="/AlterarAnalista" method="GET">
+            <form action="/CadastrarAnalista" method="POST">
                 <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.fullName}">
-                                </div>
-                            </div>
+					<table class=" table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome completo</th>
+                                        <th scope="col">Login</th>
+                                        <th scope="col">Opções</th>
+                                    </tr>
+                                </thead>
+                                </table>
+					<div class="col-12" style="overflow-y: scroll; height: 300px">
+                            <table class=" table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody >                                	
+                                 	<c:forEach var="Analista" items="${list}">
+                                 		<tr>
+                                            <td>
+                                                ${Analista.fullName }
+                                            </td>
+                                            <td>
+                                                ${Analista._id }
+                                            </td>
+                                             <td>
+                                                <div class="row">
+                                                	<div class="col-6">
+                                                		<form action="AlteraAnalista" method="GET">
+                                                			<input type="hidden" name="id" value="${Analista._id }">
+                                                			<button type="submit" class="btn btn-primary" style="width: 80%">Alterar</button>
+                                                		</form>
+                                                	</div>
+                                                	<div class="col-6">
+                                                		<form action="ExcluirAnalista" method="GET">
+                                                			<input type="hidden" name="id" value="${Analista._id }">
+                                                			<button type="submit" class="btn btn-danger">Excluir</button>
+                                                		</form>
+                                                	</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                 	</c:forEach>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Login W3</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${user._id}">
-                                </div> 
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Acesso</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.access}">
-                                </div> 
-                            </div>
-                        </div>
-              <div class="row">
-              	<div class="col-5"></div>
-                <div class="col-3">
-                	<button type="submit" class="btn btn-success">Alterar Analista</button>
-                </div>
-                <div class="col-4"></div>
-              </div>
-                                      <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-6">
-                      <div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-                  </div>
-                  <div class="col-3"></div>
-              </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
+					</div>
             </form>
         </div>
         <!-- /.container-fluid -->

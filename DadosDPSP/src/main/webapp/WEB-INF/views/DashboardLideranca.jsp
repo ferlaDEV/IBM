@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-<!--   <meta name="author" content=""> -->
+  <meta name="author" content="">
 
   <title>Administrador de dados</title>
 
@@ -23,7 +23,7 @@
   
   <!--Icone do navegador-->
 	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
-
+ 
 </head>
 
 <body id="page-top">
@@ -49,7 +49,6 @@
       <div class="sidebar-heading">
         Ferramentas
       </div>
-      
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/Dashboard">
@@ -117,6 +116,45 @@
           </div>
         </div>
       </li>
+                  <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Controles Operacionais
+      </div>
+      
+                  <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDesvio"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Desvio</a>
+            <a class="collapse-item" href="ListarDesvio"><i class="fas fa-fw fa-clipboard-list"></i> Listar Desvios</a>
+            <a class="collapse-item" href="ListarDesvioNaoDeacordo"><i class="far fa-thumbs-up"></i> Feedback Analista</a>
+            <a class="collapse-item" href="LiberacaoDeDesvio"><i class="fas fa-lock-open"></i> Liberar Desvios</a>
+          </div>
+        </div>
+      </li>
+      
+            <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-archive"></i>
+          <span>Pandora</span>
+        </a>
+        <div id="Leitura" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDeAlinhamento"><i class="fas fa-fw fa-plus-square"></i> Criar Documento</a>
+            <a class="collapse-item" href="ListarAlinhamento"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>
+          </div>
+        </div>
+      </li>
 
     
 
@@ -138,7 +176,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
+        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="background-color: black; height: 50px;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -185,91 +223,68 @@
 
         </nav>
         <!-- End of Topbar -->
-
+        
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-6">
-                    <div class="row" style="height: 30px"></div>
-                    <div class="row">
-                        <h1>Cadastro de Analistas</h1>
-                    </div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-            <form action="/AlterarAnalista" method="GET">
-                <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.fullName}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Login W3</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${user._id}">
-                                </div> 
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Acesso</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.access}">
-                                </div> 
-                            </div>
-                        </div>
-              <div class="row">
-              	<div class="col-5"></div>
-                <div class="col-3">
-                	<button type="submit" class="btn btn-success">Alterar Analista</button>
-                </div>
-                <div class="col-4"></div>
-              </div>
-                                      <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-6">
-                      <div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-                  </div>
-                  <div class="col-3"></div>
-              </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-            </form>
-        </div>
+		<div class="container-fluid">
+			<div class="row">
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="lojasDSP" value="${lojasDSP }">
+					<input type="hidden" id="lojasDP" value="${lojasDP }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Total de Lojas</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="lojas"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="sp" value="${sp }">
+					<input type="hidden" id="al" value="${al }">
+					<input type="hidden" id="ba" value="${ba }">
+					<input type="hidden" id="df" value="${df }">
+					<input type="hidden" id="go" value="${go }">
+					<input type="hidden" id="mgsp" value="${mgsp }">
+					<input type="hidden" id="pe" value="${pe }">
+					<input type="hidden" id="rjsp" value="${rjsp }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Lojas DSP</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="dsp"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="rj" value="${rj }">
+					<input type="hidden" id="es" value="${es }">
+					<input type="hidden" id="mgrj" value="${mgrj }">
+					<input type="hidden" id="pr" value="${pr }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Lojas DP</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="dp"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+			</div>
+       </div>
         <!-- /.container-fluid -->
 
       </div>
@@ -286,24 +301,29 @@
       <!-- End of Footer -->
 
     </div>
+    <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
 
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
 
   <!-- Core plugin JavaScript-->
   <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/js/demo/chart-area-demo.js"></script>
+  <script src="/js/demo/chart-pie-demo.js"></script>
+  <script src="/js/demo/chart-bar-demo.js"></script>
 
 </body>
 

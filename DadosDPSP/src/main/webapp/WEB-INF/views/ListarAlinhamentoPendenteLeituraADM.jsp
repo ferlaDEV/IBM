@@ -23,6 +23,7 @@
   
   <!--Icone do navegador-->
 	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
+ 
 
 </head>
 
@@ -49,7 +50,6 @@
       <div class="sidebar-heading">
         Ferramentas
       </div>
-      
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/Dashboard">
@@ -117,9 +117,7 @@
           </div>
         </div>
       </li>
-
-    
-
+      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -188,87 +186,67 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+              <div class="row">
+            	<div class="col-2"></div>
+            	<div class="col-8">
+            	<div id="erro" style="padding-top: 5px; padding-bottom: 20px;" >
+            		<c:if test="${mensagemSuccess != null }">
+                		<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    		<div class="row" style="text-align: center;">
+                        		${mensagemSuccess}
+                            	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            		<span aria-hidden="true">&times;</span>
+                       			</button>
+                          	</div>
+                        </div>
+                      </c:if>
+                   </div>
+            	</div>
+            	<div class="col-2"></div>
+            </div>
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-6">
-                    <div class="row" style="height: 30px"></div>
+                    <div class="row"></div>
                     <div class="row">
-                        <h1>Cadastro de Analistas</h1>
+                        <h1>Lista de Alinhamentos</h1>
                     </div>
                 </div>
-                <div class="col-2"></div>
             </div>
-            <form action="/AlterarAnalista" method="GET">
-                <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.fullName}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Login W3</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${user._id}">
-                                </div> 
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Acesso</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.access}">
-                                </div> 
-                            </div>
-                        </div>
-              <div class="row">
-              	<div class="col-5"></div>
-                <div class="col-3">
-                	<button type="submit" class="btn btn-success">Alterar Analista</button>
-                </div>
-                <div class="col-4"></div>
-              </div>
-                                      <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-6">
-                      <div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-                  </div>
-                  <div class="col-3"></div>
-              </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-            </form>
+					<div class="table-responsive text-nowrap" style="overflow-y: scroll; height: 300px">
+						<table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome do Alinhamento</th>
+                                        <th scope="col">Data do Alinhamento</th>
+                                        <th scope="col">Link Pandora</th>
+                                        <th scope="col">Confirmar Leitura</th>
+                                    </tr>
+                                </thead>
+                                <tbody >                           	
+                                 	<c:forEach var="alinhamento" items="${list}">
+                                 		<tr>
+                                            <td>
+                                                ${alinhamento.nomeAlinhamento }
+                                            </td>
+                                            <td>
+                                                ${alinhamento.dataAlinhamento }
+                                            </td>
+                                            <td>
+                                                <a href="${alinhamento.linkBase }" target="_blank">${alinhamento.linkBase }</a>
+                                            </td>
+                                            <td style="text-align: center;">
+                                            	<form action="/ConfirmarLeitura" method="GET">
+                                            		<input type="hidden" name="id" value="${alinhamento._id }">
+                                            		<button class="btn" type="submit"><i class="far fa-thumbs-up"></i></button>
+                                            	</form>
+                                            </td>
+                                        </tr>
+                                 	</c:forEach>
+                                </tbody>
+                            </table>
+					</div>
+					<br>
         </div>
         <!-- /.container-fluid -->
 
@@ -304,6 +282,19 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="/js/jquery.table2excel.min.js"></script>
+  
+  <script>
+  $("#gerarExcel").click(function(){
+	    $("#table2excel").table2excel({
+	    // exclude CSS class
+	    exclude: ".noExl",
+	    filename: "ExportDesvios"
+	    }); 
+	});
+  </script>
 
 </body>
 

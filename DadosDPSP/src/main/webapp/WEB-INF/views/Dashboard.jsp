@@ -42,9 +42,13 @@
         <div class="sidebar-brand-text mx-3">Administrador de dados</div>
       </a>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+		<!-- Divider -->
+      <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Ferramentas
+      </div>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/Dashboard">
@@ -57,13 +61,30 @@
           	<span>Sistema de Dados</span>
           </a>
       </li>
+            <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <div class="sidebar-heading">
+        Controles Pessoais
+      </div>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarDesvioAnalista">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios Recebidos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
+          <i class="fas fa-glasses"></i>
+          <span>Pendencia de Leitura</span></a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Controles de Dados
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->

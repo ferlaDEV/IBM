@@ -1,211 +1,63 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Administrador de dados</title>
-  
-  <link rel="icon" type="imagem/png" href="/img/favicon.ico" />
-
-  <!-- Custom fonts for this template-->
-  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: black">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Dashboard">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-pills"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Administrador de dados</div>
-      </a>
-
-		<!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Ferramentas
-      </div>
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/Dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link" href="/DataADM">
-        	<i class="fas fa-database"></i>
-          	<span>Sistema de Dados</span>
-          </a>
-      </li>
-            <!-- Divider -->
-      <hr class="sidebar-divider">
-      
-      <div class="sidebar-heading">
-        Controles Pessoais
-      </div>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="/ListarDesvioAnalista">
-          <i class="fas fa-map-signs"></i>
-          <span>Desvios Recebidos</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
-          <i class="fas fa-glasses"></i>
-          <span>Pendencia de Leitura</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-     
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Controles de Dados
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Analistas</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-store"></i>
-          <span>Lojas</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="CadastroLoja"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Loja</a>
-            <a class="collapse-item" href="AtualizaLoja"><i class="fas fa-fw fa-edit"></i> Alterar Loja</a>
-          </div>
-        </div>
-      </li>
-
+    <!-- CSS de Estilos -->
+    <link rel="stylesheet" href="/css/style.css">
     
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-            
-            	<div class="btn-group">
- 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    					Analista Logado: <%= request.getUserPrincipal().getName() %>
-  					</button>
-  					<div class="dropdown-menu dropdown-menu-right">
-  						<form action="/Logout">
-    						<a href="<c:url value="/logout" />"><button class="dropdown-item" type="button">Logout</button></a>
-    					</form>
-  					</div>
-				</div>
-            
-
-        </nav>
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+    <!-- FontAwesome -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!--Icone do navegador-->
+	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
+	
+    <title>Dados DPSP</title>
+  
+	
+  </head>
+  <body>
+<div class="container-fluid">
+<br>
           <div class="row">
-            <div class="col-4"></div>
+            <div class="col-4">
+                    	<div class="row">
+        		<div class="col-9" style="text-align: center; background-color: #FFFFFF; width: 100%; height: 100%; border-radius:20px; box-shadow: 10px 10px 10px 1px #000000; border:solid 1px;">
+        			<h6>Analista logado: <%= request.getUserPrincipal().getName() %></h6>
+        		</div>
+        		<div class="col-6"></div>
+        	</div>  
+            </div>
             <div class="col-5">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="pills-dados-tab" data-toggle="pill" href="#pills-dados" role="tab" aria-controls="pills-dados" aria-selected="true">Dados</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-fp-tab" data-toggle="pill" href="#pills-fp" role="tab" aria-controls="pills-fp" aria-selected="false">Fármacia Popular</a>
+                      <a class="nav-link" id="pills-fp-tab" data-toggle="pill" href="#pills-fp" role="tab" aria-controls="pills-fp" aria-selected="false">FÃ¡rmacia Popular</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="pills-tratativa-tab" data-toggle="pill" href="#pills-tratativa" role="tab" aria-controls="pills-tratativa" aria-selected="false">Tratativa</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-ips-tab" data-toggle="pill" href="#pills-ips" role="tab" aria-controls="pills-ips" aria-selected="false">IP's Padrões</a>
+                      <a class="nav-link" id="pills-ips-tab" data-toggle="pill" href="#pills-ips" role="tab" aria-controls="pills-ips" aria-selected="false">IP's PadrÃµes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-desvio-tab" data-toggle="pill" href="#pills-desvio" role="tab" aria-controls="pills-desvio" aria-selected="false">Desvios</a>
                     </li>
                   </ul>
             </div>
-            <div class="col-2"></div>
+            <div class="col-2">
+            	        <form action="/Logout">
+        	<a href="<c:url value="/logout" />"><button type="button" class="btn btn-primary">Logout</button></a>
+        </form>
+            </div>
           </div>
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-dados" role="tabpanel" aria-labelledby="pills-dados-tab" >
@@ -317,7 +169,7 @@
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Inauguração</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>InauguraÃ§Ã£o</strong></span>
   								</div>
   								<input type="text" class="form-control" readonly value="${data.inauguracao }" id="inauguracao" name="inauguracao" style="text-align: center; background-color: white;">
 							</div>
@@ -325,7 +177,7 @@
                     </div>
 <!--                     <div class="row"> -->
 <!--                       <div class="col-4"> -->
-<!--                         <label for="inauguracao">Inauguração</label> -->
+<!--                         <label for="inauguracao">InauguraÃ§Ã£o</label> -->
 <!--                       </div> -->
 <!--                       <div class="col-4"> -->
 <%--                         <input type="text" class="form-control" id="inauguracao" readonly value="${data.inauguracao }"> --%>
@@ -333,7 +185,7 @@
 <!--                     </div> -->
 <!--                     <div class="row"> -->
 <!--                       <div class="col-8"> -->
-<!--                         <label for="endereco">Endereço Completo</label> -->
+<!--                         <label for="endereco">EndereÃ§o Completo</label> -->
 <!--                       </div> -->
 <!--                     </div> -->
 <!--                     <div class="row"> -->
@@ -342,12 +194,12 @@
 <!--                       </div> -->
 <!--                     </div> -->
                         <div class="row">
-							<div class="col-11">
-								<div class="input-group">
+							<div class="col-12">
+								<div class="input-group input-group-sm mb-3">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" style="color: black;"><strong>Endereco</strong></span>
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; width: 330px;"><strong>EndereÃ§o Completo</strong></span>
   									</div>
-  									<textarea class="form-control" aria-label="Com textarea" readonly id="endereco" style="resize: none; height: 150px">${data.enderecoCompleto }</textarea>
+  									<textarea class="endereco" class="form-control" id="enderecoCompleto" name="enderecoCompleto" style="background-color: white;" readonly>${data.enderecoCompleto }</textarea>
 								</div>
 							</div>
                     	</div>
@@ -406,24 +258,16 @@
 <%--                        <textarea class="emailLoja" id="emailLoja" class="form-control" readonly>${data.email }</textarea> --%>
 <!--                       </div> -->
                     <div class="row">
-						<div class="col-11">
-							<div class="input-group">
+						<div class="col-2">
+							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" style="color: black;"><strong>Email</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 76px"><strong>Email</strong></span>
   								</div>
-  								<textarea class="form-control" aria-label="Com textarea" readonly style="resize: none; height: 60px">${data.email }</textarea>
 							</div>
 						</div>
-<!-- 						<div class="col-2"> -->
-<!-- 							<div class="input-group input-group-sm mb-3"> -->
-<!--   								<div class="input-group-prepend"> -->
-<!--     								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black; height: 50px; width: 70px"><strong>Email</strong></span> -->
-<!--   								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="col-7"> -->
-<%-- 						<textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" readonly>${data.email }</textarea> --%>
-<!--                     	</div> -->
+						<div class="col-7">
+						<textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" readonly>${data.email }</textarea>
+                    	</div>
                     </div>
                   </div>
                   <div id="erro" style="padding-top: 30px;" >
@@ -446,7 +290,7 @@
               			</div>
     				</c:when>
     				<c:when test="${erro == null}">
-						<img src="${data.img }" style="width: 100%; height: 500px%">
+						<img src="${data.img }" style="width: 100%; height: 100px">
     				</c:when>
 				</c:choose>
                   </div>
@@ -457,12 +301,6 @@
                       </div>
                       <br>
                       <div class="row">
-<!--                         <div class="col-4"> -->
-<!--                           <label for="nomeGGL">Nome</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-4"> -->
-<%--                           <input type="text" class="form-control" id="nomeGGL" readonly value="${data.ggl }"> --%>
-<!--                         </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -473,12 +311,6 @@
 						</div>
                     </div>
                       <div class="row">
-<!--                         <div class="col-3"> -->
-<!--                           <label for="telefoneGGL">Telefone</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-5"> -->
-<%--                           <input type="text" class="form-control" id="telefoneGGL" readonly value="${data.telefoneGgl }"> --%>
-<!--                         </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -498,14 +330,6 @@
                     </div>
                     <br>
                     <div class="row">
-<!--                       <div class="row"> -->
-<!--                         <div class="col-6"> -->
-<!--                           <label for="fieldLocal">Field Local</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-4"> -->
-<%--                           <input type="text" class="form-control" id="fieldLocal" readonly value="${data.fieldLocal }"> --%>
-<!--                         </div> -->
-<!--                       </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -516,14 +340,6 @@
 						</div>
                     </div>
                     <div class="row">
-<!--                       <div class="row"> -->
-<!--                         <div class="col-7"> -->
-<!--                           <label for="fieldMultifuncional">Field Multifuncional</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-4"> -->
-<%--                           <input type="text" class="form-control" id="fieldMultifuncional" readonly value="${data.fieldMultifuncional }"> --%>
-<!--                         </div> -->
-<!--                       </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -542,12 +358,6 @@
                       </div>
                       <br>
                       <div class="row">
-<!--                         <div class="col-4"> -->
-<!--                           <label for="segASex">Seg. a Sex.</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-4"> -->
-<%--                           <input type="text" class="form-control" id="segASex" readonly value="${data.segASex }"> --%>
-<!--                         </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -559,12 +369,6 @@
 
                       </div>
                       <div class="row">
-<!--                         <div class="col-4"> -->
-<!--                           <label for="sab">Sab.</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-4"> -->
-<%--                           <input type="text" class="form-control" id="sab" readonly value="${data.sab }"> --%>
-<!--                         </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -576,12 +380,6 @@
 
                       </div>
                       <div class="row">
-<!--                         <div class="col-4"> -->
-<!--                           <label for="dom">Dom.</label> -->
-<!--                         </div> -->
-<!--                         <div class="col-4"> -->
-<%--                           <input type="text" class="form-control" id="dom" readonly value="${data.dom }"> --%>
-<!--                         </div> -->
 						<div class="col-11">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -611,7 +409,7 @@
                 <div class="col-sm">
                   <div id="popular">
                     <div class="row">
-                      Dados Fármacia Popular
+                      Dados FÃ¡rmacia Popular
                     </div>
                     <br>
                     <div class="row">
@@ -636,30 +434,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-sm">
-                  <div id="popular">
-                    <div class="row">
-                      Terminais Epharma
-                    </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-6">
-                        <label for="terminal">N. Terminal</label>
-                      </div>
-                      <div class="col-5">
-                        <input type="text" class="form-control" id="terminal" readonly>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4">
-                        <label for="digito">Digito</label>
-                      </div>
-                      <div class="col-6">
-                        <input type="text" class="form-control" id="digito" readonly>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="tab-pane fade" id="pills-tratativa" role="tabpanel" aria-labelledby="pills-tratativa-tab">
@@ -676,9 +450,6 @@
                     <li class="nav-item">
                       <a class="nav-link" id="pills-autoin-tab" data-toggle="pill" href="#pills-autoin" role="tab" aria-controls="pills-autoin" aria-selected="true">AutoIn</a>
                     </li>
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" id="pills-sistema-tab" data-toggle="pill" href="#pills-sistema" role="tab" aria-controls="pills-sistema" aria-selected="false">Sistema</a>
-                    </li> -->
                   </ul>
                 </div>
                 <div class="col-5"></div>
@@ -689,12 +460,6 @@
                   <div class="row">
                     <div class="col-sm">
                       <div class="row">
-<!--                         <div class="col-2"> -->
-<!--                           <strong><label for="gerenteHardware">Gerente</label></strong> -->
-<!--                         </div> -->
-<!--                         <div class="col-2"> -->
-<!--                           <input type="text" class="form-control" id="gerenteHardware" maxlength="20"> -->
-<!--                         </div> -->
 						<div class="col-8">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
@@ -753,62 +518,36 @@
                       <div class="col-sm">
                         <div class="row" style="padding-left: 40px; padding-top: 70px" >
                         	<div class="col-7">
-                        		<div class="input-group input-group-sm mb-3">
+                        		<div class="input-group mb-3">
   									<div class="input-group-prepend">
     									<label class="input-group-text" for="inputGroupSelect01" style="color: black;"><strong>Micro</strong></label>
   									</div>
   									<select class="custom-select" id="tipoMicroHardware">
-    									<option selected>Escolher...</option>
-										<option value="Balcao">Balcão</option>
+    									<option selected value="Selecione">Selecione a opÃ§Ã£o</option>
+										<option value="Balcao">BalcÃ£o</option>
                               			<option value="Caixa">Caixa</option>
                               			<option value="Gerente">Gerente</option>
                              			<option value="Impressora">Impressora</option>
   									</select>
 								</div>
                         	</div>
-<!--                           <div class="col-2"> -->
-<!--                             <strong><label for="micro">Micro</label></strong> -->
-<!--                           </div> -->
-<!--                           <div class="col-5"> -->
-<!--                             <select id="tipoMicroHardware"> -->
-<!--                               <option>Selecione a opção</option> -->
-<!--                               <option value="Balcao">Balcão</option> -->
-<!--                               <option value="Caixa">Caixa</option> -->
-<!--                               <option value="Gerente">Gerente</option> -->
-<!--                               <option value="Impressora">Impressora</option> -->
-<!--                             </select> -->
-<!--                           </div> -->
-						
                           <div class="col-3">
                           	<div class="input-group input-group-sm mb-3">
   								<input type="text" class="form-control" id="numeroMicro" style="text-align: center;" maxlength="3" onkeypress='return SomenteNumero(event)' value="">
 							</div>
-<!--                             <input type="text" class="form-control" id="numeroMicro" maxlength="3" onkeypress='return SomenteNumero(event)'> -->
                           </div>
                         </div>
                         <div class="row" style="padding-left: 40px">
                         	<div class="col-7">
                         		<div class="input-group input-group-sm mb-3">
   									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Série</strong></span>
+    									<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>SÃ©rie</strong></span>
   									</div>
   									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" aria-describedby="inputGroup-sizing-sm" id="serieHardware" value="">
 								</div>
                         	</div>
-<!--                           <div class="col-2"> -->
-<!--                             <strong><label for="serieHardware">Serie</label></strong> -->
-<!--                           </div> -->
-<!--                           <div class="col-5"> -->
-<!--                             <input type="text" class="form-control" id="serieHardware"> -->
-<!--                           </div> -->
                         </div>
                         <div class="row" style="padding-left: 40px">
-<!--                           <div class="col-2"> -->
-<!--                             <strong><label for="modelo">Modelo</label></strong> -->
-<!--                           </div> -->
-<!--                           <div class="col-5"> -->
-<!--                             <input type="text" class="form-control" id="modelo"> -->
-<!--                           </div> -->
                         	<div class="col-7">
                         		<div class="input-group input-group-sm mb-3">
   									<div class="input-group-prepend">
@@ -822,17 +561,17 @@
                           <br>
                         <div class="row" style="padding-left: 40px">
                           <div class="col-6">
-                            <button type="button" class="btn btn-success" id="encerraHardware" data-toggle="modal" data-target="#encerramentoHardware" onclick="logHardwareADM()">Gerar log de encerramento</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" id="encerraHardware" data-target="#encerramentoHardware" onclick="logHardware()">Gerar log de encerramento</button>
                           </div>
                           <div class="col-6">
                             <div class="row" style="padding-left: 40px">
-                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificação</button>
+                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificaÃ§Ã£o</button>
                             </div>
                           </div>
                         </div>
                         <br>
                         <div class="row" style="padding-left: 180px">
-                          <button type="button" class="btn btn-danger" id="direcionamentoHardware" data-toggle="modal" data-target="#hardware" onclick="logHardwareADM()">Gerar log de direcionamento</button>
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hardware" id="direcionamentoHardware" onclick="logHardware()">Gerar log de direcionamento</button>
                         </div>
                         <br>
                       </div>
@@ -857,7 +596,7 @@
   								<div class="input-group-prepend">
     								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Doc. Pandora Utilizado</strong></span>
   								</div>
-  								<input type="text" class="form-control" value="" id="docPandoraPinpad" style="text-align: center; background-color: white;" required>
+  								<input type="text" class="form-control" value="" id="docPandoraPin" style="text-align: center; background-color: white;" required>
 							</div>
 						</div>
 						<div class="col-2">
@@ -872,7 +611,7 @@
   										<div class="input-group-prepend">
     										<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Doc. Pandora Utilizado</strong></span>
   										</div>
-  										<input type="text" class="form-control" value="" id="docPandoraPinpad" name="logPinpad" style="text-align: center; background-color: white;" required>
+  										<input type="text" class="form-control" value="" id="docPandoraPin" name="logPinpad" style="text-align: center; background-color: white;" required>
 									</div>
                         		</div>
         					</template>
@@ -909,7 +648,7 @@
 						</div>
                           </div>
                           <div class="row" style="padding-left: 40px">
-                          <div class="col-8">
+                          						<div class="col-8">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
     								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Numero Logico</strong></span>
@@ -927,33 +666,27 @@
   								<input type="text" class="form-control" id="estabelecimentoCielo" readonly style="text-align: center;" readonly value="${data.estabelecimentoCielo }">
 							</div>
 						</div>
-<!--                             <div class="col-3"> -->
-<!--                               <strong><label for="estabelecimentoCielo">Est. Cielo</label></strong> -->
-<!--                             </div> -->
-<!--                             <div class="col-5"> -->
-<%--                               <input type="text" class="form-control" id="estabelecimentoCielo" readonly value="${data.estabelecimentoCielo }"> --%>
-<!--                             </div> -->
                           </div>
                             <br>
                             <br>
                           <div class="row" style="padding-left: 40px">
                             <div class="col-6">
-                              <button type="button" class="btn btn-success" data-toggle="modal" id="encerraPinpad" data-target="#encerramentoPinpad" onclick="logPinpadADM()">Gerar log de encerramento</button>
+                              <button type="button" class="btn btn-success" data-toggle="modal" id="encerraPinpad" data-target="#encerramentoPinpad" onclick="logPinpad()">Gerar log de encerramento</button>
                             </div>
                             <div class="col-6">
                               <div class="row" style="padding-left: 40px">
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificação</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificacao" onclick="logNotificacao()">Gerar log de notificaÃ§Ã£o</button>
                               </div>
                             </div>
                           </div>
                           <br>
                           <div class="row" style="padding-left: 180px">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" id="direcionamentoPinpad" data-target="#pinpad" onclick="logPinpadADM()">Gerar log de direcionamento</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" id="direcionamentoPinpad" data-target="#pinpad" onclick="logPinpad()">Gerar log de direcionamento</button>
                           </div>
                         </div>
                       </div>
                   </div>
-                              <div class="tab-pane fade show" id="pills-autoin" role="tabpanel" aria-labelledby="pills-autoin-tab" >
+            <div class="tab-pane fade show" id="pills-autoin" role="tabpanel" aria-labelledby="pills-autoin-tab" >
         		<div class="row">
         		<div class="col-4"></div>
         			<div class="col-4">
@@ -982,7 +715,7 @@
         			<div class="col-4"></div>
         			<div class="col-4">
         				<div class="row">
-                          <strong><label for="problemaHardware">Mais informações</label></strong>
+                          <strong><label for="problemaHardware">Mais informaÃ§Ãµes</label></strong>
                       	</div>
                       	<div class="row">
                           <textarea name="maisInfo" id="maisInfo"></textarea>
@@ -993,21 +726,19 @@
         		<div class="row" style="padding-top: 20px">
         			<div class="col-4"></div>
         			<div class="col-4">
-        				<button type="button" class="btn btn-warning" style="width: 100%" data-toggle="modal" data-target="#cobranca" onclick="logHardwareADM()">Cobrança</button>
+        				<button type="button" class="btn btn-warning" style="width: 100%" data-toggle="modal" data-target="#cobranca" onclick="logHardware()">CobranÃ§a</button>
         			</div>
         			<div class="col-4"></div>
         		</div>
         	</div>
-                  <!-- <div class="tab-pane fade" id="pills-sistema" role="tabpanel" aria-labelledby="pills-sistema-tab">
-                  </div> -->
-                </div>
-              </div>
+        </div>
+        </div>
         <div class="tab-pane fade" id="pills-ips" role="tabpanel" aria-labelledby="pills-ips-tab">
                 <div id="calculoIp">
                   <div class="row">
                     <div class="col-5"></div>
                     <div class="col-3">
-                      Padrão de IP's da loja
+                      PadrÃ£o de IP's da loja
                     </div>
                     <br><br>
                     <div class="col-4"></div>
@@ -1016,7 +747,7 @@
                     <div class="col-6">
                       <div class="row">
                         <div class="col-5">
-                          <label for="ipGerencia">Gerência</label>
+                          <label for="ipGerencia">GerÃªncia</label>
                         </div>
                         <div class="col-7">
                           <input type="text" class="form-control" id="ipGerencia" readonly value="${data.ipGerencia }">
@@ -1024,7 +755,7 @@
                       </div>
                       <div class="row">
                         <div class="col-5">
-                          <label for="ipBalcao">Balcões</label>
+                          <label for="ipBalcao">BalcÃµes</label>
                         </div>
                         <div class="col-7">
                           <input type="text" class="form-control" id="ipBalcao" readonly value="${data.ipBalcao }">
@@ -1084,14 +815,143 @@
                   </div>
                 </div>
         	</div>
+        	<div class="tab-pane fade" id="pills-desvio" role="tabpanel" aria-labelledby="pills-desvio-tab">
+				<div class="row">
+					<div class="col-4"></div>
+					<div class="col-4">
+						<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    		<li class="nav-item">
+                      			<a class="nav-link active" id="pills-desvioPend-tab" data-toggle="pill" href="#pills-desvioPend" role="tab" aria-controls="pills-desvioPend" aria-selected="true">Desvios Pendentes de Feedback</a>
+                    		</li>
+                    		<li class="nav-item">
+                      			<a class="nav-link" id="pills-desvioComp-tab" data-toggle="pill" href="#pills-desvioComp" role="tab" aria-controls="pills-desvioComp" aria-selected="false">Todos Desvios</a>
+                    		</li>
+                    	</ul>
+					</div>
+					<div class="col-4"></div>
+				</div>
+				<div class="tab-content" id="pills-tabContent">
+            		<div class="tab-pane fade show active" id="pills-desvioPend" role="tabpanel" aria-labelledby="pills-desvioPend-tab" >
+            			            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-9">
+                    <div class="row"></div>
+                    <div class="row">
+                    	<div class="col-10">
+                    		<h1>Lista de Desvios Pendentes de Feedback</h1>
+                    	</div>
+                    	<div class="col-2">
+                        	<a href="/ListarDesvioAnalista"><button type="button" class="btn btn-primary">Carregar Lista</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+				<div class="table-responsive text-nowrap" style="overflow-y: scroll; height: 300px">
+						<table class="table table-striped" id="table2excel">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">NÂº Chamado</th>
+                                        <th scope="col">Dt do Desvio</th>
+                                        <th scope="col">Analista Desvio</th>
+                                        <th scope="col">Tipo Desvio</th>
+                                        <th scope="col">Justicativa</th>
+                                        <th scope="col">AÃ§Ã£o</th>
+                                    </tr>
+                                </thead>
+                                <tbody >                           	
+                                 	<c:forEach var="Desvio" items="${listPendente}">
+                                 		<tr>
+                                            <td>
+                                                ${Desvio._id }
+                                            </td>
+                                           	<td>
+                                                ${Desvio.dataDesvio }
+                                            </td>
+                                            <td>
+                                                ${Desvio.analistaDesvio }
+                                            </td>
+                                            <td>
+                                                ${Desvio.tipoDesvio }
+                                            </td>
+                                           	<td>
+                                                ${Desvio.justificativa }
+                                            </td>
+                                            <td>
+                                           		<form action="DeAcordoDesvio" method="GET">
+                                                	<input type="hidden" name="_id"	value="${Desvio._id }">
+                                                	<button type="submit" class="btn btn-primary" style="width: 80%">De Acordo</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                 	</c:forEach>
+                                </tbody>
+                            </table>
+					</div>
+            		</div>
+            		<div class="tab-pane fade" id="pills-desvioComp" role="tabpanel" aria-labelledby="pills-desvioComp-tab" >
+            			            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-7">
+                    <div class="row"></div>
+                    <div class="row">
+                    	<div class="col-10">
+                    		<h1>Lista de Desvios Completa</h1>
+                    	</div>
+                        <div class="col-2">
+                        	<a href="/ListarDesvioAnalista"><button type="button" class="btn btn-primary">Carregar Lista</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+				<div class="table-responsive text-nowrap" style="overflow-y: scroll; height: 300px">
+						<table class="table table-striped" id="table2excel">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">NÂº Chamado</th>
+                                        <th scope="col">Dt do Desvio</th>
+                                        <th scope="col">Analista Desvio</th>
+                                        <th scope="col">Tipo Desvio</th>
+                                        <th scope="col">Justicativa</th>
+                                        <th scope="col">AÃ§Ã£o</th>
+                                    </tr>
+                                </thead>
+                                <tbody >                           	
+                                 	<c:forEach var="Desvio" items="${listCompleta }">
+                                 		<tr>
+                                            <td>
+                                                ${Desvio._id }
+                                            </td>
+                                           	<td>
+                                                ${Desvio.dataDesvio }
+                                            </td>
+                                            <td>
+                                                ${Desvio.analistaDesvio }
+                                            </td>
+                                            <td>
+                                                ${Desvio.tipoDesvio }
+                                            </td>
+                                           	<td>
+                                                ${Desvio.justificativa }
+                                            </td>
+                                            <td>
+                                           		<form action="VisualizarDesvio" method="GET">
+                                                	<input type="hidden" name="_id"	value="${Desvio._id }">
+                                                	<button type="submit" class="btn btn-primary" style="width: 80%">Detalhes</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                 	</c:forEach>
+                                </tbody>
+                            </table>
+					</div>
+            		</div>
+            	</div>
+        	</div>
       	</div>
        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
+             	        	      <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -1101,37 +961,8 @@
       </footer>
       <!-- End of Footer -->
 
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-      <!-- Modal direcionamento hardware-->
+      
+<!-- Modal direcionamento hardware-->
     <div id="hardware" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -1151,7 +982,7 @@
           	<br>
           	Modelo: <label id="modeloModal"></label>
           	<br>
-          	Endereço: <label id="enderecoModal"></label>
+          	EndereÃ§o: <label id="enderecoModal"></label>
           	<br>
           	Contatos: <label id="telefone1Modal"></label> e <label id="telefone2Modal"></label>
           	<br>
@@ -1183,7 +1014,7 @@
           <div class="modal-body" id="copiarLogEncHardware">
           	Problema Relatado: <label id="problemaEncHardModal"></label>
           	<br>
-          	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncHardModal"></label>
+          	DescriÃ§Ã£o detalhada da aÃ§Ã£o efetuada ou orientaÃ§Ã£o: <label id="testesEncHardModal"></label>
           	<br>
           	Gerente: <label id="gerenteEncHardModal"></label>
           	<br>
@@ -1213,11 +1044,11 @@
           	<br>
          	Serie: <label id="seriePinpadModal"></label>
           	<br>
-           	Numero Lógico: <label id="numeroLogicoModal"></label>
+           	Numero LÃ³gico: <label id="numeroLogicoModal"></label>
            	<br>
            	Estabelecimento Cielo: <label id="estabelecimentoCieloModal"></label>
            	<br>
-           	Endereço: <label id="enderecoPinpadModal"></label>
+           	EndereÃ§o: <label id="enderecoPinpadModal"></label>
           	<br>
           	Contatos: <label id="telefone1PinpadModal"></label> e <label id="telefone2PinpadModal"></label>
            	<br>
@@ -1253,7 +1084,7 @@
           <div class="modal-body" id="copiarLogEncPinpad">
           	Problema Relatado: <label id="problemaEncPinModal"></label>
           	<br>
-          	Descrição detalhada da ação efetuada ou orientação: <label id="testesEncPinModal"></label>
+          	DescriÃ§Ã£o detalhada da aÃ§Ã£o efetuada ou orientaÃ§Ã£o: <label id="testesEncPinModal"></label>
           	<br>
           	Gerente: <label id="gerenteEncPinModal"></label>
           	<br>
@@ -1267,12 +1098,12 @@
     </div>
     <!-- Fim modal encerramento pinpad-->
 
-    <!-- Modal notificação-->
+    <!-- Modal notificaÃ§Ã£o-->
     <div id="notificacao" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Log para notificação</h4>
+            <h4 class="modal-title">Log para notificaÃ§Ã£o</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 			<div class="row" style="padding-top: 10px">
@@ -1280,13 +1111,13 @@
 				<div class="col-10">
 					<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     	<li class="nav-item">
-                      		<a class="nav-link active" id="pills-not1-tab" data-toggle="pill" href="#pills-not1" role="tab" aria-controls="pills-not1" aria-selected="true">1ª Tentativa</a>
+                      		<a class="nav-link active" id="pills-not1-tab" data-toggle="pill" href="#pills-not1" role="tab" aria-controls="pills-not1" aria-selected="true">1Âª Tentativa</a>
                     	</li>
                     	<li class="nav-item">
-                     		 <a class="nav-link" id="pills-not2-tab" data-toggle="pill" href="#pills-not2" role="tab" aria-controls="pills-not2" aria-selected="false">2ª Tentativa</a>
+                     		 <a class="nav-link" id="pills-not2-tab" data-toggle="pill" href="#pills-not2" role="tab" aria-controls="pills-not2" aria-selected="false">2Âª Tentativa</a>
                     	</li>
                     	<li class="nav-item">
-                     		 <a class="nav-link" id="pills-not3-tab" data-toggle="pill" href="#pills-not3" role="tab" aria-controls="pills-not3" aria-selected="false">3ª Tentativa</a>
+                     		 <a class="nav-link" id="pills-not3-tab" data-toggle="pill" href="#pills-not3" role="tab" aria-controls="pills-not3" aria-selected="false">3Âª Tentativa</a>
                     	</li>
                   	</ul>
 				</div>
@@ -1296,9 +1127,8 @@
 					<div class="modal-body" id="copiarLogNotificacao1">
 						#1 Tentativa de Contato
 						<br>
-						Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito a tentativa de ligar nos 
-						seguintes telefones da filial: <label id="telefone1NotModal"></label> e <label id="telefone2NotModal"></label> e VOIP.
-          				Por gentileza entrar em contato para que seja verificado o caso, se possível, informar um número celular.
+						Enviada notificaÃ§Ã£o para a loja, via Service Now, solicitando contato, pois nÃ£o estou conseguindo contato 
+						nos seguintes telefones da filial: <label id="telefone1NotModal"></label> e <label id="telefone2NotModal"></label> e VOIP.
           			</div>
           			<div class="modal-footer">
             			<a href="#" id="btnCopiarLogNotificacao" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao1"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
@@ -1308,10 +1138,9 @@
 					<div class="modal-body" id="copiarLogNotificacao2">
 						#2 Tentativa de Contato
 						<br>
-						Tentativa de contato com a filial para verificar o incidente, sem sucesso. Feito a tentativa de ligar nos 
-						seguintes telefones da filial:<label id="telefone1NotModal2"></label> e <label id="telefone2NotModal2"></label> e VOIP. 
+						Enviada notificaÃ§Ã£o para a loja, via Service Now, solicitando contato, pois nÃ£o estou conseguindo contato 
+						nos seguintes telefones da filial: <label id="telefone1NotModal2"></label> e <label id="telefone2NotModal2"></label> e VOIP. 
 						E tambem com o(a) GGL: <label id="nomeGGLNotModal"></label> no <label id="telGGLNotModal"></label>.
-						Por gentileza entrar em contato para que seja verificado o caso, se possível, informar um número celular.
           			</div>
           			<div class="modal-footer">
             			<a href="#" id="btnCopiarLogNotificacao2" data-clipboard-action="copy" data-clipboard-target="#copiarLogNotificacao2"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
@@ -1321,7 +1150,7 @@
 					<div class="modal-body" id="copiarLogNotificacao3">
 						#Falta de contato
 						<br>
-						Estou finalizando o incidente por três tentativas de contato sem sucesso com os seguintes telefones da filial: 
+						Estou finalizando o incidente por trÃªs tentativas de contato sem sucesso com os seguintes telefones da filial: 
 						<label id="telefone1NotModal3"></label> e <label id="telefone2NotModal3"></label> e VOIP. 
 						E tambem com o(a) GGL: <label id="nomeGGLNotModal2"></label> no <label id="telGGLNotModal2"></label>.
           			</div>
@@ -1333,22 +1162,22 @@
         </div>
       </div>
     </div>
-    <!-- Fim modal notificação-->
+    <!-- Fim modal notificaÃ§Ã£o-->
     
-    <!-- Modal Cobrança-->
+    <!-- Modal CobranÃ§a-->
     <div id="cobranca" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Log para Cobrança</h4>
+            <h4 class="modal-title">Log para CobranÃ§a</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body" id="copiarLogCobranca">
-          	#Cobrança
+          	#CobranÃ§a
           	<br><br>
-          	O gerente <label id="gerenteCobModal"></label> solicita urgência no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
+          	O gerente <label id="gerenteCobModal"></label> solicita urgÃªncia no atendimento. Informou mais um telefone para contato <label id="telAltCobModal"></label>
           	<br>
-          	Mais informações:
+          	Mais informaÃ§Ãµes:
           	<label id="maisInfoModal"></label>
           </div>
           <div class="modal-footer">
@@ -1357,29 +1186,16 @@
         </div>
       </div>
     </div>
-    <!-- Fim modal Cobrança-->
-
-  <!-- Bootstrap core JavaScript-->
-  	<script src="/js/clipboard.min.js"></script>
+    <!-- Fim modal CobranÃ§a-->
+   
+    <script src="/js/clipboard.min.js"></script>
   	<script src="/js/copiarLogClipboard.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="/js/somenteNumero.js"></script>
-  <script src="/js/logHardwareADM.js"></script>
-  <script src="/js/logPinpadADM.js"></script>
-  <script src="/js/logNotificacao.js"></script>
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  
-
-  <!-- Core plugin JavaScript-->
-  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="/js/sb-admin-2.min.js"></script>
-  
-
-</body>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="/js/somenteNumero.js"></script>
+    <script src="/js/logHardware.js"></script>
+    <script src="/js/logPinpad.js"></script>
+    <script src="/js/logNotificacao.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
 </html>

@@ -84,7 +84,7 @@
      
       <!-- Heading -->
       <div class="sidebar-heading">
-        Controles de Dados
+        Controles de dados
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -113,6 +113,45 @@
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="CadastroLoja"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Loja</a>
             <a class="collapse-item" href="AtualizaLoja"><i class="fas fa-fw fa-edit"></i> Alterar Loja</a>
+          </div>
+        </div>
+      </li>
+                  <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Controles Operacionais
+      </div>
+     
+                  <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDesvio"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Desvio</a>
+            <a class="collapse-item" href="ListarDesvio"><i class="fas fa-fw fa-clipboard-list"></i> Listar Desvios</a>
+            <a class="collapse-item" href="ListarDesvioNaoDeacordo"><i class="far fa-thumbs-up"></i> Feedback Analista</a>
+            <a class="collapse-item" href="LiberacaoDeDesvio"><i class="fas fa-lock-open"></i> Liberar Desvios</a>
+          </div>
+        </div>
+      </li>
+      
+            <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-archive"></i>
+          <span>Pandora</span>
+        </a>
+        <div id="Leitura" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDeAlinhamento"><i class="fas fa-fw fa-plus-square"></i> Criar Documento</a>
+            <a class="collapse-item" href="ListarAlinhamentos"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>e
           </div>
         </div>
       </li>
@@ -347,7 +386,7 @@
   									<div class="input-group-prepend">
     									<span class="input-group-text" style="color: black;"><strong>Endereco</strong></span>
   									</div>
-  									<textarea class="form-control" aria-label="Com textarea" readonly id="endereco" style="resize: none; height: 150px">${data.enderecoCompleto }</textarea>
+  									<textarea class="form-control" id="endereco" readonly aria-label="Com textarea" style="resize: none; height: 150px">${data.enderecoCompleto }</textarea>
 								</div>
 							</div>
                     	</div>
@@ -396,15 +435,6 @@
 							</div>
 						</div>
                     </div>
-<!--                     <div class="row"> -->
-<!--                       <div class="col-4"> -->
-<!--                         <label for="emailLoja">Email Loja</label> -->
-<!--                       </div> -->
-<!--                     </div> -->
-<!--                     <div class="row"> -->
-<!--                       <div class="col-4"> -->
-<%--                        <textarea class="emailLoja" id="emailLoja" class="form-control" readonly>${data.email }</textarea> --%>
-<!--                       </div> -->
                     <div class="row">
 						<div class="col-11">
 							<div class="input-group">

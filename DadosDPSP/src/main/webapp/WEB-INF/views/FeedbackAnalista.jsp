@@ -9,9 +9,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-<!--   <meta name="author" content=""> -->
+  <meta name="author" content="">
 
   <title>Administrador de dados</title>
+  
+  <link rel="icon" type="imagem/png" href="/img/favicon.ico" />
 
   <!-- Custom fonts for this template-->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,9 +22,6 @@
   <!-- Custom styles for this template-->
   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
-  
-  <!--Icone do navegador-->
-	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
 
 </head>
 
@@ -42,22 +41,16 @@
         <div class="sidebar-brand-text mx-3">Administrador de dados</div>
       </a>
 
-		<!-- Divider -->
+ 		<!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
         Ferramentas
       </div>
-      
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/Dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-            <li class="nav-item">
-      	<a class="nav-link" href="/DataADM">
+      	<a class="nav-link" href="/Data">
         	<i class="fas fa-database"></i>
           	<span>Sistema de Dados</span>
           </a>
@@ -81,46 +74,6 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Controles de Dados
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Analistas</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="CadastroAnalista"><i class="fas fa-fw fa-user-plus"></i> Cadastrar Analista</a>
-            <a class="collapse-item" href="ListarAnalista"><i class="fas fa-fw fa-user-edit"></i> Listar Analista</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-store"></i>
-          <span>Lojas</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="CadastroLoja"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Loja</a>
-            <a class="collapse-item" href="AtualizaLoja"><i class="fas fa-fw fa-edit"></i> Alterar Loja</a>
-          </div>
-        </div>
-      </li>
-
-    
-
-      <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
@@ -138,7 +91,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
+        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -193,83 +146,99 @@
                 <div class="col-6">
                     <div class="row" style="height: 30px"></div>
                     <div class="row">
-                        <h1>Cadastro de Analistas</h1>
+                        <h1>Feedback do Desvio</h1>
                     </div>
                 </div>
                 <div class="col-2"></div>
             </div>
-            <form action="/AlterarAnalista" method="GET">
+            <form action="/Feedback" method="GET">
                 <div class="row" style="padding-top: 30px; padding-bottom: 30px; border: 2px; border-style: solid; border-width: 100%; border-radius: 10px">
                     <div class="col-2"></div>
                     <div class="col-8">
                         <div class="row">
-                            <div class="col-12">
+                        	<div class="col-1"></div>
+                            <div class="col-5">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Nº Chamado</span>
                                     </div>
-                                    <input type="text" class="form-control" name="fullName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.fullName}">
+                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${Desvio._id}">
                                 </div>
+                            </div>
+                            <div class="col-5">
+                          	<div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Data Desvio</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="dataDesvio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${Desvio.dataDesvio}">
+                                </div> 
+                                <div class="col-1"></div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                        	<div class="col-2"></div>
+                            <div class="col-8">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Login W3</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo do Desvio</span>
                                     </div>
-                                    <input type="text" class="form-control" name="_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${user._id}">
+                                    <input type="text" class="form-control" name="tipoDesvio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly value="${Desvio.tipoDesvio}">
                                 </div> 
                             </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Acesso</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${user.access}">
-                                </div> 
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-              <div class="row">
-              	<div class="col-5"></div>
-                <div class="col-3">
-                	<button type="submit" class="btn btn-success">Alterar Analista</button>
-                </div>
-                <div class="col-4"></div>
-              </div>
-                                      <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-6">
-                      <div id="erro" style="padding-top: 20px; padding-bottom: 20px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-                  </div>
-                  <div class="col-3"></div>
-              </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-            </form>
-        </div>
+                        <div class="row">
+                        	<div class="col-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Justificativa do Desvio</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="access" aria-label="Sizing example input" readonly aria-describedby="inputGroup-sizing-default" value="${Desvio.justificativa}">
+                                </div> 
+                        	</div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-5">
+                        		<h5>Está de acordo com o desvio?</h5>
+                        	</div>
+                        	<div class="col-6">
+                        		<div class="form-check form-check-inline">
+  									<input class="form-check-input" type="radio" name="deAcordo" id="inlineRadio1" value="Sim">
+  									<label class="form-check-label" for="inlineRadio1">Sim</label>
+								</div>
+								<div class="form-check form-check-inline">
+  									<input class="form-check-input" type="radio" name="deAcordo" id="inlineRadio2" value="Nao">
+  									<label class="form-check-label" for="inlineRadio2">Não</label>
+								</div>
+                        	</div>
+                        </div>
+                        <div class="row">
+                        	<div class="input-group">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text">Comentarios</span>
+  								</div>
+  								<textarea class="form-control" name="comentario" required aria-label="Com textarea" style="height: 100px; resize: none"></textarea>
+							</div>
+                        </div>
+              			<div class="row" style="padding-top: 20px">
+              				<div class="col-4"></div>
+                			<div class="col-4">
+                				<div class="row">
+                					<div class="col-8">
+                						<button type="submit" class="btn btn-success">Dar Feedback</button>
+                					</div>
+                					<div class="col-4">
+                						<a href="/CancelarFeedback"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                					</div>
+                				</div>
+                			</div>
+                			<div class="col-4"></div>
+              			</div>
+                    	</div>
+                    	<div class="col-2"></div>
+                	</div>
+            	</form>
+        	</div>
         <!-- /.container-fluid -->
 
       </div>
@@ -286,24 +255,37 @@
       <!-- End of Footer -->
 
     </div>
+    <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
 
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  	<script src="/js/clipboard.min.js"></script>
+  	<script src="/js/copiarLogClipboard.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="/js/somenteNumero.js"></script>
+  <script src="/js/logHardwareADM.js"></script>
+  <script src="/js/logPinpadADM.js"></script>
+  <script src="/js/logNotificacao.js"></script>
   <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  
 
   <!-- Core plugin JavaScript-->
   <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
+  
 
 </body>
 

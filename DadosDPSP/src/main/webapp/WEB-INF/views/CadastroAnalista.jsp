@@ -42,20 +42,48 @@
         <div class="sidebar-brand-text mx-3">Administrador de dados</div>
       </a>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+		<!-- Divider -->
+      <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Ferramentas
+      </div>
+      
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/Dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-            <li class="nav-item">
-      	<a class="nav-link" href="/DataADM">
-        	<i class="fas fa-database"></i>
-          	<span>Sistema de Dados</span>
-          </a>
+            <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <div class="sidebar-heading">
+        Controles Pessoais
+      </div>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarDesvioAnalista">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios Recebidos</span></a>
+      </li>
+            <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <div class="sidebar-heading">
+        Controles Pessoais
+      </div>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarDesvioAnalista">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios Recebidos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
+          <i class="fas fa-glasses"></i>
+          <span>Pendencia de Leitura</span></a>
       </li>
 
       <!-- Divider -->
@@ -63,7 +91,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Controles de Dados
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -116,7 +144,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="height: 60px; background-color: black;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -150,7 +178,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
             
             	<div class="btn-group">
- 	 				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Analista Logado: <%= request.getUserPrincipal().getName() %>
   					</button>
   					<div class="dropdown-menu dropdown-menu-right">

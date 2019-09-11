@@ -72,24 +72,6 @@
   resize: none;
   border-radius: 0 5px 5px 0;
 }
-#endereco {
-  text-align: center;
-  background-color: #DCDCDC;
-  color: #7D7A79;
-  width: 280px;
-  height: 145px;
-  resize: none;
-  border-radius: 0 0 5px 5px;
-}
-#enderecoCompleto {
-	text-align: center;
-  	background-color: #DCDCDC;
-  	color: #7D7A79;
-  	width: 92%;
-  	height: 145px;
-  	resize: none;
-  	border-radius: 0 0 5px 5px;
-}
 #popular{
   background-color: #FFFFFF;
   width:40%;

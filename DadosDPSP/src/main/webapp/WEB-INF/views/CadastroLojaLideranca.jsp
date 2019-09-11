@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +14,12 @@
   <title>Administrador de dados</title>
 
   <!-- Custom fonts for this template-->
- <!-- Custom fonts for this template-->
-  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-
   <!-- Custom styles for this template-->
-  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
   
   <!--Icone do navegador-->
 	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
@@ -118,6 +116,45 @@
           </div>
         </div>
       </li>
+                  <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Controles Operacionais
+      </div>
+      
+                  <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-map-signs"></i>
+          <span>Desvios</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDesvio"><i class="fas fa-fw fa-plus-square"></i> Cadastrar Desvio</a>
+            <a class="collapse-item" href="ListarDesvio"><i class="fas fa-fw fa-clipboard-list"></i> Listar Desvios</a>
+            <a class="collapse-item" href="ListarDesvioNaoDeacordo"><i class="far fa-thumbs-up"></i> Feedback Analista</a>
+            <a class="collapse-item" href="LiberacaoDeDesvio"><i class="fas fa-lock-open"></i> Liberar Desvios</a>
+          </div>
+        </div>
+      </li>
+      
+            <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-archive"></i>
+          <span>Pandora</span>
+        </a>
+        <div id="Leitura" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="CadastroDeAlinhamento"><i class="fas fa-fw fa-plus-square"></i> Criar Documento</a>
+            <a class="collapse-item" href="ListarAlinhamento"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>
+          </div>
+        </div>
+      </li>
 
     
 
@@ -149,7 +186,6 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-
             <div class="topbar-divider d-none d-sm-block"></div>
 
             	<div class="btn-group">
@@ -163,79 +199,65 @@
   					</div>
 				</div>
 
+
           </ul>
 
         </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-4">
-                	<form class="" action="/BuscarAtualizar" method="GET">
-                  		<div class="row">
-                  			<div class="col-8">
-                  				<div class="input-group mb-3">
-  									<div class="input-group-prepend">
-    									<span class="input-group-text" id="inputGroup-sizing-default" style="color: black;"><strong>Digite o VD da loja</strong></span>
-  									</div>
-  									<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="id" aria-describedby="inputGroup-sizing-default" placeholder="${data._id }" value="" maxlength="4" onkeypress='return SomenteNumero(event)' required style="text-align: center">
-								</div>
-                  			</div>
-                  			<div class="col-2">
-                  				<button class="btn btn-primary" type="submit">Buscar</button>
-                  			</div>
-                  		</div>
-                  	</form>
-                 </div>
-                 <div class="col-5">
-                 	                                  <form class="" action="/ExcluirLoja" method="GET">
-                                    <div class="row">
-                                      <input type="hidden" name="id" value="${data._id }">
-                                         <button type="submit" class="btn btn-danger" >Excluir Loja</button>
-                                     </div>
-                               </form>
-                 </div>
-            </div>
-            <form class="" action="/AtualizarLoja" method="GET">
+        <div class="container-fluid" style="padding-top: 40px">
+            <form class="" action="CadastrarLoja" method="POST">
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-dados" role="tabpanel" aria-labelledby="pills-dados-tab" >
                   <div class="row">
                     <div class="col-sm">
                       <div id="dadosLojaCadastro">
-                      	<div class="row">
-            				Dados Loja
-            			</div>
+                        <div class="row">
+                          Dados Loja
+                        </div>
                         <br>
                         <div class="row">
-                          <div class="col-11">
+                          <div class="col-4">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>VD</strong></span>
+                              </div>
+                              <input type="text" class="form-control" name="id" placeholder="" id="id" maxlength="4" onkeypress='return SomenteNumero(event)' required value=""style="text-align: center;">
+                            </div>
+                          </div>
+                          <div class="col-7">
                               <div class="input-group input-group-sm mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Bandeira</strong></span>
+                                    <label class="input-group-text" style="color: black;"><strong>Bandeira</strong></label>
                                   </div>
-                                  <input type="text" class="form-control" name="bandeira"  value="${data.bandeira }" style="text-align: center" maxlength="3">
+                                  <select class="custom-select" name="bandeira">
+                                    <option selected>Escolha</option>
+                                    <option value="DSP">Drogaria São Paulo</option>
+                                    <option value="DP">Drogaria Pacheco</option>
+                                  </select>
                                 </div>
                           </div>
                         </div>
                         <div class="row">
-                            <div class="col-11">
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Loja</strong></span>
-                                  </div>
-                                  <input type="text" class="form-control" value="${data.loja }" id="loja" name="loja" style="text-align: center;">
-                                </div>
+                          <div class="col-11">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Loja</strong></span>
                               </div>
+                              <input type="text" class="form-control" value="" id="loja" name="loja" style="text-align: center;">
+                            </div>
+                          </div>
                         </div>
                         <div class="row">
-                            <div class="col-11">
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm"  style="color: black;"><strong>Insc. Estadual</strong></span>
-                                  </div>
-                                  <input type="text" class="form-control"  value="${data.inscEstadual }" id="inscEstadual" name="inscEstadual" style="text-align: center;">
-                                </div>
+                          <div class="col-11">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm"  style="color: black;"><strong>Insc. Estadual</strong></span>
                               </div>
+                              <input type="text" class="form-control"  value="" id="inscEstadual" name="inscEstadual" style="text-align: center;">
+                            </div>
+                          </div>
                         </div>
                         <div class="row">
                             <div class="col-11">
@@ -243,7 +265,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CNPJ</strong></span>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.cnpj }" id="cnpj" name="cnpj" style="text-align: center;">
+                                    <input type="text" class="form-control" value="" id="cnpj" name="cnpj" style="text-align: center;">
                                 </div>
                               </div>
                         </div>
@@ -253,19 +275,19 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Inauguração</strong></span>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.inauguracao }" id="inauguracao" name="inauguracao" style="text-align: center;">
+                                    <input type="text" class="form-control" value="" id="inauguracao" name="inauguracao" style="text-align: center;">
                                 </div>
                               </div>
                         </div>
                         <div class="row">
-                            <div class="col-11">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Endereço</strong></span>
-                                    </div>
-                                    <input type="text" class="form-control" value="${data.endereco }" name="endereco" style="text-align: center;">
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Endereço</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" name="endereco" style="text-align: center;">
+                                  </div>
                                 </div>
-                              </div>
                         </div>
                         <div class="row">
                             <div class="col-11">
@@ -273,7 +295,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Bairro</strong></span>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.bairro }"  name="bairro" style="text-align: center;">
+                                    <input type="text" class="form-control" value=""  name="bairro" style="text-align: center;">
                                 </div>
                               </div>
                         </div>
@@ -283,30 +305,41 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Cidade</strong></span>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.cidade }" name="cidade" style="text-align: center;">
+                                    <input type="text" class="form-control" value="" name="cidade" style="text-align: center;">
                                 </div>
                               </div>
                         </div>
                         <div class="row">
-                            <div class="col-5">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text" style="color: black;"><strong>UF</strong></label>
-                                    </div>
-                                    <input type="text" class="form-control" name="uf" class="form-control" value="${data.uf }" style="text-align: center;">
+                          <div class="col-5">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text" style="color: black;"><strong>UF</strong></label>
                                   </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CEP</strong></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="cep" class="form-control" value="${data.cep }" style="text-align: center;">
+                                  <select class="custom-select" name="uf">
+                                    <option selected>Escolha</option>
+                                    <option value="AL">AL</option>
+                                    <option value="BA">BA</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PR">PR</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="SP">SP</option>
+                                  </select>
+                                </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>CEP</strong></span>
                                   </div>
-                            </div>
+                                  <input type="text" class="form-control" name="cep" class="form-control" value="" style="text-align: center;">
+                                </div>
+                          </div>
                         </div>
                       </div>
-                      <br>
                     </div>
                     <div class="col-sm">
                       <div id="contatos">
@@ -320,7 +353,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 1</strong></span>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.telefone1 }" id="telefone1" name="telefone1" style="text-align: center;">
+                                    <input type="text" class="form-control" value="" id="telefone1" name="telefone1" style="text-align: center;">
                                 </div>
                               </div>
                         </div>
@@ -330,7 +363,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Telefone 2</strong></span>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.telefone2 }" id="telefone2" name="telefone2" style="text-align: center;">
+                                    <input type="text" class="form-control" value="" id="telefone2" name="telefone2" style="text-align: center;">
                                 </div>
                               </div>
                         </div>
@@ -343,9 +376,17 @@
                                 </div>
                               </div>
                               <div class="col-7">
-                              <textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" readonly>${data.email }</textarea>
+                              <textarea class="emailLoja" id="emailLoja" class="form-control" id="emailLoja" name="emailLoja" value="" style="text-align: center;"></textarea>
                                         </div>
+                          <!-- <div class="col-4">
+                            <label for="emailLoja">Email Loja</label>
+                          </div>
                         </div>
+                        <div class="row">
+                          <div class="col-4">
+                           <textarea class="emailLoja" id="emailLoja" name="emailLoja" class="form-control" ></textarea>
+                          </div>-->
+                        </div> 
                       </div>
                       <div id="erro" style="padding-top: 40px;" >
                           <c:if test="${mensagemSuccess != null }">
@@ -369,21 +410,21 @@
                               </div>
                           </c:if>
                       </div>
-                      <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 63px;">
+                      <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 90px;">
                         <div id="ggl">
                           <div class="row">
                             GGL
                           </div>
                           <br>
                           <div class="row">
-                                <div class="col-11">
-                                    <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                          <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Nome do GGL</strong></span>
-                                        </div>
-                                        <input type="text" class="form-control" value="${data.ggl }" id="nomeGGL" name="nomeGGL" style="text-align: center;">
-                                    </div>
+                              <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Nome do GGL</strong></span>
+                                      </div>
+                                      <input type="text" class="form-control" value="" id="nomeGGL" name="nomeGGL" style="text-align: center;">
                                   </div>
+                                </div>
                           </div>
                           <div class="row">
                               <div class="col-11">
@@ -391,7 +432,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Tel. do GGL</strong></span>
                                       </div>
-                                      <input type="text" class="form-control" value="${data.telefoneGgl }" id="telefoneGGL" name="telefoneGGL" style="text-align: center;">
+                                      <input type="text" class="form-control" value="" id="telefoneGGL" name="telefoneGGL" style="text-align: center;">
                                   </div>
                                 </div>
                           </div>
@@ -405,24 +446,32 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-11">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Field Local</strong></span>
+                          <div class="col-11">
+                                  <div class="input-group input-group-sm mb-3">
+                                      <div class="input-group-prepend">
+                                        <label class="input-group-text" style="color: black;"><strong>Field Local</strong></label>
+                                      </div>
+                                      <select class="custom-select" name="fieldLocal">
+                                        <option selected>Escolha</option>
+                                        <option value="UNISYS">Unisys</option>
+                                        <option value="VERHAW">Verhaw</option>
+                                      </select>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.fieldLocal }" id="fieldLocal" name="fieldLocal" style="text-align: center;">
-                                </div>
-                              </div>
+                        </div>
                         </div>
                         <div class="row">
                             <div class="col-11">
                                 <div class="input-group input-group-sm mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Field Multifuncional</strong></span>
+                                      <label class="input-group-text" style="color: black;"><strong>Field Multifuncional</strong></label>
                                     </div>
-                                    <input type="text" class="form-control" value="${data.fieldMultifuncional }" id="fieldMultifuncional" name="fieldMultifuncional" style="text-align: center;">
-                                </div>
-                              </div>
+                                    <select class="custom-select" name="fieldMultifuncional">
+                                      <option selected>Escolha</option>
+                                      <option value="OTG">OTG</option>
+                                      <option value="LEXMARK">Lexmark</option>
+                                    </select>
+                                  </div>
+                      </div>
                         </div>
                       </div>
                       <br>
@@ -438,7 +487,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Seg. a Sex.</strong></span>
                                       </div>
-                                      <input type="text" class="form-control" value="${data.segASex }" id="segASex" name="segASex" style="text-align: center;">
+                                      <input type="text" class="form-control" value="" id="segASex" name="segASex" style="text-align: center;">
                                   </div>
                                 </div>
                           </div>
@@ -448,7 +497,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Sab.</strong></span>
                                       </div>
-                                      <input type="text" class="form-control" value="${data.sab }" id="sab" name="sab" style="text-align: center;">
+                                      <input type="text" class="form-control" value="" id="sab" name="sab" style="text-align: center;">
                                   </div>
                                 </div>
                           </div>
@@ -458,7 +507,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Dom.</strong></span>
                                       </div>
-                                      <input type="text" class="form-control" value="${data.dom }" id="dom" name="dom" style="text-align: center;">
+                                      <input type="text" class="form-control" value="" id="dom" name="dom" style="text-align: center;">
                                   </div>
                                 </div>
                           </div>
@@ -468,61 +517,49 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>OBS.</strong></span>
                                       </div>
-                                      <input type="text" class="form-control" value="${data.obs }" name="obs" style="text-align: center;">
+                                      <input type="text" class="form-control" value="" name="obs" style="text-align: center;">
                                   </div>
                                 </div>
                           </div>
                         </div>
                       </div>
-                      <br>
-                      <div class="row">
-                      	<div class="col-11">
-                      		<div class="row">
-                      			<div class="col-2"></div>
-                              	<div class="col-10">
-                              		<input type="hidden" name="id" value="${data._id }">
-                                  	<div class="row">
-                                    	<button type="submit" class="btn btn-success" style="width: 100%">Atualizar Loja</button>
-                                  </div>
-                              	</div>
-                      		</div>
-                      	</div>
-                      	</div>
-                      	</div>
-                      	</div>
-                      	</div>
-                      	</form>
-                      	<br>
-                      	<div class="row">
-                      	
-                      	</div>
-
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <div class="row">
-                              <div class="col-9">
-
-                              </div>
-                              <div class="col-3"></div>
-                            </div>
+                       <div class="row" style="padding-top: 25px">
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success" style="width: 100%">Cadastrar Loja</button>
                         </div>
+                        <div class="col-3"></div>
                       </div>
-
+                    </div>
+                  </div>
+                </div>
+          </div>
+          </form>
+  </div>
+      </div>
+      <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Ferlapx 2019</span>
+            </div>
+          </div>
+        </footer>
+    </div>
+  </div>
   
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/js/somenteNumero.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="/js/sb-admin-2.min.js"></script>
+  <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
