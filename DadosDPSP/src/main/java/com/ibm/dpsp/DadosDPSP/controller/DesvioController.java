@@ -237,6 +237,7 @@ public class DesvioController {
 	public String listarDesvioAnalista(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) throws IOException {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		Desvio d;
+		int contaDesvio = 0;
 		List<Desvio> allDesvios = null;
 		List<Desvio> listPendente = new ArrayList<Desvio>();
 		List<Desvio> listCompleta = new ArrayList<Desvio>();
@@ -250,8 +251,10 @@ public class DesvioController {
 					if(d.getLogon().equals(user.get_id())) {
 						if(d.getDeAcordo() == null) {
 							listPendente.add(d);
+							contaDesvio ++;
 						}else {
 							listCompleta.add(d);
+							contaDesvio ++;
 						}
 					}
 				}
@@ -259,6 +262,7 @@ public class DesvioController {
 		}
 		model.addAttribute("listPendente", listPendente);
 		model.addAttribute("listCompleta", listCompleta);
+		model.addAttribute("contaDesvio", contaDesvio);
 		
 		if(user.getAccess().equals("Lider")) {
 			return "ListarDesvioLideranca";
@@ -478,6 +482,10 @@ public class DesvioController {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		Desvio desvio = db.find(Desvio.class, _id);
 		
+		int contaDesvio = (int) session.getAttribute("contaDesvio");
+		
+		System.out.println(contaDesvio);
+		
 		String mensagemSuccess = null;
 		String mensagemError = null;
 		
@@ -486,28 +494,32 @@ public class DesvioController {
 			desvio.set_rev(desvio.get_rev());
 			desvio.setComentario(comentario);
 			desvio.setDeAcordo(deAcordo);
+			contaDesvio --;
 			db.update(desvio);
 			if(user.getAccess().equals("Lider")) {
 				mensagemSuccess = "Feedback enviado com sucesso!";
 				model.addAttribute("mensagemSuccess", mensagemSuccess);
 				model.addAttribute("mensagemError", mensagemError);
+				session.setAttribute("contaDesvio", contaDesvio);
 				return listarDesvioAnalista(model, session, response, request);
 			}else {
 				if(user.getAccess().equals("ADM")) {
 					mensagemSuccess = "Feedback enviado com sucesso!";
 					model.addAttribute("mensagemSuccess", mensagemSuccess);
 					model.addAttribute("mensagemError", mensagemError);
+					session.setAttribute("contaDesvio", contaDesvio);
 					return listarDesvioAnalista(model, session, response, request);
 				}else {
 					mensagemSuccess = "Feedback enviado com sucesso!";
 					model.addAttribute("mensagemSuccess", mensagemSuccess);
 					model.addAttribute("mensagemError", mensagemError);
+					session.setAttribute("contaDesvio", contaDesvio);
 					return listarDesvioAnalista(model, session, response, request);
 				}
 			}
 		}else {
 			if(user.getAccess().equals("Lider")) {
-				mensagemSuccess = "Feedback enviado com sucesso!";
+				mensagemSuccess = "Feedback já foi encaminhado";
 				model.addAttribute("mensagemSuccess", mensagemSuccess);
 				model.addAttribute("mensagemError", mensagemError);
 				return listarDesvioAnalista(model, session, response, request);

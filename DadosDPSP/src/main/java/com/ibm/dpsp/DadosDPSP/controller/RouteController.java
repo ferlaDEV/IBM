@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cloudant.client.api.Database;
+import com.ibm.dpsp.DadosDPSP.model.entity.Alinhamento;
 import com.ibm.dpsp.DadosDPSP.model.entity.Data;
 import com.ibm.dpsp.DadosDPSP.model.entity.Desvio;
 import com.ibm.dpsp.DadosDPSP.model.entity.Usuario;
@@ -36,6 +37,11 @@ public class RouteController {
 		return "/logout";
 	}
 	
+	@RequestMapping(value="/testePopular", method = RequestMethod.GET)
+	public String testePopular() {
+		return "/testePopular";
+	}
+	
 	@RequestMapping(value="/LoginW3", method = RequestMethod.GET)
 	public String loginW3() {
 		return "LoginW3";
@@ -49,6 +55,11 @@ public class RouteController {
 	@RequestMapping(method = RequestMethod.GET, value="/LiberacaoDeDesvio")
 	public String LiberacaoDeDesvio() {
 		return "LiberacaoDeDesvio";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/Produtividade")
+	public String produtividade() {
+		return "Produtividade";
 	}
 	
 	@RequestMapping(value="/CadastroDesvio")
@@ -69,7 +80,8 @@ public class RouteController {
 	public String index(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) throws IOException {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		Data data = new Data();
-
+		
+		int contaDesvio = 0;
 		Desvio d;
 		List<Desvio> allDesvios = null;
 		List<Desvio> listPendente = new ArrayList<Desvio>();
@@ -77,19 +89,626 @@ public class RouteController {
 		allDesvios = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
         .getDocsAs(Desvio.class);
 		
+		int contaLeitura = 0;
+		Alinhamento a;
+		List<Alinhamento> allAlinhamentos = null;
+		List<Alinhamento> lista = new ArrayList<Alinhamento>();
+		allAlinhamentos = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse()
+        .getDocsAs(Alinhamento.class);
+		
 		for(int i=0; i< allDesvios.size(); i++) {
 			d = allDesvios.get(i);
 			if(d.getLogon() != null) {
-				if(d.getLogon().equals(user.get_id())) {
-					listCompleta.add(d);
-					if(d.getDeAcordo() == null) {
-						listPendente.add(d);
+				if(d.getLiberar() != null) {
+					if(d.getLogon().equals(user.get_id())) {
+						if(d.getDeAcordo() == null) {
+							listPendente.add(d);
+							contaDesvio ++;
+						}else {
+							listCompleta.add(d);
+						}
 					}
 				}
 			}
 		}
+		if(user.get_id().equals("andrespx")) {
+			for(int i=0; i< allAlinhamentos.size(); i++) {
+				a = allAlinhamentos.get(i);
+				if(a.getDataAlinhamento() != null) {
+					if(a.getAndrespx() == null) {
+						lista.add(a);
+						contaLeitura ++;
+					}else {
+						if(a.getAndrespx().equals("")) {
+							lista.add(a);
+							contaLeitura ++;
+						}
+					}
+				}
+			}
+		}else {
+			if(user.get_id().equals("buenoga")) {
+				for(int i=0; i< allAlinhamentos.size(); i++) {
+					a = allAlinhamentos.get(i);
+					if(a.getDataAlinhamento() != null) {
+						if(a.getBuenoga() == null) {
+							lista.add(a);
+							contaLeitura ++;
+						}else {
+							if(a.getBuenoga().equals("")) {
+								lista.add(a);
+								contaLeitura ++;
+							}
+						}
+					}
+				}
+			}else {
+				if(user.get_id().equals("eduaopa")) {
+					for(int i=0; i< allAlinhamentos.size(); i++) {
+						a = allAlinhamentos.get(i);
+						if(a.getDataAlinhamento() != null) {
+							if(a.getEduaopa() == null) {
+								lista.add(a);
+								contaLeitura ++;
+							}else {
+								if(a.getEduaopa().equals("")) {
+									lista.add(a);
+									contaLeitura ++;
+								}
+							}
+						}
+					}
+				}else {
+					if(user.get_id().equals("felneves")) {
+						for(int i=0; i< allAlinhamentos.size(); i++) {
+							a = allAlinhamentos.get(i);
+							if(a.getDataAlinhamento() != null) {
+								if(a.getFelneves() == null) {
+									lista.add(a);
+									contaLeitura ++;
+								}else {
+									if(a.getFelneves().equals("")) {
+										lista.add(a);
+										contaLeitura ++;
+									}
+								}
+							}
+						}
+					}else {
+						if(user.get_id().equals("felsan")) {
+							for(int i=0; i< allAlinhamentos.size(); i++) {
+								a = allAlinhamentos.get(i);
+								if(a.getDataAlinhamento() != null) {
+									if(a.getFelsan() == null) {
+										lista.add(a);
+										contaLeitura ++;
+									}else {
+										if(a.getFelsan().equals("")) {
+											lista.add(a);
+											contaLeitura ++;
+										}
+									}
+								}
+							}
+						}else {
+							if(user.get_id().equals("ferlapx")) {
+								for(int i=0; i< allAlinhamentos.size(); i++) {
+									a = allAlinhamentos.get(i);
+									if(a.getDataAlinhamento() != null) {
+										if(a.getFerlapx() == null) {
+											lista.add(a);
+											contaLeitura ++;
+										}else {
+											if(a.getFerlapx().equals("")) {
+												lista.add(a);
+												contaLeitura ++;
+											}
+										}
+									}
+								}
+							}else {
+								if(user.get_id().equals("gsoli")) {
+									for(int i=0; i< allAlinhamentos.size(); i++) {
+										a = allAlinhamentos.get(i);
+										if(a.getDataAlinhamento() != null) {
+											if(a.getGsoli() == null) {
+												lista.add(a);
+												contaLeitura ++;
+											}else {
+												if(a.getGsoli().equals("")) {
+													lista.add(a);
+													contaLeitura ++;
+												}
+											}
+										}
+									}
+								}else {
+									if(user.get_id().equals("jquei")) {
+										for(int i=0; i< allAlinhamentos.size(); i++) {
+											a = allAlinhamentos.get(i);
+											if(a.getDataAlinhamento() != null) {
+												if(a.getJquei() == null) {
+													lista.add(a);
+													contaLeitura ++;
+												}else {
+													if(a.getJquei().equals("")) {
+														lista.add(a);
+														contaLeitura ++;
+													}
+												}
+											}
+										}
+									}else {
+										if(user.get_id().equals("juancda")) {
+											for(int i=0; i< allAlinhamentos.size(); i++) {
+												a = allAlinhamentos.get(i);
+												if(a.getDataAlinhamento() != null) {
+													if(a.getJuancda() == null) {
+														lista.add(a);
+														contaLeitura ++;
+													}else {
+														if(a.getJuancda().equals("")) {
+															lista.add(a);
+															contaLeitura ++;
+														}
+													}
+												}
+											}
+										}else {
+											if(user.get_id().equals("leiper")) {
+												for(int i=0; i< allAlinhamentos.size(); i++) {
+													a = allAlinhamentos.get(i);
+													if(a.getDataAlinhamento() != null) {
+														if(a.getLeiper() == null) {
+															lista.add(a);
+															contaLeitura ++;
+														}else {
+															if(a.getLeiper().equals("")) {
+																lista.add(a);
+																contaLeitura ++;
+															}
+														}
+													}
+												}
+											}else {
+												if(user.get_id().equals("ligiar")) {
+													for(int i=0; i< allAlinhamentos.size(); i++) {
+														a = allAlinhamentos.get(i);
+														if(a.getDataAlinhamento() != null) {
+															if(a.getLigiar() == null) {
+																lista.add(a);
+																contaLeitura ++;
+															}else {
+																if(a.getLigiar().equals("")) {
+																	lista.add(a);
+																	contaLeitura ++;
+																}
+															}
+														}
+													}
+												}else {
+													if(user.get_id().equals("lilianfp")) {
+														for(int i=0; i< allAlinhamentos.size(); i++) {
+															a = allAlinhamentos.get(i);
+															if(a.getDataAlinhamento() != null) {
+																if(a.getLilianfp() == null) {
+																	lista.add(a);
+																	contaLeitura ++;
+																}else {
+																	if(a.getLilianfp().equals("")) {
+																		lista.add(a);
+																		contaLeitura ++;
+																	}
+																}
+															}
+														}
+													}else {
+														if(user.get_id().equals("malonenc")) {
+															for(int i=0; i< allAlinhamentos.size(); i++) {
+																a = allAlinhamentos.get(i);
+																if(a.getDataAlinhamento() != null) {
+																	if(a.getMalonenc() == null) {
+																		lista.add(a);
+																		contaLeitura ++;
+																	}else {
+																		if(a.getMalonenc().equals("")) {
+																			lista.add(a);
+																			contaLeitura ++;
+																		}
+																	}
+																}
+															}
+														}else {
+															if(user.get_id().equals("marcoabj")) {
+																for(int i=0; i< allAlinhamentos.size(); i++) {
+																	a = allAlinhamentos.get(i);
+																	if(a.getDataAlinhamento() != null) {
+																		if(a.getMarcoabj() == null) {
+																			lista.add(a);
+																			contaLeitura ++;
+																		}else {
+																			if(a.getMarcoabj().equals("")) {
+																				lista.add(a);
+																				contaLeitura ++;
+																			}
+																		}
+																	}
+																}
+															}else {
+																if(user.get_id().equals("mariaels")) {
+																	for(int i=0; i< allAlinhamentos.size(); i++) {
+																		a = allAlinhamentos.get(i);
+																		if(a.getDataAlinhamento() != null) {
+																			if(a.getMariaels() == null) {
+																				lista.add(a);
+																				contaLeitura ++;
+																			}else {
+																				if(a.getMariaels().equals("")) {
+																					lista.add(a);
+																					contaLeitura ++;
+																				}
+																			}
+																		}
+																	}
+																}else {
+																	if(user.get_id().equals("mayss")) {
+																		for(int i=0; i< allAlinhamentos.size(); i++) {
+																			a = allAlinhamentos.get(i);
+																			if(a.getDataAlinhamento() != null) {
+																				if(a.getMayss() == null) {
+																					lista.add(a);	
+																					contaLeitura ++;
+																				}else {
+																					if(a.getMayss().equals("")) {
+																						lista.add(a);
+																						contaLeitura ++;
+																					}
+																				}
+																			}
+																		}
+																	}else {
+																		if(user.get_id().equals("mfdiaspx")) {
+																			for(int i=0; i< allAlinhamentos.size(); i++) {
+																				a = allAlinhamentos.get(i);
+																				if(a.getDataAlinhamento() != null) {
+																					if(a.getMfdiaspx() == null) {
+																						lista.add(a);	
+																						contaLeitura ++;
+																					}else {
+																						if(a.getMfdiaspx().equals("")) {
+																							lista.add(a);
+																							contaLeitura ++;																					}
+																					}
+																				}
+																			}
+																		}else {
+																			if(user.get_id().equals("munizn")) {
+																				for(int i=0; i< allAlinhamentos.size(); i++) {
+																					a = allAlinhamentos.get(i);
+																					if(a.getDataAlinhamento() != null) {
+																						if(a.getMunizn() == null) {
+																							lista.add(a);
+																							contaLeitura ++;
+																						}else {
+																							if(a.getMunizn().equals("")) {
+																								lista.add(a);
+																								contaLeitura ++;
+																							}
+																						}
+																					}
+																				}
+																			}else {
+																				if(user.get_id().equals("murisil")) {
+																					for(int i=0; i< allAlinhamentos.size(); i++) {
+																						a = allAlinhamentos.get(i);
+																						if(a.getDataAlinhamento() != null) {
+																							if(a.getMurisil() == null) {
+																								lista.add(a);	
+																								contaLeitura ++;
+																							}else {
+																								if(a.getMurisil().equals("")) {
+																									lista.add(a);
+																									contaLeitura ++;
+																								}
+																							}
+																						}
+																					}
+																				}else {
+																					if(user.get_id().equals("ofaria")) {
+																						for(int i=0; i< allAlinhamentos.size(); i++) {
+																							a = allAlinhamentos.get(i);
+																							if(a.getDataAlinhamento() != null) {
+																								if(a.getOfaria() == null) {
+																									lista.add(a);	
+																									contaLeitura ++;
+																								}else {
+																									if(a.getOfaria().equals("")) {
+																										lista.add(a);
+																										contaLeitura ++;
+																									}
+																								}
+																							}
+																						}
+																					}else {
+																						if(user.get_id().equals("oliversi")) {
+																							for(int i=0; i< allAlinhamentos.size(); i++) {
+																								a = allAlinhamentos.get(i);
+																								if(a.getDataAlinhamento() != null) {
+																									if(a.getOliversi() == null) {
+																										lista.add(a);	
+																										contaLeitura ++;
+																									}else {
+																										if(a.getOliversi().equals("")) {
+																											lista.add(a);
+																											contaLeitura ++;
+																										}
+																									}
+																								}
+																							}
+																						}else {
+																							if(user.get_id().equals("petma")) {
+																								for(int i=0; i< allAlinhamentos.size(); i++) {
+																									a = allAlinhamentos.get(i);
+																									if(a.getDataAlinhamento() != null) {
+																										if(a.getPetma() == null) {
+																											lista.add(a);	
+																											contaLeitura ++;
+																										}else {
+																											if(a.getPetma().equals("")) {
+																												lista.add(a);
+																												contaLeitura ++;
+																											}
+																										}
+																									}
+																								}
+																							}else {
+																								if(user.get_id().equals("phperepx")) {
+																									for(int i=0; i< allAlinhamentos.size(); i++) {
+																										a = allAlinhamentos.get(i);
+																										if(a.getDataAlinhamento() != null) {
+																											if(a.getPhperepx() == null) {
+																												lista.add(a);	
+																												contaLeitura ++;
+																											}else {
+																												if(a.getPhperepx().equals("")) {
+																													lista.add(a);
+																													contaLeitura ++;
+																												}
+																											}
+																										}
+																									}
+																								}else {
+																									if(user.get_id().equals("pjordaot")) {
+																										for(int i=0; i< allAlinhamentos.size(); i++) {
+																											a = allAlinhamentos.get(i);
+																											if(a.getDataAlinhamento() != null) {
+																												if(a.getPjordaot() == null) {
+																													lista.add(a);	
+																													contaLeitura ++;
+																												}else {
+																													if(a.getPjordaot().equals("")) {
+																														lista.add(a);
+																														contaLeitura ++;
+																													}
+																												}
+																											}
+																										}
+																									}else {
+																										if(user.get_id().equals("rafaelos")) {
+																											for(int i=0; i< allAlinhamentos.size(); i++) {
+																												a = allAlinhamentos.get(i);
+																												if(a.getDataAlinhamento() != null) {
+																													if(a.getRafaelos() == null) {
+																														lista.add(a);	
+																														contaLeitura ++;
+																													}else {
+																														if(a.getRafaelos().equals("")) {
+																															lista.add(a);
+																															contaLeitura ++;
+																														}
+																													}
+																												}
+																											}
+																										}else {
+																											if(user.get_id().equals("rafsanco")) {
+																												for(int i=0; i< allAlinhamentos.size(); i++) {
+																													a = allAlinhamentos.get(i);
+																													if(a.getDataAlinhamento() != null) {
+																														if(a.getRafsanco() == null) {
+																															lista.add(a);	
+																															contaLeitura ++;
+																														}else {
+																															if(a.getRafsanco().equals("")) {
+																																lista.add(a);
+																																contaLeitura ++;
+																															}
+																														}
+																													}
+																												}
+																											}else {
+																												if(user.get_id().equals("rodolfob")) {
+																													for(int i=0; i< allAlinhamentos.size(); i++) {
+																														a = allAlinhamentos.get(i);
+																														if(a.getDataAlinhamento() != null) {
+																															if(a.getRodolfob() == null) {
+																																lista.add(a);	
+																																contaLeitura ++;
+																															}else {
+																																if(a.getRodolfob().equals("")) {
+																																	lista.add(a);
+																																	contaLeitura ++;
+																																}
+																															}
+																														}
+																													}
+																												}else {
+																													if(user.get_id().equals("rrslima")) {
+																														for(int i=0; i< allAlinhamentos.size(); i++) {
+																															a = allAlinhamentos.get(i);
+																															if(a.getDataAlinhamento() != null) {
+																																if(a.getRrslima() == null) {
+																																	lista.add(a);	
+																																	contaLeitura ++;
+																																}else {
+																																	if(a.getRrslima().equals("")) {
+																																		lista.add(a);
+																																		contaLeitura ++;
+																																	}
+																																}
+																															}
+																														}
+																													}else {
+																														if(user.get_id().equals("ssabrina")) {
+																															for(int i=0; i< allAlinhamentos.size(); i++) {
+																																a = allAlinhamentos.get(i);
+																																if(a.getDataAlinhamento() != null) {
+																																	if(a.getSsabrina() == null) {
+																																		lista.add(a);	
+																																		contaLeitura ++;
+																																	}else {
+																																		if(a.getSsabrina().equals("")) {
+																																			lista.add(a);
+																																			contaLeitura ++;
+																																		}
+																																	}
+																																}
+																															}
+																														}else {
+																															if(user.get_id().equals("tdom")) {
+																																for(int i=0; i< allAlinhamentos.size(); i++) {
+																																	a = allAlinhamentos.get(i);
+																																	if(a.getDataAlinhamento() != null) {
+																																		if(a.getTdom() == null) {
+																																			lista.add(a);	
+																																			contaLeitura ++;
+																																		}else {
+																																			if(a.getTdom().equals("")) {
+																																				lista.add(a);
+																																				contaLeitura ++;
+																																			}
+																																		}
+																																	}
+																																}
+																															}else {
+																																if(user.get_id().equals("vilanopx")) {
+																																	for(int i=0; i< allAlinhamentos.size(); i++) {
+																																		a = allAlinhamentos.get(i);
+																																		if(a.getDataAlinhamento() != null) {
+																																			if(a.getVilanopx() == null) {
+																																				lista.add(a);	
+																																				contaLeitura ++;
+																																			}else {
+																																				if(a.getVilanopx().equals("")) {
+																																					lista.add(a);
+																																					contaLeitura ++;
+																																				}
+																																			}
+																																		}
+																																	}
+																																}else {
+																																	if(user.get_id().equals("wellinlo")) {
+																																		for(int i=0; i< allAlinhamentos.size(); i++) {
+																																			a = allAlinhamentos.get(i);
+																																			if(a.getDataAlinhamento() != null) {
+																																				if(a.getWellinlo() == null) {
+																																					lista.add(a);	
+																																					contaLeitura ++;
+																																				}else {
+																																					if(a.getWellinlo().equals("")) {
+																																						lista.add(a);
+																																						contaLeitura ++;
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}else {
+																																		if(user.get_id().equals("enasilva")) {
+																																			for(int i=0; i< allAlinhamentos.size(); i++) {
+																																				a = allAlinhamentos.get(i);
+																																				if(a.getDataAlinhamento() != null) {
+																																					if(a.getEnasilva() == null) {
+																																						lista.add(a);	
+																																						contaLeitura ++;
+																																					}else {
+																																						if(a.getEnasilva().equals("")) {
+																																							lista.add(a);
+																																							contaLeitura ++;
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}else {
+																																			if(user.get_id().equals("gabaf")) {
+																																				for(int i=0; i< allAlinhamentos.size(); i++) {
+																																					a = allAlinhamentos.get(i);
+																																					if(a.getDataAlinhamento() != null) {
+																																						if(a.getGabaf() == null) {
+																																							lista.add(a);	
+																																							contaLeitura ++;
+																																						}else {
+																																							if(a.getGabaf().equals("")) {
+																																								lista.add(a);
+																																								contaLeitura ++;
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}else {
+																																				if(user.get_id().equals("guhfs")) {
+																																					for(int i=0; i< allAlinhamentos.size(); i++) {
+																																						a = allAlinhamentos.get(i);
+																																						if(a.getDataAlinhamento() != null) {
+																																							if(a.getGuhfs() == null) {
+																																								lista.add(a);	
+																																								contaLeitura ++;
+																																							}else {
+																																								if(a.getGuhfs().equals("")) {
+																																									lista.add(a);
+																																									contaLeitura ++;
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		model.addAttribute("listPendente", listPendente);
 		model.addAttribute("listCompleta", listCompleta);
+		session.setAttribute("contaLeitura", contaLeitura);
+		session.setAttribute("contaDesvio", contaDesvio);
 		
 		if(user.getAccess().equals("ADM")) {
 			data.setImg("/img/dpsp.jpg");

@@ -72,14 +72,14 @@
         <a class="nav-link" href="/ListarDesvioAnalista">
           <i class="fas fa-map-signs"></i>
           <span>Desvios Recebidos</span>
-          	<span class="badge badge-danger badge-pill" style="margin-left: 24px; visibility: hidden" id="desvio"></span>
+          	<span class="badge badge-danger badge-pill" style="visibility: hidden" id="desvio"></span>
          </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
           <i class="fas fa-glasses"></i>
           <span>Pendencia de Leitura</span>
-          	  <span class="badge badge-danger badge-pill" style=" margin-left: 10px; visibility: hidden" id="leitura"></span>
+          	<span class="badge badge-danger badge-pill" style="visibility: hidden" id="leitura"></span>
          </a>
       </li>
 
@@ -129,7 +129,7 @@
         Controles Operacionais
       </div>
       
-                  <!-- Nav Item - Utilities Collapse Menu -->
+      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-map-signs"></i>
@@ -146,7 +146,7 @@
         </div>
       </li>
       
-      <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-archive"></i>
@@ -215,7 +215,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
             
             	<div class="btn-group">
- 	 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 	 				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Analista Logado: <%= request.getUserPrincipal().getName() %>
   					</button>
   					<div class="dropdown-menu dropdown-menu-right">
@@ -231,147 +231,44 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-        	                      <div id="erro" style="padding-top: 5px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-        	<form action="/LiberarDesvio" metod="GET">
-        		<div class="row">
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Sexta-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input"  name="sexta" aria-describedby="inputGroup-sizing-default">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					       		<div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 20px;">
+                 	<div id="popular" >
+                 	<div class="row">
+                 		<div class="col-2"></div>
+                 		<div class="col-8">
+                 			                    <div class="row" style="padding-top: 15px;">
+						<div class="col-5">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Usuario</strong></span>
+  								</div>
+  								<input type="text" class="form-control" readonly value="${data.usuarioPopular }" id="usuarioPopular" name="usuarioPopular" style="text-align: center; background-color: white;">
+							</div>
 						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Sábado</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="sabado" aria-describedby="inputGroup-sizing-default">
+						<div class="col-1"></div>
+						<div class="col-5">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Senha</strong></span>
+  								</div>
+  								<input type="text" class="form-control" readonly value="${data.senhaPopular }" id="senhaPopular" name="senhaPopular" style="text-align: center; background-color: white;">
+							</div>
 						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Domingo</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input"  name="domingo" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Segunda-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="segunda" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Terça-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input"  name="terca" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Quarta-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="quarta" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Quarta-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="quinta" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<button type="submit" class="btn btn-primary">Liberar Desvios Semanal</button>
-					</div>
-				</div>
-				</form>	
-				<div class="row">
-                <div class="col-4"></div>
-                <div class="col-7">
-                    <div class="row"></div>
-                    <div class="row">
-                        <h1>Lista de Desvios Liberados</h1>
                     </div>
-                </div>
-                <div class="col-1"></div>
-            </div>
-				<div class="table-responsive text-nowrap" style="overflow-y: scroll; height: 250px">
-						<table class="table table-striped" id="table2excel">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nº Chamado</th>
-                                        <th scope="col">Dt do Desvio</th>
-                                        <th scope="col">Analista Desvio</th>
-                                        <th scope="col">Tipo Desvio</th>
-                                        <th scope="col">Justicativa</th>
-                                    </tr>
-                                </thead>
-                                <tbody >                           	
-                                 	<c:forEach var="Desvio" items="${list}">
-                                 		<tr>
-                                            <td>
-                                                ${Desvio._id }
-                                            </td>
-                                           	<td>
-                                                ${Desvio.dataDesvio }
-                                            </td>
-                                            <td>
-                                                ${Desvio.analistaDesvio }
-                                            </td>
-                                            <td>
-                                                ${Desvio.tipoDesvio }
-                                            </td>
-                                           	<td>
-                                                ${Desvio.justificativa }
-                                            </td>
-                                        </tr>
-                                 	</c:forEach>
-                                </tbody>
-                            </table>
-					</div>
-				<div class="row">
-					<div class="col-5"></div>
-					<div class="col-4">
-						
-					</div>
-					<div class="col-3"></div>
+                 		</div>
+                 		<div class="col-1"></div>
+                 	</div>
+                  	</div>
+                  	</div>
 				</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row" style="padding-top: 20px">
+				<iframe id="iframe" name="iframe" src="https://farmaciapopular-portal.saude.gov.br/farmaciapopular-portal/visao/index.jsf" width="100%" height="500px"></iframe>
+			</div> 
         </div>
         <!-- /.container-fluid -->
 
@@ -410,15 +307,7 @@
   
           <script>
   	window.onload = function(){
-  		var leitura = <%=request.getSession().getAttribute("contaLeitura")%>;
-  		var desvio = <%=request.getSession().getAttribute("contaDesvio")%>;
-  		if(leitura > 0){
-  			document.getElementById("leitura").innerHTML = leitura;
-  			document.getElementById("leitura").style.visibility = "visible";
-  		}if(desvio > 0){
-  			document.getElementById("desvio").innerHTML = desvio;
-  			document.getElementById("desvio").style.visibility = "visible";
-  		}
+  		document.getElementById("formLogin:no_login").val("123");
   	}
   </script>
 

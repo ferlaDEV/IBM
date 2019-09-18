@@ -24,6 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception{
+		http.headers().frameOptions().disable();
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/LoginW3").permitAll()
 		.antMatchers(HttpMethod.GET, "/AuthW3").permitAll()

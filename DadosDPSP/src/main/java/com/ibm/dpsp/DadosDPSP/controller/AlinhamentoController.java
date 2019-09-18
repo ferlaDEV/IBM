@@ -198,216 +198,253 @@ public class AlinhamentoController {
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
 		
 		Alinhamento alinhamento = db.find(Alinhamento.class, id);
+		
+		int contaLeitura = (int) session.getAttribute("contaLeitura");
 
 		if(user.get_id().equals("andrespx")) {
 			alinhamento.set_id(alinhamento.get_id());
 			alinhamento.set_rev(alinhamento.get_rev());
 			alinhamento.setAndrespx("Sim");
 			db.update(alinhamento);
+			contaLeitura --;
 		}else {
 			if(user.get_id().equals("buenoga")) {
 				alinhamento.set_id(alinhamento.get_id());
 				alinhamento.set_rev(alinhamento.get_rev());
 				alinhamento.setBuenoga("Sim");
 				db.update(alinhamento);
+				contaLeitura --;
 			}else {
 				if(user.get_id().equals("eduaopa")) {
 					alinhamento.set_id(alinhamento.get_id());
 					alinhamento.set_rev(alinhamento.get_rev());
 					alinhamento.setEduaopa("Sim");
 					db.update(alinhamento);
+					contaLeitura --;
 				}else {
 					if(user.get_id().equals("felneves")) {
 						alinhamento.set_id(alinhamento.get_id());
 						alinhamento.set_rev(alinhamento.get_rev());
 						alinhamento.setFelneves("Sim");
 						db.update(alinhamento);
+						contaLeitura --;
 					}else {
 						if(user.get_id().equals("felsan")) {
 							alinhamento.set_id(alinhamento.get_id());
 							alinhamento.set_rev(alinhamento.get_rev());
 							alinhamento.setFelsan("Sim");
 							db.update(alinhamento);
+							contaLeitura --;
 						}else {
 							if(user.get_id().equals("ferlapx")) {
 								alinhamento.set_id(alinhamento.get_id());
 								alinhamento.set_rev(alinhamento.get_rev());
 								alinhamento.setFerlapx("Sim");
 								db.update(alinhamento);
+								contaLeitura --;
 							}else {
 								if(user.get_id().equals("gsoli")) {
 									alinhamento.set_id(alinhamento.get_id());
 									alinhamento.set_rev(alinhamento.get_rev());
 									alinhamento.setGsoli("Sim");
 									db.update(alinhamento);
+									contaLeitura --;
 								}else {
 									if(user.get_id().equals("jquei")) {
 										alinhamento.set_id(alinhamento.get_id());
 										alinhamento.set_rev(alinhamento.get_rev());
 										alinhamento.setJquei("Sim");
 										db.update(alinhamento);
+										contaLeitura --;
 									}else {
 										if(user.get_id().equals("juancda")) {
 											alinhamento.set_id(alinhamento.get_id());
 											alinhamento.set_rev(alinhamento.get_rev());
 											alinhamento.setJuancda("Sim");
 											db.update(alinhamento);
+											contaLeitura --;
 										}else {
 											if(user.get_id().equals("leiper")) {
 												alinhamento.set_id(alinhamento.get_id());
 												alinhamento.set_rev(alinhamento.get_rev());
 												alinhamento.setLeiper("Sim");
 												db.update(alinhamento);
+												contaLeitura --;
 											}else {
 												if(user.get_id().equals("ligiar")) {
 													alinhamento.set_id(alinhamento.get_id());
 													alinhamento.set_rev(alinhamento.get_rev());
 													alinhamento.setLigiar("Sim");
 													db.update(alinhamento);
+													contaLeitura --;
 												}else {
 													if(user.get_id().equals("lilianfp")) {
 														alinhamento.set_id(alinhamento.get_id());
 														alinhamento.set_rev(alinhamento.get_rev());
 														alinhamento.setLilianfp("Sim");
 														db.update(alinhamento);
+														contaLeitura --;
 													}else {
 														if(user.get_id().equals("malonenc")) {
 															alinhamento.set_id(alinhamento.get_id());
 															alinhamento.set_rev(alinhamento.get_rev());
 															alinhamento.setMalonenc("Sim");
 															db.update(alinhamento);
+															contaLeitura --;
 														}else {
 															if(user.get_id().equals("marcoabj")) {
 																alinhamento.set_id(alinhamento.get_id());
 																alinhamento.set_rev(alinhamento.get_rev());
 																alinhamento.setMarcoabj("Sim");
 																db.update(alinhamento);
+																contaLeitura --;
 															}else {
 																if(user.get_id().equals("mariaels")) {
 																	alinhamento.set_id(alinhamento.get_id());
 																	alinhamento.set_rev(alinhamento.get_rev());
 																	alinhamento.setMariaels("Sim");
 																	db.update(alinhamento);
+																	contaLeitura --;
 																}else {
 																	if(user.get_id().equals("mayss")) {
 																		alinhamento.set_id(alinhamento.get_id());
 																		alinhamento.set_rev(alinhamento.get_rev());
 																		alinhamento.setMayss("Sim");
 																		db.update(alinhamento);
+																		contaLeitura --;
 																	}else {
 																		if(user.get_id().equals("mfdiaspx")) {
 																			alinhamento.set_id(alinhamento.get_id());
 																			alinhamento.set_rev(alinhamento.get_rev());
 																			alinhamento.setMfdiaspx("Sim");
 																			db.update(alinhamento);
+																			contaLeitura --;
 																		}else {
 																			if(user.get_id().equals("munizn")) {
 																				alinhamento.set_id(alinhamento.get_id());
 																				alinhamento.set_rev(alinhamento.get_rev());
 																				alinhamento.setMunizn("Sim");
 																				db.update(alinhamento);
+																				contaLeitura --;
 																			}else {
 																				if(user.get_id().equals("murisil")) {
 																					alinhamento.set_id(alinhamento.get_id());
 																					alinhamento.set_rev(alinhamento.get_rev());
 																					alinhamento.setMurisil("Sim");
 																					db.update(alinhamento);
+																					contaLeitura --;
 																				}else {
 																					if(user.get_id().equals("ofaria")) {
 																						alinhamento.set_id(alinhamento.get_id());
 																						alinhamento.set_rev(alinhamento.get_rev());
 																						alinhamento.setOfaria("Sim");
 																						db.update(alinhamento);
+																						contaLeitura --;
 																					}else {
 																						if(user.get_id().equals("oliversi")) {
 																							alinhamento.set_id(alinhamento.get_id());
 																							alinhamento.set_rev(alinhamento.get_rev());
 																							alinhamento.setOliversi("Sim");
 																							db.update(alinhamento);
+																							contaLeitura --;
 																						}else {
 																							if(user.get_id().equals("petma")) {
 																								alinhamento.set_id(alinhamento.get_id());
 																								alinhamento.set_rev(alinhamento.get_rev());
 																								alinhamento.setPetma("Sim");
 																								db.update(alinhamento);
+																								contaLeitura --;
 																							}else {
 																								if(user.get_id().equals("phperepx")) {
 																									alinhamento.set_id(alinhamento.get_id());
 																									alinhamento.set_rev(alinhamento.get_rev());
 																									alinhamento.setPhperepx("Sim");
 																									db.update(alinhamento);
+																									contaLeitura --;
 																								}else {
 																									if(user.get_id().equals("pjordaot")) {
 																										alinhamento.set_id(alinhamento.get_id());
 																										alinhamento.set_rev(alinhamento.get_rev());
 																										alinhamento.setPjordaot("Sim");
 																										db.update(alinhamento);
+																										contaLeitura --;
 																									}else {
 																										if(user.get_id().equals("rafaelos")) {
 																											alinhamento.set_id(alinhamento.get_id());
 																											alinhamento.set_rev(alinhamento.get_rev());
 																											alinhamento.setRafaelos("Sim");
 																											db.update(alinhamento);
+																											contaLeitura --;
 																										}else {
 																											if(user.get_id().equals("rafsanco")) {
 																												alinhamento.set_id(alinhamento.get_id());
 																												alinhamento.set_rev(alinhamento.get_rev());
 																												alinhamento.setRafsanco("Sim");
 																												db.update(alinhamento);
+																												contaLeitura --;
 																											}else {
 																												if(user.get_id().equals("rodolfob")) {
 																													alinhamento.set_id(alinhamento.get_id());
 																													alinhamento.set_rev(alinhamento.get_rev());
 																													alinhamento.setRodolfob("Sim");
 																													db.update(alinhamento);
+																													contaLeitura --;
 																												}else {
 																													if(user.get_id().equals("rrslima")) {
 																														alinhamento.set_id(alinhamento.get_id());
 																														alinhamento.set_rev(alinhamento.get_rev());
 																														alinhamento.setRrslima("Sim");
 																														db.update(alinhamento);
+																														contaLeitura --;
 																													}else {
 																														if(user.get_id().equals("ssabrina")) {
 																															alinhamento.set_id(alinhamento.get_id());
 																															alinhamento.set_rev(alinhamento.get_rev());
 																															alinhamento.setSsabrina("Sim");
 																															db.update(alinhamento);
+																															contaLeitura --;
 																														}else {
 																															if(user.get_id().equals("tdom")) {
 																																alinhamento.set_id(alinhamento.get_id());
 																																alinhamento.set_rev(alinhamento.get_rev());
 																																alinhamento.setTdom("Sim");
 																																db.update(alinhamento);
+																																contaLeitura --;
 																															}else {
 																																if(user.get_id().equals("vilanopx")) {
 																																	alinhamento.set_id(alinhamento.get_id());
 																																	alinhamento.set_rev(alinhamento.get_rev());
 																																	alinhamento.setVilanopx("Sim");
 																																	db.update(alinhamento);
+																																	contaLeitura --;
 																																}else {
 																																	if(user.get_id().equals("wellinlo")) {
 																																		alinhamento.set_id(alinhamento.get_id());
 																																		alinhamento.set_rev(alinhamento.get_rev());
 																																		alinhamento.setWellinlo("Sim");
 																																		db.update(alinhamento);
+																																		contaLeitura --;
 																																	}else {
 																																		if(user.get_id().equals("enasilva")) {
 																																			alinhamento.set_id(alinhamento.get_id());
 																																			alinhamento.set_rev(alinhamento.get_rev());
 																																			alinhamento.setEnasilva("Sim");
 																																			db.update(alinhamento);
+																																			contaLeitura --;
 																																		}else {
 																																			if(user.get_id().equals("gabaf")) {
 																																				alinhamento.set_id(alinhamento.get_id());
 																																				alinhamento.set_rev(alinhamento.get_rev());
 																																				alinhamento.setGabaf("Sim");
 																																				db.update(alinhamento);
+																																				contaLeitura --;
 																																			}else {
 																																				if(user.get_id().equals("guhfs")) {
 																																					alinhamento.set_id(alinhamento.get_id());
 																																					alinhamento.set_rev(alinhamento.get_rev());
 																																					alinhamento.setGuhfs("Sim");
 																																					db.update(alinhamento);
+																																					contaLeitura --;
 																																				}
 																																			}
 																																		}
@@ -444,6 +481,7 @@ public class AlinhamentoController {
 			}
 		}
 		mensagemSuccess = "Confirmação de leitura de Alinhamento efetuada com sucesso!!";
+		session.setAttribute("contaLeitura", contaLeitura);
 		model.addAttribute("mensagemSuccess", mensagemSuccess);
 		return listarAlinhamentoPendenteLeitura(model, session, request, request);
 	}
@@ -452,7 +490,6 @@ public class AlinhamentoController {
 	public String listarAlinhamentoPendenteLeitura(Model model, HttpSession session, HttpServletRequest response, HttpServletRequest request) throws IOException {
 		
 		Usuario user = db.find(Usuario.class, request.getUserPrincipal().getName());
-		
 		Alinhamento a;
 		List<Alinhamento> allAlinhamentos = null;
 		List<Alinhamento> lista = new ArrayList<Alinhamento>();
@@ -534,7 +571,7 @@ public class AlinhamentoController {
 									a = allAlinhamentos.get(i);
 									if(a.getDataAlinhamento() != null) {
 										if(a.getFerlapx() == null) {
-											lista.add(a);	
+											lista.add(a);
 										}else {
 											if(a.getFerlapx().equals("")) {
 												lista.add(a);
@@ -843,10 +880,10 @@ public class AlinhamentoController {
 																															if(a.getDataAlinhamento() != null) {
 																																if(a.getRrslima() == null) {
 																																	lista.add(a);	
-																																}
-																															}else {
-																																if(a.getRrslima().equals("")) {
-																																	lista.add(a);
+																																}else {
+																																	if(a.getRrslima().equals("")) {
+																																		lista.add(a);
+																																	}
 																																}
 																															}
 																														}

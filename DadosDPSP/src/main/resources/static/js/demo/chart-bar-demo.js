@@ -29,20 +29,57 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
-var ES = document.getElementById("es").value;
-var MG = document.getElementById("mgDP").value;
-var PR = document.getElementById("pr").value;
-var RJ = document.getElementById("rjDP").value;
+var andrespx = document.getElementById("andrespx").value;
+var buenoga = document.getElementById("buenoga").value;
+var eduaopa = document.getElementById("eduaopa").value;
+var enasilva = document.getElementById("enasilva").value;
+var felneves = document.getElementById("felneves").value;
+var felsan = document.getElementById("felsan").value;
+var ferlapx = document.getElementById("ferlapx").value;
+var gabaf = document.getElementById("gabaf").value;
+var gsoli = document.getElementById("gsoli").value;
+var guhfs = document.getElementById("guhfs").value;
+var jquei = document.getElementById("jquei").value;
+var juancda = document.getElementById("juancda").value;
+var leiper = document.getElementById("leiper").value;
+var ligiar = document.getElementById("ligiar").value;
+var lilianfp = document.getElementById("lilianfp").value;
+var malonenc = document.getElementById("malonenc").value;
+var marcoabj = document.getElementById("marcoabj").value;
+var mariaels = document.getElementById("mariaels").value;
+var mayss = document.getElementById("mayss").value;
+var mfdiaspx = document.getElementById("mfdiaspx").value;
+var munizn = document.getElementById("munizn").value;
+var murisil = document.getElementById("murisil").value;
+var ofaria = document.getElementById("ofaria").value;
+var oliversi = document.getElementById("oliversi").value;
+var petma = document.getElementById("petma").value;
+var phperepx = document.getElementById("phperepx").value;
+var pjordaot = document.getElementById("pjordaot").value;
+var rafaelos = document.getElementById("rafaelos").value;
+var rafsanco = document.getElementById("rafsanco").value;
+var rodolfob = document.getElementById("rodolfob").value;
+var rrslima = document.getElementById("rrslima").value;
+var ssabrina = document.getElementById("ssabrina").value;
+var tdom = document.getElementById("tdom").value;
+var vilanopx = document.getElementById("vilanopx").value;
+var wellinlo = document.getElementById("wellinlo").value;
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["ES", "MG", "PR", "RJ"],
+    labels: ["Andres", "Buenoga", "Eduaopa", "Enasilva", "Felneves", "Felsan", "Ferlapx", "Gabaf",
+    	"Gsoli", "Guhfs", "Jquei", "Juancda", "Leiper", "Ligiar", "Lilianfp", "malonenc", "Marcoabj",
+    	"Mariaels", "Mayss", "Mfdiaspx", "Munizn", "Murisil", "Ofaria", "Oliversi", "Petma", "Phperepx",
+    	"Pjordaot", "Rafsanco", "Rodolfob", "Rrslima", "Ssabrina", "Tdom", "Vilanopx", "Wellinlo"],
     datasets: [{
-      label: "Lojas",
-      backgroundColor: ["#8B0000", "#8B0000", "#8B0000", "#8B0000"],
-      hoverBackgroundColor: "#F8F8FF",
+    	label: "Desvios",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [ES, MG, PR, RJ],
+      data: [andrespx, buenoga, eduaopa, enasilva, felneves, felsan, ferlapx, gabaf,
+    	gsoli, guhfs, jquei, juancda, leiper, ligiar, lilianfp, malonenc, marcoabj,
+    	mariaels, mayss, mfdiaspx, munizn, murisil, ofaria, oliversi, petma, phperepx,
+    	pjordaot, rafsanco, rodolfob, rrslima, ssabrina, tdom, vilanopx, wellinlo],
     }],
   },
   options: {
@@ -50,26 +87,30 @@ var myBarChart = new Chart(ctx, {
     layout: {
       padding: {
         left: 10,
-        right: 25,
-        top: 25,
+        right: 5,
+        top: 5,
         bottom: 0
       }
     },
     scales: {
       xAxes: [{
+        time: {
+          unit: 'month'
+        },
         gridLines: {
           display: false,
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 40
         },
-        maxBarThickness: 50,
+        maxBarThickness: 25,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 350,
+          max: 8,
+          maxTicksLimit: 10,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
@@ -79,33 +120,33 @@ var myBarChart = new Chart(ctx, {
         gridLines: {
           color: "rgb(234, 236, 244)",
           zeroLineColor: "rgb(234, 236, 244)",
-          drawBorder: true,
+          drawBorder: false,
           borderDash: [2],
           zeroLineBorderDash: [2]
         }
       }],
     },
     legend: {
-      display: true
+    	display: false
     },
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 14,
+      titleFontSize: 12,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
       borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
+      xPadding: 10,
+      yPadding: 10,
       displayColors: false,
       caretPadding: 10,
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return number_format(tooltipItem.yLabel) +" "+ datasetLabel ;
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
         }
-      }
+      },
     },
   }
 });

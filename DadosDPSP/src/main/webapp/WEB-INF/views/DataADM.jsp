@@ -70,12 +70,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/ListarDesvioAnalista">
           <i class="fas fa-map-signs"></i>
-          <span>Desvios Recebidos</span></a>
+          <span>Desvios Recebidos</span>
+          	<span class="badge badge-danger badge-pill" style="margin-left: 24px; visibility: hidden" id="desvio"></span>
+         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
           <i class="fas fa-glasses"></i>
-          <span>Pendencia de Leitura</span></a>
+          <span>Pendencia de Leitura</span>
+          	  <span class="badge badge-danger badge-pill" style=" margin-left: 10px; visibility: hidden" id="leitura"></span>
+         </a>
       </li>
 
       <!-- Divider -->
@@ -186,7 +190,7 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+<div class="container-fluid">
           <div class="row">
             <div class="col-4"></div>
             <div class="col-5">
@@ -195,13 +199,10 @@
                       <a class="nav-link active" id="pills-dados-tab" data-toggle="pill" href="#pills-dados" role="tab" aria-controls="pills-dados" aria-selected="true">Dados</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-fp-tab" data-toggle="pill" href="#pills-fp" role="tab" aria-controls="pills-fp" aria-selected="false">Fármacia Popular</a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link" id="pills-tratativa-tab" data-toggle="pill" href="#pills-tratativa" role="tab" aria-controls="pills-tratativa" aria-selected="false">Tratativa</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-ips-tab" data-toggle="pill" href="#pills-ips" role="tab" aria-controls="pills-ips" aria-selected="false">IP's Padrões</a>
+                      <a class="nav-link" id="pills-fp-tab" data-toggle="pill" href="#pills-fp" role="tab" aria-controls="pills-fp" aria-selected="false">Fármacia Popular</a>
                     </li>
                   </ul>
             </div>
@@ -209,7 +210,7 @@
           </div>
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-dados" role="tabpanel" aria-labelledby="pills-dados-tab" >
-              <div class="row">
+              <div class="row" style="padding-bottom: 20px">
                 <div class="col-sm">
                   <div id="dadosLoja">
                     <div class="row">
@@ -347,7 +348,7 @@
   									<div class="input-group-prepend">
     									<span class="input-group-text" style="color: black;"><strong>Endereco</strong></span>
   									</div>
-  									<textarea class="form-control" aria-label="Com textarea" readonly id="endereco" style="resize: none; height: 150px">${data.enderecoCompleto }</textarea>
+  									<textarea class="form-control" id="endereco" readonly aria-label="Com textarea" style="resize: none; height: 150px">${data.enderecoCompleto }</textarea>
 								</div>
 							</div>
                     	</div>
@@ -396,15 +397,6 @@
 							</div>
 						</div>
                     </div>
-<!--                     <div class="row"> -->
-<!--                       <div class="col-4"> -->
-<!--                         <label for="emailLoja">Email Loja</label> -->
-<!--                       </div> -->
-<!--                     </div> -->
-<!--                     <div class="row"> -->
-<!--                       <div class="col-4"> -->
-<%--                        <textarea class="emailLoja" id="emailLoja" class="form-control" readonly>${data.email }</textarea> --%>
-<!--                       </div> -->
                     <div class="row">
 						<div class="col-11">
 							<div class="input-group">
@@ -496,8 +488,7 @@
                     <div class="row">
                       Prestadores
                     </div>
-                    <br>
-                    <div class="row">
+                    <div class="row" style="padding-top: 5px;">
 <!--                       <div class="row"> -->
 <!--                         <div class="col-6"> -->
 <!--                           <label for="fieldLocal">Field Local</label> -->
@@ -534,13 +525,11 @@
 						</div>
                     </div>
                   </div>
-                  <br>
-                  <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 80px;">
+                  <div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 20px;">
                     <div id="atendimento">
                       <div class="row">
                         Atendimento
                       </div>
-                      <br>
                       <div class="row">
 <!--                         <div class="col-4"> -->
 <!--                           <label for="segASex">Seg. a Sex.</label> -->
@@ -605,61 +594,113 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="tab-pane fade" id="pills-fp" role="tabpanel" aria-labelledby="pills-fp-tab">
-              <div class="row">
-                <div class="col-sm">
-                  <div id="popular">
-                    <div class="row">
-                      Dados Fármacia Popular
+              <div class="row" style="padding-bottom: 30px">
+              	<div id="calculoIp">
+                  <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                      Padrão de IP's da loja
                     </div>
-                    <br>
-                    <div class="row">
-						<div class="col-11">
+                    <br><br>
+                    <div class="col-4"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="row">
+<!--                         <div class="col-4"> -->
+<!--                           <label for="ipGerencia">Gerência</label> -->
+<!--                         </div> -->
+<!--                         <div class="col-7"> -->
+<%--                           <input type="text" class="form-control" id="ipGerencia" readonly value="${data.ipGerencia }"> --%>
+<!--                         </div> -->
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Gerência</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipGerencia }">
+							</div>
+                      </div>
+                      <div class="row">
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Balcões</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipBalcao }">
+							</div>
+                      </div>
+                      <div class="row">
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Caixas</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipCaixa }">
+							</div>
+                      </div>
+                      <div class="row">
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Impressora de Cupom</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipImpCupom }">
+							</div>
+                  		</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row">
+<!--                         <div class="col-3"> -->
+<!--                           <label for="ipLink">Link Geral</label> -->
+<!--                         </div> -->
+<!--                         <div class="col-7"> -->
+<%--                           <input type="text" class="form-control" id="ipLink" readonly value="${data.ipLink }"> --%>
+<!--                         </div> -->
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Link Geral</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipLink }">
+							</div>
+                      </div>
+                      <div class="row">
+							<div class="input-group input-group-sm mb-3" style="width: 90%;">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Roteador</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipRoteador }">
+							</div>
+                      </div>
+                      <div class="row">
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Tira-Teima</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipTiraTeima }">
+							</div>
+                      </div>
+                      <div class="row">
+							<div class="input-group input-group-sm mb-3" style="width: 90%">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Voip</strong></span>
+  								</div>
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipVoip }">
+							</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  	<div class="col-3"></div>
+                  	<div class="col-6">
+                  		<div class="row">
 							<div class="input-group input-group-sm mb-3">
   								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Usuario</strong></span>
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black"><strong>Impressora Multifuncional</strong></span>
   								</div>
-  								<input type="text" class="form-control" readonly value="${data.usuarioPopular }" id="usuarioPopular" name="usuarioPopular" style="text-align: center; background-color: white;">
+  								<input type="text" class="form-control" style="text-align: center; background-color: white; color: black" readonly value="${data.ipMultifuncional }">
 							</div>
-						</div>
-                    </div>
-                    <div class="row">
-						<div class="col-11">
-							<div class="input-group input-group-sm mb-3">
-  								<div class="input-group-prepend">
-    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Senha</strong></span>
-  								</div>
-  								<input type="text" class="form-control" readonly value="${data.senhaPopular }" id="senhaPopular" name="senhaPopular" style="text-align: center; background-color: white;">
-							</div>
-						</div>
-                    </div>
+                  		</div>
+                  	</div>
+                  	<div class="col-3"></div>
                   </div>
                 </div>
-                <!-- <div class="col-sm">
-                  <div id="popular">
-                    <div class="row">
-                      Terminais Epharma
-                    </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-6">
-                        <label for="terminal">N. Terminal</label>
-                      </div>
-                      <div class="col-5">
-                        <input type="text" class="form-control" id="terminal" readonly>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4">
-                        <label for="digito">Digito</label>
-                      </div>
-                      <div class="col-6">
-                        <input type="text" class="form-control" id="digito" readonly>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="tab-pane fade" id="pills-tratativa" role="tabpanel" aria-labelledby="pills-tratativa-tab">
@@ -1002,88 +1043,46 @@
                   </div> -->
                 </div>
               </div>
-        <div class="tab-pane fade" id="pills-ips" role="tabpanel" aria-labelledby="pills-ips-tab">
-                <div id="calculoIp">
-                  <div class="row">
-                    <div class="col-5"></div>
-                    <div class="col-3">
-                      Padrão de IP's da loja
+              <div class="tab-pane fade" id="pills-fp" role="tabpanel" aria-labelledby="pills-fp-tab">
+              	<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					       		<div class="row" style="padding-left: 13px; padding-right: 12px; padding-top: 20px;">
+                 	<div id="popular" >
+                 	<div class="row">
+                 		<div class="col-2"></div>
+                 		<div class="col-8">
+                 			                    <div class="row" style="padding-top: 15px;">
+						<div class="col-5">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Usuario</strong></span>
+  								</div>
+  								<input type="text" class="form-control" readonly value="${data.usuarioPopular }" id="usuarioPopular" name="usuarioPopular" style="text-align: center; background-color: white;">
+							</div>
+						</div>
+						<div class="col-1"></div>
+						<div class="col-5">
+							<div class="input-group input-group-sm mb-3">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text" id="inputGroup-sizing-sm" style="color: black;"><strong>Senha</strong></span>
+  								</div>
+  								<input type="text" class="form-control" readonly value="${data.senhaPopular }" id="senhaPopular" name="senhaPopular" style="text-align: center; background-color: white;">
+							</div>
+						</div>
                     </div>
-                    <br><br>
-                    <div class="col-4"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipGerencia">Gerência</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipGerencia" readonly value="${data.ipGerencia }">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipBalcao">Balcões</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipBalcao" readonly value="${data.ipBalcao }">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipCaixa">Caixas</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipCaixa" readonly value="${data.ipCaixa }">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipImpCupom">Impressora de Cupom</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipImpressoraCupom" readonly value="${data.ipImpCupom }">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipLink">Link Geral</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipLink" readonly value="${data.ipLink }">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipRoteador">Roteador</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipRoteador" readonly value="${data.ipRoteador }">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipTiraTeima">Tira-Teima</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipTiraTeima" readonly value="${data.ipTiraTeima }">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-5">
-                          <label for="ipVoip">Voip</label>
-                        </div>
-                        <div class="col-7">
-                          <input type="text" class="form-control" id="ipVoip" readonly value="${data.ipVoip }">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        	</div>
+                 		</div>
+                 		<div class="col-1"></div>
+                 	</div>
+                  	</div>
+                  	</div>
+				</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row" style="padding-top: 20px">
+				<iframe id="iframe" name="iframe" src="https://farmaciapopular-portal.saude.gov.br/farmaciapopular-portal/visao/index.jsf" width="100%" height="500px"></iframe>
+			</div>
+              </div>
       	</div>
        </div>
         <!-- /.container-fluid -->
@@ -1358,6 +1357,27 @@
       </div>
     </div>
     <!-- Fim modal Cobrança-->
+    
+        <!-- Modal Cobrança-->
+    <div id="modalTeste" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Log para Cobrança</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" id="copiarLogCobranca">
+			<iframe src="https://farmaciapopular-portal.saude.gov.br/farmaciapopular-portal/visao/index.jsf" >
+  				<p>Your browser does not support iframes.</p>
+			</iframe>
+          </div>
+          <div class="modal-footer">
+            <a href="#" id="btnCopiarLogCobranca" data-clipboard-action="copy" data-clipboard-target="#copiarLogCobranca"><i class="fas fa-copy" style="size: 20px">  Copiar Log</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim modal Cobrança-->
 
   <!-- Bootstrap core JavaScript-->
   	<script src="/js/clipboard.min.js"></script>
@@ -1378,7 +1398,20 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
-  
+
+        <script>
+  	window.onload = function(){
+  		var leitura = <%=request.getSession().getAttribute("contaLeitura")%>;
+  		var desvio = <%=request.getSession().getAttribute("contaDesvio")%>;
+  		if(leitura > 0){
+  			document.getElementById("leitura").innerHTML = leitura;
+  			document.getElementById("leitura").style.visibility = "visible";
+  		}if(desvio > 0){
+  			document.getElementById("desvio").innerHTML = desvio;
+  			document.getElementById("desvio").style.visibility = "visible";
+  		}
+  	}
+  </script>
 
 </body>
 

@@ -71,12 +71,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/ListarDesvioAnalista">
           <i class="fas fa-map-signs"></i>
-          <span>Desvios Recebidos</span></a>
+          <span>Desvios Recebidos</span>
+          	<span class="badge badge-danger badge-pill" style="margin-left: 24px; visibility: hidden" id="desvio"></span>
+         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/ListarAlinhamentoPendenteLeitura">
           <i class="fas fa-glasses"></i>
-          <span>Pendencia de Leitura</span></a>
+          <span>Pendencia de Leitura</span>
+          	  <span class="badge badge-danger badge-pill" style=" margin-left: 10px; visibility: hidden" id="leitura"></span>
+         </a>
       </li>
 
       <!-- Divider -->
@@ -151,7 +155,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="CadastroDeAlinhamento"><i class="fas fa-fw fa-plus-square"></i> Criar Documento</a>
-            <a class="collapse-item" href="ListarAlinhamentos"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>
+            <a class="collapse-item" href="ListarAlinhamento"><i class="fas fa-fw fa-clipboard-list"></i>  Listar Documento</a>
           </div>
         </div>
       </li>
@@ -797,6 +801,19 @@
         }
     }
 </script>
+        <script>
+  	window.onload = function(){
+  		var leitura = <%=request.getSession().getAttribute("contaLeitura")%>;
+  		var desvio = <%=request.getSession().getAttribute("contaDesvio")%>;
+  		if(leitura > 0){
+  			document.getElementById("leitura").innerHTML = leitura;
+  			document.getElementById("leitura").style.visibility = "visible";
+  		}if(desvio > 0){
+  			document.getElementById("desvio").innerHTML = desvio;
+  			document.getElementById("desvio").style.visibility = "visible";
+  		}
+  	}
+  </script>
 
 </body>
 

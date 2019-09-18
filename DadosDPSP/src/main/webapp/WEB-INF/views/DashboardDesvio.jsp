@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-<!--   <meta name="author" content=""> -->
+  <meta name="author" content="">
 
   <title>Administrador de dados</title>
 
@@ -23,7 +23,7 @@
   
   <!--Icone do navegador-->
 	<link rel="icon" type="imagem/png" href="/img/favicon.ico" />
-
+ 
 </head>
 
 <body id="page-top">
@@ -120,7 +120,6 @@
           </div>
         </div>
       </li>
-      
                   <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -146,7 +145,7 @@
         </div>
       </li>
       
-      <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Leitura" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-archive"></i>
@@ -181,7 +180,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand topbar mb-3 static-top shadow" style="height: 60px; background-color: black;">
+        <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="background-color: black; height: 50px;">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -228,151 +227,150 @@
 
         </nav>
         <!-- End of Topbar -->
-
+        
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-        	                      <div id="erro" style="padding-top: 5px;" >
-                          <c:if test="${mensagemSuccess != null }">
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemSuccess}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                          <c:if test="${mensagemError != null }">
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <div class="row" style="text-align: center;">
-                                      ${mensagemError}
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                                  </div>
-                              </div>
-                          </c:if>
-                      </div>
-        	<form action="/LiberarDesvio" metod="GET">
-        		<div class="row">
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Sexta-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input"  name="sexta" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Sábado</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="sabado" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Domingo</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input"  name="domingo" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Segunda-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="segunda" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Terça-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input"  name="terca" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Quarta-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="quarta" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-4">
-						<div class="input-group mb-3">
-  							<div class="input-group-prepend">
-    							<span class="input-group-text" id="inputGroup-sizing-default">Quarta-Feira</span>
-  							</div>
-  							<input type="text" class="form-control" aria-label="Exemplo do tamanho do input" name="quinta" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="col-4">
-						<button type="submit" class="btn btn-primary">Liberar Desvios Semanal</button>
-					</div>
-				</div>
-				</form>	
-				<div class="row">
-                <div class="col-4"></div>
-                <div class="col-7">
-                    <div class="row"></div>
-                    <div class="row">
-                        <h1>Lista de Desvios Liberados</h1>
-                    </div>
+		<div class="container-fluid">
+			<div class="row">
+            	<div class="col-xl-4 col-lg-3">
+            		<input type=hidden id="desvioSD" value="${Desvios_SD }">
+					<input type="hidden" id="desvioDPSP" value="${Desvios_DPSP }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Time Desvio</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="lojas"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	<div class="col-xl-4 col-lg-3">
+            		<input type="hidden" id="proativo" value="${proativo }">
+					<input type="hidden" id="reativo" value="${reativo }">
+					<input type="hidden" id="dpsp" value="${dpsp }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Tipo de Analise</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="dsp"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="problemProat" value="${problemProat }">
+					<input type="hidden" id="parado" value="${parado }">
+					<input type="hidden" id="categoria" value="${categoria }">
+					<input type="hidden" id="notificacao" value="${notificacao }">
+					<input type="hidden" id="script" value="${script }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Desvios Proativos</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="dp"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+			</div>
+			<div class="row">
+            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="problemReat" value="${problemReat }">
+					<input type="hidden" id="positivacao" value="${positivacao }">
+					<input type="hidden" id="descricao" value="${descricao }">
+					<input type="hidden" id="direcionamento" value="${direcionamento }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Desvios Reativos</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="reativos"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+            	            	<div class="col-xl-4 col-lg-5">
+            		<input type="hidden" id="indevido" value="${indevido }">
+					<input type="hidden" id="informacao" value="${informacao }">
+					<input type="hidden" id="justificativa" value="${justificativa }">
+              		<div class="card shadow mb-4">
+                		<!-- Card Header - Dropdown -->
+                		<div class="card-header py-3">
+                  			<h6 class="m-0 font-weight-bold text-primary">Desvios DPSP</h6>
+                		</div>
+                		<!-- Card Body -->
+                		<div class="card-body">
+                  			<div class="chart-pie pt-4">
+                    			<canvas id="Desvios_DPSP"></canvas>
+                  			</div>
+                		</div>
+              		</div>
+            	</div>
+			</div>
+			<div class="row">
+					<input type="hidden" id="andrespx" value="${andrespx}">
+		<input type="hidden" id="buenoga" value="${buenoga}">
+		<input type="hidden" id="eduaopa" value="${eduaopa}">
+		<input type="hidden" id="enasilva" value="${enasilva}">
+		<input type="hidden" id="felneves" value="${felneves}">
+		<input type="hidden" id="felsan" value="${felsan}">
+		<input type="hidden" id="ferlapx" value="${ferlapx}">
+		<input type="hidden" id="gabaf" value="${gabaf}">
+		<input type="hidden" id="gsoli" value="${gsoli}">
+		<input type="hidden" id="guhfs" value="${guhfs}">
+		<input type="hidden" id="jquei" value="${jquei}">
+		<input type="hidden" id="juancda" value="${juancda}">
+		<input type="hidden" id="leiper" value="${leiper}">
+		<input type="hidden" id="ligiar" value="${ligiar}">
+		<input type="hidden" id="lilianfp" value="${lilianfp}">
+		<input type="hidden" id="malonenc" value="${malonenc}">
+		<input type="hidden" id="marcoabj" value="${marcoabj}">
+		<input type="hidden" id="mariaels" value="${mariaels}">
+		<input type="hidden" id="mayss" value="${mayss}">
+		<input type="hidden" id="mfdiaspx" value="${mfdiaspx}">
+		<input type="hidden" id="munizn" value="${munizn}">
+		<input type="hidden" id="murisil" value="${murisil}">
+		<input type="hidden" id="ofaria" value="${ofaria}">
+		<input type="hidden" id="oliversi" value="${oliversi}">
+		<input type="hidden" id="petma" value="${petma}">
+		<input type="hidden" id="phperepx" value="${phperepx}">
+		<input type="hidden" id="pjordaot" value="${pjordaot}">
+		<input type="hidden" id="rafaelos" value="${rafaelos}">
+		<input type="hidden" id="rafsanco" value="${rafsanco}">
+		<input type="hidden" id="rodolfob" value="${rodolfob }">
+		<input type="hidden" id="rrslima" value="${rrslima}">
+		<input type="hidden" id="ssabrina" value="${ssabrina}">
+		<input type="hidden" id="tdom" value="${tdom}">
+		<input type="hidden" id="vilanopx" value="${vilanopx}">
+		<input type="hidden" id="wellinlo" value="${wellinlo}">
+				<div class="col-xl-12 col-lg-12">
+				<div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Desvios por Analista</h6>
                 </div>
-                <div class="col-1"></div>
-            </div>
-				<div class="table-responsive text-nowrap" style="overflow-y: scroll; height: 250px">
-						<table class="table table-striped" id="table2excel">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nº Chamado</th>
-                                        <th scope="col">Dt do Desvio</th>
-                                        <th scope="col">Analista Desvio</th>
-                                        <th scope="col">Tipo Desvio</th>
-                                        <th scope="col">Justicativa</th>
-                                    </tr>
-                                </thead>
-                                <tbody >                           	
-                                 	<c:forEach var="Desvio" items="${list}">
-                                 		<tr>
-                                            <td>
-                                                ${Desvio._id }
-                                            </td>
-                                           	<td>
-                                                ${Desvio.dataDesvio }
-                                            </td>
-                                            <td>
-                                                ${Desvio.analistaDesvio }
-                                            </td>
-                                            <td>
-                                                ${Desvio.tipoDesvio }
-                                            </td>
-                                           	<td>
-                                                ${Desvio.justificativa }
-                                            </td>
-                                        </tr>
-                                 	</c:forEach>
-                                </tbody>
-                            </table>
-					</div>
-				<div class="row">
-					<div class="col-5"></div>
-					<div class="col-4">
-						
-					</div>
-					<div class="col-3"></div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                  </div>
+                </div>
+              </div>
 				</div>
-        </div>
+			</div>
+       </div>
         <!-- /.container-fluid -->
 
       </div>
@@ -389,26 +387,31 @@
       <!-- End of Footer -->
 
     </div>
+    <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
 
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
 
   <!-- Core plugin JavaScript-->
   <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/js/demo/desvios.js"></script>
+  <script src="/js/demo/chart-bar-demo.js"></script>
   
-          <script>
+  
+        <script>
   	window.onload = function(){
   		var leitura = <%=request.getSession().getAttribute("contaLeitura")%>;
   		var desvio = <%=request.getSession().getAttribute("contaDesvio")%>;

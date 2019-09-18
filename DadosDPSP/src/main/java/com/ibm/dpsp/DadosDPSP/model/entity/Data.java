@@ -97,6 +97,8 @@ public class Data {
 	private transient String ipTiraTeima;
 	
 	private transient String ipVoip;
+	
+	private transient String ipMultifuncional;
 
 	public String get_id() {
 		return _id;
@@ -408,5 +410,13 @@ public class Data {
 
 	public void setIpVoip(String ipVoip) {
 		this.ipVoip = ipVoip;
+	}
+
+	public String getIpMultifuncional() {
+		return ipMultifuncional;
+	}
+
+	public void setIpMultifuncional(String ipMultifuncional) {
+		this.ipMultifuncional = ipMultifuncional;
 	}
 }

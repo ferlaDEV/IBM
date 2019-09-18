@@ -53,15 +53,28 @@ public class DadosController {
 			Data newData = new Data();
 			int vdLoja = Integer.parseInt(id);
 			if(data.getBandeira().equals("DSP")) {
-				if(vdLoja <= 249 ) {
-					data.setIpGerencia("10.0."+vdLoja+".100");
-					data.setIpBalcao("Entre 10.0."+vdLoja+".101" + " " + "até" + " " + "10.0."+vdLoja+".109");
-					data.setIpCaixa("Entre 10.0."+vdLoja+".50" + " " + "até" + " " + "10.0."+vdLoja+".59");
-					data.setIpImpCupom("10.0."+vdLoja+".118");
-					data.setIpLink("10.0."+vdLoja+".125");
-					data.setIpRoteador("10.0."+vdLoja+".254");
-					data.setIpTiraTeima("10.0."+vdLoja+".110");
-					data.setIpVoip("10.0."+vdLoja+".99");
+				if(vdLoja <= 249) {
+					if(vdLoja != 200) {
+						data.setIpGerencia("10.0."+vdLoja+".100");
+						data.setIpBalcao("Entre 10.0."+vdLoja+".101" + " " + "até" + " " + "10.0."+vdLoja+".109");
+						data.setIpCaixa("Entre 10.0."+vdLoja+".50" + " " + "até" + " " + "10.0."+vdLoja+".59");
+						data.setIpImpCupom("10.0."+vdLoja+".118");
+						data.setIpLink("10.0."+vdLoja+".125");
+						data.setIpRoteador("10.0."+vdLoja+".254");
+						data.setIpTiraTeima("10.0."+vdLoja+".110");
+						data.setIpVoip("10.0."+vdLoja+".99");
+						data.setIpMultifuncional("10.0."+vdLoja+".119");
+					}else if(vdLoja == 200){
+						data.setIpGerencia("10.20.0.100");
+						data.setIpBalcao("Entre 10.20.0.101" + " " + "até" + " " + "10.20.0.109");
+						data.setIpCaixa("Entre 10.20.0.50" + " " + "até" + " " + "10.20.0.59");
+						data.setIpImpCupom("10.20.0.118");
+						data.setIpLink("10.20.0.125");
+						data.setIpRoteador("10.20.0.254");
+						data.setIpTiraTeima("10.20.0.110");
+						data.setIpVoip("10.20.0.99");
+						data.setIpMultifuncional("10.20.0.119");
+					}
 				}else if(vdLoja >= 250 && vdLoja <=999) {
 					int a = vdLoja / 100;
 					int b = vdLoja / 10 % 10;
@@ -74,6 +87,7 @@ public class DadosController {
 					data.setIpRoteador("10."+a+b+"."+c+".254");
 					data.setIpTiraTeima("10."+a+b+"."+c+".110");
 					data.setIpVoip("10."+a+b+"."+c+".99");
+					data.setIpMultifuncional("10."+a+b+"."+c+".119");
 				}else if(vdLoja >= 2000 && vdLoja < 2100) {
 					int a = vdLoja / 1000;
 					int b = vdLoja / 10 % 10;
@@ -87,6 +101,7 @@ public class DadosController {
 						data.setIpRoteador("10."+a+"."+c+".254");
 						data.setIpTiraTeima("10."+a+"."+c+".110");
 						data.setIpVoip("10."+a+"."+c+".99");
+						data.setIpMultifuncional("10."+a+"."+c+".119");
 					}else {
 						data.setIpGerencia("10."+a+"."+b+c+".100");
 						data.setIpBalcao("Entre 10."+a+"."+b+c+".101" + " " + "até" + " " + "10."+a+"."+b+c+".109");
@@ -96,6 +111,7 @@ public class DadosController {
 						data.setIpRoteador("10."+a+"."+b+c+".254");
 						data.setIpTiraTeima("10."+a+"."+b+c+".110");
 						data.setIpVoip("10."+a+"."+b+c+".99");
+						data.setIpMultifuncional("10."+a+"."+b+c+".119");
 					}
 				}else if(vdLoja >= 2100 && vdLoja < 3000) {
                     int a=vdLoja /1000;
@@ -110,6 +126,7 @@ public class DadosController {
 					data.setIpRoteador("10."+a+"."+b+c+d+".254");
 					data.setIpTiraTeima("10."+a+"."+b+c+d+".110");
 					data.setIpVoip("10."+a+"."+b+c+d+".99");
+					data.setIpMultifuncional("10."+a+"."+b+c+d+".119");
 				}
 				newData.setImg("/img/dsp.jpg");
 			}else{
@@ -120,9 +137,10 @@ public class DadosController {
 					data.setIpCaixa("Entre 10.226."+vdLoja+".2" + " " + "até" + " " + "10.226."+vdLoja+".9");
 					data.setIpImpCupom("10.226."+vdLoja+".118");
 					data.setIpLink("10.226."+vdLoja+".125");
-					data.setIpRoteador("10.226."+vdLoja+".254");
-					data.setIpTiraTeima("10.226."+vdLoja+".110");
+					data.setIpRoteador("Não possui!");
+					data.setIpTiraTeima("10.226."+vdLoja+".140" + ", " + "10.226."+vdLoja+".141" + " ou " + "10.226."+vdLoja+".199");
 					data.setIpVoip("10.226."+vdLoja+".70" + " " + "ou" + " " + "10.226."+vdLoja+".71");
+					data.setIpMultifuncional("10.226."+vdLoja+".119");
 				}else if (vdLoja >= 1201 && vdLoja <=1399) {
 					vdLoja = vdLoja - 1200;
 					data.setIpGerencia("10.228."+vdLoja+".1");
@@ -130,9 +148,10 @@ public class DadosController {
 					data.setIpCaixa("Entre 10.228."+vdLoja+".2" + " " + "até" + " " + "10.228."+vdLoja+".9");
 					data.setIpImpCupom("10.228."+vdLoja+".118");
 					data.setIpLink("10.228."+vdLoja+".125");
-					data.setIpRoteador("10.228."+vdLoja+".254");
-					data.setIpTiraTeima("10.228."+vdLoja+".110");
+					data.setIpRoteador("Não possui!");
+					data.setIpTiraTeima("10.228."+vdLoja+".140" + ", " + "10.228."+vdLoja+".141" + " ou " + "10.228."+vdLoja+".199");
 					data.setIpVoip("10.228."+vdLoja+".70" + " " + "ou" + " " + "10.228."+vdLoja+".71");
+					data.setIpMultifuncional("10.228."+vdLoja+".119");
 				}else if (vdLoja > 1400 && vdLoja < 1651) {
 					vdLoja = vdLoja - 1400;
 					data.setIpGerencia("10.229."+vdLoja+".1");
@@ -140,8 +159,9 @@ public class DadosController {
 					data.setIpCaixa("Entre 10.229."+vdLoja+".2" + " " + "até" + " " + "10.229."+vdLoja+".9");
 					data.setIpImpCupom("10.229."+vdLoja+".118");
 					data.setIpLink("10.226."+vdLoja+".125");
-					data.setIpRoteador("10.229."+vdLoja+".254");
-					data.setIpTiraTeima("10.229."+vdLoja+".110");
+					data.setIpRoteador("Não possui!");
+					data.setIpTiraTeima("10.229."+vdLoja+".140" + ", " + "10.229."+vdLoja+".141" + " ou " + "10.229."+vdLoja+".199");
+					data.setIpMultifuncional("10.229."+vdLoja+".119");
 					data.setIpVoip("10.229."+vdLoja+".70" + " " + "ou" + " " + "10.229."+vdLoja+".71");
 				}
 				newData.setImg("/img/dp.jpg");
@@ -177,6 +197,7 @@ public class DadosController {
 			newData.setIpRoteador(data.getIpRoteador());
 			newData.setIpTiraTeima(data.getIpTiraTeima());
 			newData.setIpVoip(data.getIpVoip());
+			newData.setIpMultifuncional(data.getIpMultifuncional());
 			erro = null;
         	model.addAttribute("erro", erro);	
 			model.addAttribute("data", newData);
